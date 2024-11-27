@@ -1,0 +1,14 @@
+﻿version: "3"
+services:
+  healthylife-db:
+    image: postgres:17
+    container_name: healthylife-db
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_DB: healthylife
+      POSTGRES_USER: healthylife
+      POSTGRES_PASSWORD: healthylife
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data

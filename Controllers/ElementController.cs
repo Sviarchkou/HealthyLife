@@ -109,5 +109,22 @@ namespace HealthyLife_Pt2.Controllers
             element.vitamins = e1.vitamins + ", " + e2.vitamins;
             return element;
         }
+
+        public async Task updateElement(Element element)
+        {
+            StringBuilder commandHeader = new StringBuilder("UPDATE elements " +
+                $"SET calories = {element.calories}, " +
+                $"proteins = {doubleToDbString(element.proteins)}, " +
+                $"fats = {doubleToDbString(element.fats)}, " +
+                $"carbohydrates = {doubleToDbString(element.carbohydrates)}, " + 
+                $"minerals = '{element.minerals}', " +
+                $"vitamins = '{element.vitamins}'" +
+                $"WHERE id = {element.id}");
+            
+            DBConnector db = new DBConnector();
+            db.Open();
+            await db.update(commandHeader.ToString());
+            db.Close();
+        }
     }
 }

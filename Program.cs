@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing.Imaging;
 using System.Resources;
 using System.Text;
+using System.Text.Json;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace HealthyLife_Pt2
@@ -18,11 +19,11 @@ namespace HealthyLife_Pt2
         [STAThread]
         static void Main(string[] args)
         {
-               
+         
             Application.EnableVisualStyles();
             ApplicationConfiguration.Initialize();
             Application.Run(new WellcomeScrin()); ;
-            
+
             /*
             DBConnector db = new DBConnector();
             db.Open();
@@ -289,28 +290,32 @@ namespace HealthyLife_Pt2
             
             
             */
-            /*
-            
-            string str = "Host=localhost;Port=5432;Database=healthylife;Username=healthylife;Password=healthylife";
-            NpgsqlConnection npgsqlConnection = new NpgsqlConnection(str);
-            npgsqlConnection.Open();
-            
-            NpgsqlCommand command = new NpgsqlCommand();
-            
-            command.Connection = npgsqlConnection;
-            command.CommandType = CommandType.Text;
-            command.CommandText = "" +
-                "ALTER TABLE" +
-                "CREATE TABLE extrafood(" +
-                "product_id REFERENCES products(id) NOT NULL," +
-                "meal_id REFERENCES meals(id) NOT NULL" + 
-                ");";
 
-            command.ExecuteNonQuery();
-            
-            command.Dispose();
-           */
+            /*         
+                     string str = "Host=localhost;Port=5432;Database=healthylife;Username=healthylife;Password=healthylife";
+                     NpgsqlConnection npgsqlConnection = new NpgsqlConnection(str);
+                     npgsqlConnection.Open();
 
+                     NpgsqlCommand command = new NpgsqlCommand();
+
+                     command.Connection = npgsqlConnection;
+                     command.CommandType = CommandType.Text;
+                     command.CommandText = "" +
+                         "ALTER TABLE diets " +
+                         "DROP COLUMN goal," +
+                         "DROP COLUMN user_id," +
+                         "DROP COLUMN photo," +
+                         "ADD user_id     uuid REFERENCES users (id) NOT NULL," +
+                         "ADD photo       text," +
+                         "ADD goal        GOAL                       NOT NULL";
+
+
+
+                     command.ExecuteNonQuery();
+
+                     command.Dispose();
+
+         */
 
 
             /*

@@ -1,11 +1,14 @@
 ﻿using HealthyLife_Pt2.Database;
 using HealthyLife_Pt2.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HealthyLife_Pt2.Controllers
 {
@@ -169,6 +172,69 @@ namespace HealthyLife_Pt2.Controllers
             }
 
             return meals;
+        }
+
+        public async Task updateMeal(Meal meal)
+        {
+            string? breakfast_id = meal.breakfast == null ? "null" : meal.breakfast.id.ToString();
+            string? lunch_id = meal.lunch == null ? "null" : meal.lunch.id.ToString();
+            string? dinner_id = meal.dinner == null ? "null" : meal.dinner.id.ToString();
+            //int? breakfast_id = meal.breakfast == null ? null : meal.breakfast.id;
+            StringBuilder command = new StringBuilder("UPDATE meals ");
+
+            bool b = true;
+            if (meal.breakfast != null)
+            {
+                if (b) command.Append("SET ");
+                b = false;
+                command.Append($"breakfast_id = {meal.breakfast.id}");                
+            }
+            if (meal.lunch != null)
+            {
+                if (b) command.Append("SET ");
+                else command.Append(", ");
+                b = false;
+                command.Append($"lunch_id = {meal.lunch.id}");
+            }
+            if (meal.dinner != null)
+            {
+                if (b) command.Append("SET ");
+                else command.Append(", ");
+                b = false;
+                command.Append($"dinner_id = {meal.dinner.id}");
+            }
+            
+            DBConnector db = new DBConnector();
+
+            if (!b)
+            {
+                command.Append($" WHERE id = {meal.id}");
+                db.Open();
+                await db.update(command.ToString());
+                db.Close();
+            }
+
+            if (meal.extraFood.Count == 0)
+                return;
+
+            command.Clear();
+            command.Append($"DELETE extra_food WHERE meal_id = {meal.id}");
+
+            command.Append("INSERT INTO extra_food (product_id, meal_id) VALUES ");
+
+            b = false;
+            foreach (Product product in meal.extraFood)
+            {
+                if (b)
+                    command.Append(", ");
+                b = true;
+                command.Append($"({product.id}, {meal.id})");
+            }
+            command.Append(";");
+
+            db.Open();
+            await db.insert(command.ToString());
+            db.Close();
         }
     }
 }

@@ -7,7 +7,7 @@ public class UserWeight
     public DateOnly updated_at { get; set; }
     public double weight { get; set; }
     public double goal { get; set; }
-    User user { get; set; }
+    public User user { get; set; }
 
 }
 

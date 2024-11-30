@@ -54,7 +54,9 @@ namespace HealthyLife_Pt2.Controllers
             diet.creator = await userController.findById(row[3].ToString());
             
             if (!row[4].Equals(System.DBNull.Value))
-                diet.photo = (string)row[10];
+                diet.photo = (string)row[4];
+
+            diet.setGoalAsString((string)row[5]);
 
             MealController mealController = new MealController();
             diet.meals = await mealController.selectFromDietHasMeals(diet.id.ToString());            
@@ -64,10 +66,9 @@ namespace HealthyLife_Pt2.Controllers
 
         public async Task<int> insertDiet(Diet diet)
         {
-            string date = $"{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}";
-
-            StringBuilder commandHeader = new StringBuilder("INSERT INTO diets (name, description, user_id");
-            StringBuilder values = new StringBuilder($"VALUES ('{diet.name}', '{diet.description}', '{diet.creator.id}'");
+            
+            StringBuilder commandHeader = new StringBuilder("INSERT INTO diets (name, description, user_id, goal");
+            StringBuilder values = new StringBuilder($"VALUES ('{diet.name}', '{diet.description}', '{diet.creator.id}', '{diet.getGoalAsString()}'");
             
             if (diet.photo != null || diet.photo == "")
             {

@@ -75,8 +75,9 @@ CREATE TABLE diets
     id          serial PRIMARY KEY         NOT NULL UNIQUE,
     name        TEXT                       NOT NULL,
     description TEXT,
-    user_id     uuid REFERENCES users (id) NOT NULL UNIQUE,
-    photo       text
+    user_id     uuid REFERENCES users (id) NOT NULL,
+    photo       text,
+    goal        GOAL                       NOT NULL
 );
 
 CREATE TABLE meals

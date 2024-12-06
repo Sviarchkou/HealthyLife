@@ -60,11 +60,14 @@ namespace HealthyLife_Pt2.Controllers
             {
                 recipe.photo = (string)row[4];
             }
-            
+
+            recipe.verified = (bool)row[5];
+
             IngredientController ingredientController = new IngredientController();
             recipe.ingredients = await ingredientController.select($"SELECT * FROM ingredients WHERE recipe_id = '{recipe.id}'");
-            foreach (Ingredient ingredient in recipe.ingredients)
-                ingredient.recipe = recipe;
+            
+            //foreach (Ingredient ingredient in recipe.ingredients)
+              //  ingredient.recipe = recipe;
 
             return recipe;
         }
@@ -109,7 +112,10 @@ namespace HealthyLife_Pt2.Controllers
             
             ElementController elementController = new ElementController();
             elementController.clearElement(recipe.element);
-            
+
+            HashSet<string> minerals = new HashSet<string>();
+            HashSet<string> vitamins = new HashSet<string>();
+
             bool b = false;
             bool c = false;
             foreach (Ingredient ingredient in recipe.ingredients)
@@ -121,21 +127,27 @@ namespace HealthyLife_Pt2.Controllers
 
                 if (ingredient.product.element.minerals != null && ingredient.product.element.minerals != "")
                 {
-                    if (b)
-                        recipe.element.minerals += ", ";
-                    b = true;
-                    recipe.element.minerals += ingredient.product.element.minerals;
+                    
+                    foreach (string str in ingredient.product.element.minerals.Split(", "))
+                    {
+                        minerals.Add(str);
+                    }
+
                 }
 
                 if (ingredient.product.element.vitamins != null && ingredient.product.element.vitamins != "")
                 {
-                    if (c)
-                        recipe.element.vitamins += ", ";
-                    c = true;
-                    recipe.element.vitamins = ingredient.product.element.vitamins;
+
+                    foreach (string str in ingredient.product.element.vitamins.Split(", "))
+                    {
+                        vitamins.Add(str);
+                    }
                 }
             }
 
+            recipe.element.minerals = String.Join(", ", minerals);
+            recipe.element.vitamins = String.Join(", ", vitamins);
+            /*
             StringBuilder commandHeader = new StringBuilder("UPDATE elements SET ");
             StringBuilder values = new StringBuilder($"" +
                 $"calories = {recipe.element.calories}, " +
@@ -155,7 +167,7 @@ namespace HealthyLife_Pt2.Controllers
 
             values.Append($" WHERE id = {recipe.element.id}");
             await elementController.update(commandHeader.Append(values).ToString());
-
+            */
         }
 
 

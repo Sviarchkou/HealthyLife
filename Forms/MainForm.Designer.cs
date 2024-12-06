@@ -173,6 +173,8 @@
             ClientSize = new Size(1056, 600);
             Controls.Add(formPanel);
             Controls.Add(panel1);
+            MaximumSize = new Size(1074, 647);
+            MinimumSize = new Size(1074, 647);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";

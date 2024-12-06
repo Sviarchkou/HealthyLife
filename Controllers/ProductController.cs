@@ -28,26 +28,6 @@ namespace HealthyLife_Pt2.Controllers
             return products;
         }
 
-        public async Task<List<Product>> selectFromExtraFood(string meal_id)
-        {
-            
-            DBConnector db = new DBConnector();
-            db.Open();
-            DataTable dataTable = await db.select($"SELECT * FROM extra_food WHERE meal_id = '{meal_id}'");
-            db.Close();
-
-            List<Product> products = new List<Product>();
-            
-            foreach (DataRow row in dataTable.Rows)
-            {
-                List<Product> ps = await select($"SELECT * FROM products WHERE id = '{row[0]}'");
-                foreach (Product p in ps)
-                    products.Add(p);
-            }
-
-            return products;
-        }
-
         public async Task<Product> findById(string? product_id)
         {
             if (product_id == null)
@@ -80,6 +60,11 @@ namespace HealthyLife_Pt2.Controllers
                 product.element = element;
             }
 
+            if (!row[5].Equals(System.DBNull.Value))
+                product.photo = (string)row[5];
+
+            product.verified = (bool)row[6];
+
             return product;
         }
 
@@ -88,8 +73,8 @@ namespace HealthyLife_Pt2.Controllers
             ElementController elementController = new ElementController();
             int element_id = await elementController.insertElement(product.element);
 
-            StringBuilder commandHeader = new StringBuilder("INSERT INTO products (name, category, description, element_id ");
-            StringBuilder values = new StringBuilder($"VALUES ('{product.name}', '{product.category}', '{product.description}', '{element_id}'");
+            StringBuilder commandHeader = new StringBuilder("INSERT INTO products (name, category, description, element_id, verified ");
+            StringBuilder values = new StringBuilder($"VALUES ('{product.name}', '{product.category}', '{product.description}', '{element_id}', {product.verified}");
             if (product.photo != null || product.photo == "")
             {
                 commandHeader.Append(", photo");

@@ -50,7 +50,11 @@ namespace HealthyLife_Pt2.Controllers
             
             ProductController productController = new ProductController();
             ingredient.product = await productController.findById(row[2].ToString());
-            
+
+            ///
+            //RecipeController recipeController = new RecipeController();
+            //ingredient.recipe = await recipeController.findById(row[3].ToString());
+
             return ingredient;
         }
 

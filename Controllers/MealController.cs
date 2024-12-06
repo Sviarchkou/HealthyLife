@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -62,8 +63,8 @@ namespace HealthyLife_Pt2.Controllers
             ElementController elementController = new ElementController();
             meal.element = await elementController.findById(row[4].ToString());
 
-            ProductController productController = new ProductController();
-            meal.extraFood = await productController.selectFromExtraFood(meal.id.ToString());
+            ExtraFoodController extraFoodController = new ExtraFoodController();
+            meal.extraFood = await extraFoodController.selectByMealId(meal.id.ToString());
 
             return meal;
         }
@@ -112,24 +113,11 @@ namespace HealthyLife_Pt2.Controllers
             if (meal.extraFood.Count == 0)
                 return meal_id;
 
-            header.Clear();
-            values.Clear();
-
-            header.Append("INSERT INTO extra_food (product_id, meal_id) VALUES ");
-
-            bool b = false;
-            foreach (Product product in meal.extraFood)
+            foreach(ExtraFood extraFood in meal.extraFood)
             {
-                if (b)
-                    values.Append(", ");
-                b = true;
-                values.Append($"({product.id}, {meal_id})");
+                ExtraFoodController extraFoodController = new ExtraFoodController();
+                await extraFoodController.insertExtraFood(extraFood);
             }
-            values.Append(";");
-
-            db.Open();
-            await db.insert(header.Append(values).ToString());
-            db.Close();
 
             return meal_id;
         }
@@ -148,9 +136,9 @@ namespace HealthyLife_Pt2.Controllers
             if (meal.dinner != null)
                 meal.element = elementController.sumElements(meal.element, meal.dinner.element);
 
-            foreach (Product product in meal.extraFood)
+            foreach (ExtraFood extraFood in meal.extraFood)
             {
-                meal.element = elementController.sumElements(product.element, meal.element);
+                meal.element = elementController.sumElements(extraFood.product.element, meal.element);
             }
         }
 
@@ -179,7 +167,7 @@ namespace HealthyLife_Pt2.Controllers
             string? breakfast_id = meal.breakfast == null ? "null" : meal.breakfast.id.ToString();
             string? lunch_id = meal.lunch == null ? "null" : meal.lunch.id.ToString();
             string? dinner_id = meal.dinner == null ? "null" : meal.dinner.id.ToString();
-            //int? breakfast_id = meal.breakfast == null ? null : meal.breakfast.id;
+            
             StringBuilder command = new StringBuilder("UPDATE meals ");
 
             bool b = true;
@@ -214,27 +202,8 @@ namespace HealthyLife_Pt2.Controllers
                 db.Close();
             }
 
-            if (meal.extraFood.Count == 0)
-                return;
-
-            command.Clear();
-            command.Append($"DELETE extra_food WHERE meal_id = {meal.id}");
-
-            command.Append("INSERT INTO extra_food (product_id, meal_id) VALUES ");
-
-            b = false;
-            foreach (Product product in meal.extraFood)
-            {
-                if (b)
-                    command.Append(", ");
-                b = true;
-                command.Append($"({product.id}, {meal.id})");
-            }
-            command.Append(";");
-
-            db.Open();
-            await db.insert(command.ToString());
-            db.Close();
+            ExtraFoodController extraFoodController = new ExtraFoodController();
+            await extraFoodController.updateByMeal(meal);
         }
     }
 }

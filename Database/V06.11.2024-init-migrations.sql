@@ -44,7 +44,8 @@ CREATE TABLE products
     category    TEXT                            NOT NULL,
     description TEXT,
     element_id  serial REFERENCES elements (id) NOT NULL UNIQUE,
-    photo       text
+    photo       text,
+    verified boolean  NOT NULL DEFAULT false
 );
 
 CREATE TABLE recipes
@@ -53,7 +54,8 @@ CREATE TABLE recipes
     name        TEXT                            NOT NULL,
     description TEXT,
     element_id  serial REFERENCES elements (id) NOT NULL UNIQUE,
-    photo       text
+    photo       text,
+    verified boolean  NOT NULL DEFAULT false
 );
 
 CREATE TABLE ingredients
@@ -92,7 +94,8 @@ CREATE TABLE meals
 CREATE TABLE extra_food
 (
     product_id serial REFERENCES products (id) NOT NULL,
-    meal_id    serial REFERENCES meals (id)    NOT NULL
+    meal_id    serial REFERENCES meals (id)    NOT NULL,
+    weight integer NOT NULL
 );
 
 CREATE TABLE diet_has_meals

@@ -12,7 +12,7 @@ namespace HealthyLife_Pt2.Models
         public Recipe? breakfast { get; set; }
         public Recipe? lunch { get; set; }
         public Recipe? dinner { get; set; }
-        public List<Product> extraFood { get; set; } = new List<Product>();
+        public List<ExtraFood> extraFood { get; set; } = new List<ExtraFood>();
         public Element element { get; set; } = new Element();
 
     }

@@ -19,29 +19,12 @@ namespace HealthyLife_Pt2
         [STAThread]
         static void Main(string[] args)
         {
-         
+            
             Application.EnableVisualStyles();
             ApplicationConfiguration.Initialize();
             Application.Run(new WellcomeScrin()); ;
+            
 
-            /*
-            DBConnector db = new DBConnector();
-            db.Open();
-            DataTable dt = await db.select("SELECT photo FROM products WHERE id = 5");
-            string[] str = ((string)dt.Rows[0][0]).Split(","); ;
-            byte[] ba = new byte[str.Length-1];
-            for (int i = 0; i < str.Length-1; i++)
-            {
-                Byte.TryParse(str[i], out ba[i]);
-            }
-            MemoryStream memoryStream = new MemoryStream(ba);
-            Image image = Image.FromStream(memoryStream);
-
-            WellcomeScrin scrin = new WellcomeScrin();
-            scrin.BackgroundImage = image;
-
-            Application.Run(scrin);
-            */
             /*
             byte[] image = File.ReadAllBytes("D:\\Лицей\\Выпускной\\IMG_1330.jpg");
             StringBuilder sb = new StringBuilder();
@@ -290,34 +273,24 @@ namespace HealthyLife_Pt2
             
             
             */
+            /*
+            string str = "Host=localhost;Port=5432;Database=healthylife;Username=healthylife;Password=healthylife";
+            NpgsqlConnection npgsqlConnection = new NpgsqlConnection(str);
+            npgsqlConnection.Open();
 
-            /*         
-                     string str = "Host=localhost;Port=5432;Database=healthylife;Username=healthylife;Password=healthylife";
-                     NpgsqlConnection npgsqlConnection = new NpgsqlConnection(str);
-                     npgsqlConnection.Open();
+            NpgsqlCommand command = new NpgsqlCommand();
 
-                     NpgsqlCommand command = new NpgsqlCommand();
+            command.Connection = npgsqlConnection;
+            command.CommandType = CommandType.Text;
+            command.CommandText = 
+                "ALTER TABLE extra_food " +
+                "DROP COLUMN id";
 
-                     command.Connection = npgsqlConnection;
-                     command.CommandType = CommandType.Text;
-                     command.CommandText = "" +
-                         "ALTER TABLE diets " +
-                         "DROP COLUMN goal," +
-                         "DROP COLUMN user_id," +
-                         "DROP COLUMN photo," +
-                         "ADD user_id     uuid REFERENCES users (id) NOT NULL," +
-                         "ADD photo       text," +
-                         "ADD goal        GOAL                       NOT NULL";
+            command.ExecuteNonQuery();
 
-
-
-                     command.ExecuteNonQuery();
-
-                     command.Dispose();
-
-         */
-
-
+            command.Dispose();
+            
+            */
             /*
         var dbContext = new MyDbContext();
         string migrationScript = File.ReadAllText("path/to/migration.sql");

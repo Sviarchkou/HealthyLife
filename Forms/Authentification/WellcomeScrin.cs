@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthyLife_Pt2.Database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace HealthyLife_Pt2.Forms
         public WellcomeScrin()
         {
             InitializeComponent();
+            CacheWorker.dropCache();
         }
 
         private void authButton_Click(object sender, EventArgs e)

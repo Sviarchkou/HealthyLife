@@ -105,8 +105,28 @@ namespace HealthyLife_Pt2.Controllers
             element.fats = e1.fats + e2.fats;
             element.carbohydrates = e1.carbohydrates + e2.carbohydrates;
 
-            element.minerals = e1.minerals + ", " + e2.minerals;
-            element.vitamins = e1.vitamins + ", " + e2.vitamins;
+            string[] str1 = new string[0];
+            string[] str2 = new string[0];
+            
+            if (e1.minerals != null && e1.minerals != "")
+                str1 = e1.minerals.Split(", ");
+            if (e2.minerals != null && e2.minerals != "")
+                str2 = e2.minerals.Split(", ");            
+            HashSet<string> set = new HashSet<string>(str1.Concat(str2));
+
+            e1.minerals = String.Join(", ", set);
+
+            str1 = new string[0];
+            str2 = new string[0];
+
+            if (e1.vitamins != null && e1.vitamins != "")
+                str1 = e1.vitamins.Split(", ");
+            if (e2.vitamins != null && e2.vitamins != "")
+                str2 = e2.vitamins.Split(", ");
+            set = new HashSet<string>(str1.Concat(str2));
+
+            e1.vitamins = String.Join(", ", set);
+
             return element;
         }
 

@@ -9,7 +9,7 @@ namespace HealthyLife_Pt2.Models
     public class Ingredient
     {
         public int id { get; set; }
-        public double weight { get; set; } = 0;
+        public int weight { get; set; } = 0;
         public Product product { get; set; }
         public Recipe recipe { get; set; }
     }

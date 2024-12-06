@@ -10,6 +10,7 @@ public class Recipe
     public string? description { get; set; }
     public Element element { get; set; } = new Element();
     public string? photo { get; set; }
+    public bool verified { get; set; } = false;
 
     public List<Ingredient> ingredients { get; set; } = new List<Ingredient>();
     public List<User> users { get; set; } = new List<User>();

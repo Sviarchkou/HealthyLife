@@ -14,6 +14,7 @@ namespace HealthyLife_Pt2.Database
         private static string connectionString = "Host=localhost;Port=5432;Database=healthylife;Username=healthylife;Password=healthylife";
         public static NpgsqlConnection connection { get; } = new NpgsqlConnection(connectionString);
         
+        Mutex mutex = new Mutex();
         /*
         public DBConnector()
         {
@@ -51,44 +52,61 @@ namespace HealthyLife_Pt2.Database
 
         public async Task<DataTable> select(string str)
         {
+
+            mutex.WaitOne();
             NpgsqlCommand command = new NpgsqlCommand(str, connection);
 
             DataTable dataTable = new DataTable();
+            
             NpgsqlDataAdapter adapter = new NpgsqlDataAdapter();
-
             adapter.SelectCommand = command;
-            try
-            {
-                await Task<DataTable>.Run(() => adapter.Fill(dataTable));
-                dataTable.Select();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                throw new Exception("Wrong command");
-            }
+            
+            await Task.Run(() => {
+                try
+                {
+                    adapter.Fill(dataTable);
+                    dataTable.Select();
+                }
+                catch (Npgsql.NpgsqlOperationInProgressException ex){
+                    Console.WriteLine(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    //throw new Exception("Wrong command");
+                }
+                command.Dispose();
+            });
 
-            command.Dispose();
+            mutex.ReleaseMutex();
             return dataTable;
         }
 
         private async Task<int> pullRequestCommand(string str)
         {
-
+            mutex.WaitOne();
             NpgsqlCommand command = new NpgsqlCommand(str, connection);
 
             int n = 0;
-            try
+            await Task.Run(() =>
             {
-                n = Convert.ToInt32(await Task.Run(command.ExecuteScalar));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                throw new Exception("Wrong command");
-            }
-            
-            command.Dispose();
+                try
+                {
+                    n = Convert.ToInt32(command.ExecuteScalar());
+                }
+                catch (Npgsql.NpgsqlOperationInProgressException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    //throw new Exception("Wrong command");
+                }
+
+                command.Dispose();
+            });
+            mutex.ReleaseMutex();
             return n;
         }
 

@@ -24,9 +24,12 @@ namespace HealthyLife_Pt2.FormControls.MealControls
             set => dayLabel.Text = value == null ? "" : value;
         }
 
-        public MealAddition()
+        User user;
+
+        public MealAddition(User user)
         {
             InitializeComponent();
+            this.user = user;
         }
 
 
@@ -42,7 +45,7 @@ namespace HealthyLife_Pt2.FormControls.MealControls
 
         private void breakfastAddButton_Click(object sender, EventArgs e)
         {
-            MealAddForm mealAddition = new MealAddForm();
+            MealAddForm mealAddition = new MealAddForm(user);
             mealAddition.Show();
             mealAddition.FormClosed += delegate (object? sender, FormClosedEventArgs e)
             {
@@ -60,7 +63,7 @@ namespace HealthyLife_Pt2.FormControls.MealControls
         private void lunchAddButton_Click(object sender, EventArgs e)
         {
 
-            MealAddForm mealAddForm = new MealAddForm();
+            MealAddForm mealAddForm = new MealAddForm(user);
             mealAddForm.Show();
             mealAddForm.FormClosed += delegate (object? sender, FormClosedEventArgs e)
             {
@@ -77,7 +80,7 @@ namespace HealthyLife_Pt2.FormControls.MealControls
 
         private void dinnerAddButton_Click(object sender, EventArgs e)
         {
-            MealAddForm mealAddForm = new MealAddForm();
+            MealAddForm mealAddForm = new MealAddForm(user);
             mealAddForm.Show();
             mealAddForm.FormClosed += delegate (object? sender, FormClosedEventArgs e)
             {
@@ -116,7 +119,7 @@ namespace HealthyLife_Pt2.FormControls.MealControls
 
         private void extraFoodAddButton_Click(object sender, EventArgs e)
         {
-            ExtraFoodAddForm extraFoodAddForm = new ExtraFoodAddForm(meal.extraFood);
+            ExtraFoodAddForm extraFoodAddForm = new ExtraFoodAddForm(meal.extraFood, user);
             extraFoodAddForm.Show();
             extraFoodAddForm.FormClosed += delegate (object? sender, FormClosedEventArgs e)
             {

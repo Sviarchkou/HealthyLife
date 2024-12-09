@@ -119,3 +119,4 @@ D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\
 D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealForms.DescriptionForms.ExtraFoodDescriptionForm.resources
 D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealForms.AddFroms.WeightAddForm.resources
 D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealForms.DescriptionForms.DietDailyMealDescriptionForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MainPanelForms.Profile.resources

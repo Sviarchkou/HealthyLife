@@ -46,6 +46,9 @@
     <Compile Update="Forms\MainPanelForms\DietForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\MainPanelForms\Profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\MainPanelForms\RecipeForm.cs">
       <SubType>Form</SubType>
     </Compile>

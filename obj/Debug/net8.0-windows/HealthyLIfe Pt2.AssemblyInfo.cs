@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HealthyLife Pt2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c762480a115feb7e19bca4b23dba5b1c3ba9de55")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e13b1a23005a1d81406a3e95e650322dde3aade9")]
 [assembly: System.Reflection.AssemblyProductAttribute("HealthyLife Pt2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HealthyLife Pt2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -20,12 +20,13 @@ namespace HealthyLife_Pt2
         //static async Task Main(string[] args)
         static void Main(string[] args)
         {
-            
+
             Application.EnableVisualStyles();
             ApplicationConfiguration.Initialize();
             Application.Run(new WellcomeScrin()); ;
-            
-            
+
+
+
             /*
             StringBuilder commandHeader = new StringBuilder("INSERT INTO user_weight (user_id, updated_at, weight, goal) ");
             StringBuilder values = new StringBuilder($"VALUES (" +

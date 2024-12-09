@@ -36,11 +36,14 @@ namespace HealthyLife_Pt2.Forms
 
         public Recipe? recipe { get; private set; }
 
-        public MealAddForm()
+        User user;
+
+        public MealAddForm(User user)
         {
             InitializeComponent();
             createButton.Text = "Создать блюдо";
-
+            
+            this.user = user;
             fillForm();
 
             searchPanel1.SearchTextChanged += delegate (object? sender, EventArgs e)
@@ -163,7 +166,7 @@ namespace HealthyLife_Pt2.Forms
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            RecipeCreationForm recipeCreationForm = new RecipeCreationForm();
+            RecipeCreationForm recipeCreationForm = new RecipeCreationForm(user);
             recipeCreationForm.Show();
             recipeCreationForm.FormClosed += delegate (object? sender, FormClosedEventArgs e)
             {

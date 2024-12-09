@@ -1,13 +1,7 @@
 ﻿using HealthyLife_Pt2.Database;
 using HealthyLife_Pt2.Models;
-using Microsoft.Extensions.Primitives;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace HealthyLife_Pt2.Controllers
 {
@@ -31,6 +25,26 @@ namespace HealthyLife_Pt2.Controllers
             return recipes;
         }
 
+        public async Task<List<Recipe>> selectUserRecipes(string user_id)
+        {
+            DBConnector db = new DBConnector();
+            db.Open();
+            DataTable dataTable = await db.select($"SELECT * FROM user_has_recipes WHERE user_id = '{user_id}'");
+
+            List<Recipe> recipes = new List<Recipe>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                try
+                {
+                    recipes.Add(await findById(row[1].ToString()));
+                }
+                catch (Exception ex) { }
+                
+            }
+            return recipes;
+        }
+
         public async Task<Recipe> findById(string? recipe_id)
         {
             if (recipe_id == null)
@@ -46,6 +60,7 @@ namespace HealthyLife_Pt2.Controllers
             }
             return await createRecipe(dataTable.Rows[0]);
         }
+
         private async Task<Recipe> createRecipe(DataRow row)
         {
             Recipe recipe = new Recipe();
@@ -105,7 +120,15 @@ namespace HealthyLife_Pt2.Controllers
             return recipe.id;
         }
 
-        public async Task updateElement(Recipe recipe)
+        public async Task insertUserRecipe(User user, Recipe recipe)
+        {
+            DBConnector db = new DBConnector();
+            db.Open();
+            await db.insert($"INSERT INTO user_has_recipes (recipe_id, user_id) VALUES ({recipe.id}, '{user.id}');");
+            db.Close();
+        }
+
+        public void updateElement(Recipe recipe)
         {
             if (recipe.ingredients.Count == 0)
                 return;
@@ -116,8 +139,6 @@ namespace HealthyLife_Pt2.Controllers
             HashSet<string> minerals = new HashSet<string>();
             HashSet<string> vitamins = new HashSet<string>();
 
-            bool b = false;
-            bool c = false;
             foreach (Ingredient ingredient in recipe.ingredients)
             {
                 recipe.element.calories += (int) (ingredient.product.element.calories * ingredient.weight / 100);
@@ -126,18 +147,15 @@ namespace HealthyLife_Pt2.Controllers
                 recipe.element.carbohydrates += ingredient.product.element.carbohydrates * ingredient.weight / 100;
 
                 if (ingredient.product.element.minerals != null && ingredient.product.element.minerals != "")
-                {
-                    
+                {                    
                     foreach (string str in ingredient.product.element.minerals.Split(", "))
                     {
                         minerals.Add(str);
                     }
-
                 }
 
                 if (ingredient.product.element.vitamins != null && ingredient.product.element.vitamins != "")
                 {
-
                     foreach (string str in ingredient.product.element.vitamins.Split(", "))
                     {
                         vitamins.Add(str);
@@ -170,38 +188,61 @@ namespace HealthyLife_Pt2.Controllers
             */
         }
 
+        public async Task<bool> isUnreleted(Recipe recipe)
+        {
+
+            DBConnector db = new DBConnector();
+            db.Open();
+            DataTable dataTable = await db.select($"SELECT * FROM user_has_recipes WHERE recipe_id = '{recipe.id}'");
+            db.Close();
+            if (dataTable.Rows.Count > 0)
+            {
+                return false;
+            }
+           
+            db.Open();
+            dataTable = await db.select($"SELECT * FROM diet_has_meals");
+            db.Close();
+            if (dataTable.Rows.Count == 0)
+            {
+                return true;
+            }
+
+            List<Meal> meals = new List<Meal>();
+            MealController mealController = new MealController();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                meals.AddRange(await mealController.select($"SELECT * FROM meals WHERE id = '{(int)row[0]}'"));
+            }
+
+            foreach (Meal m in meals)
+            {
+                if (m.breakfast != null && m.breakfast.id == recipe.id)
+                    return false;
+
+                if (m.lunch != null && m.lunch.id == recipe.id)
+                    return false;
+
+                if (m.dinner != null && m.dinner.id == recipe.id)
+                    return false;
+            }
+
+            return true;
+        }
+           
+        public async Task deleteRecipe(Recipe recipe)
+        {
+            DBConnector db = new DBConnector();
+            db.Open();
+
+            await db.remove($"DELETE FROM ingredients WHERE recipe_id = '{recipe.id}'");            
+            await db.remove($"DELETE FROM recipes WHERE id = '{recipe.id}'");
+            await db.remove($"DELETE FROM elements WHERE id = '{recipe.element.id}'");
+            
+            db.Close();
+        }
 
     }
 
 
 }
-
-/*
- 
-
-            foreach (Ingredient ingredients in recipe.ingredients)
-            {
-                
-                element.calories += ingredients.element.calories;
-                element.proteins += ingredients.element.proteins;
-                element.fats += ingredients.element.fats;
-                element.carbohydrates += ingredients.element.carbohydrates;
-                
-                if (ingredients.element.minerals != null && ingredients.element.minerals != "")
-                {
-                    if (b)
-                        element.minerals += ", ";
-                    b = true;    
-                    element.minerals += ingredients.element.minerals;
-                }
-
-                if (ingredients.element.vitamins != null && ingredients.element.vitamins != "")
-                {
-                    if (b)
-                        element.vitamins += ", ";
-                    b = true;
-                    element.vitamins = ingredients.element.vitamins;
-                }
-            }
-            recipe.element = element;
-*/

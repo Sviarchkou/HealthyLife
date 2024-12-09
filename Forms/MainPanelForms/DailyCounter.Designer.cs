@@ -65,7 +65,7 @@
             // caloriesBar
             // 
             caloriesBar.ArcColor = Color.Gainsboro;
-            caloriesBar.BackColor = Color.FloralWhite;
+            caloriesBar.BackColor = Color.Transparent;
             caloriesBar.BorderSize = 15;
             caloriesBar.Font = new Font("Verdana", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
             caloriesBar.ForeColor = Color.DarkViolet;
@@ -93,7 +93,7 @@
             // proteinLabel
             // 
             proteinLabel.AutoSize = true;
-            proteinLabel.BackColor = Color.FloralWhite;
+            proteinLabel.BackColor = Color.Transparent;
             proteinLabel.Font = new Font("Verdana", 11.8F, FontStyle.Bold);
             proteinLabel.Location = new Point(65, 326);
             proteinLabel.Name = "proteinLabel";
@@ -104,7 +104,7 @@
             // fatLabel
             // 
             fatLabel.AutoSize = true;
-            fatLabel.BackColor = Color.FloralWhite;
+            fatLabel.BackColor = Color.Transparent;
             fatLabel.Font = new Font("Verdana", 11.8F, FontStyle.Bold);
             fatLabel.Location = new Point(65, 408);
             fatLabel.Name = "fatLabel";
@@ -128,7 +128,7 @@
             // carbohydrateLabel
             // 
             carbohydrateLabel.AutoSize = true;
-            carbohydrateLabel.BackColor = Color.FloralWhite;
+            carbohydrateLabel.BackColor = Color.Transparent;
             carbohydrateLabel.Font = new Font("Verdana", 11.8F, FontStyle.Bold);
             carbohydrateLabel.Location = new Point(65, 490);
             carbohydrateLabel.Name = "carbohydrateLabel";
@@ -151,7 +151,7 @@
             // 
             // breakfastPanel
             // 
-            breakfastPanel.BackColor = Color.FloralWhite;
+            breakfastPanel.BackColor = Color.Transparent;
             breakfastPanel.BorderColor = Color.Empty;
             breakfastPanel.Location = new Point(320, 38);
             breakfastPanel.Name = "breakfastPanel";
@@ -203,7 +203,7 @@
             breakfastAddButton.ForeColor = Color.DarkViolet;
             breakfastAddButton.Location = new Point(695, 65);
             breakfastAddButton.Name = "breakfastAddButton";
-            breakfastAddButton.PanelColor = Color.LavenderBlush;
+            breakfastAddButton.PanelColor = Color.FromArgb(141, 255, 122);
             breakfastAddButton.Rad = 60;
             breakfastAddButton.Size = new Size(60, 60);
             breakfastAddButton.TabIndex = 19;
@@ -264,7 +264,7 @@
             // 
             // lunchPanel
             // 
-            lunchPanel.BackColor = Color.FloralWhite;
+            lunchPanel.BackColor = Color.Transparent;
             lunchPanel.BorderColor = Color.Empty;
             lunchPanel.Location = new Point(320, 177);
             lunchPanel.Name = "lunchPanel";
@@ -326,7 +326,7 @@
             // 
             // dinnerPanel
             // 
-            dinnerPanel.BackColor = Color.FloralWhite;
+            dinnerPanel.BackColor = Color.Transparent;
             dinnerPanel.BorderColor = Color.Empty;
             dinnerPanel.Location = new Point(320, 318);
             dinnerPanel.Name = "dinnerPanel";
@@ -388,7 +388,7 @@
             // 
             // extrafoodPanel
             // 
-            extrafoodPanel.BackColor = Color.FloralWhite;
+            extrafoodPanel.BackColor = Color.Transparent;
             extrafoodPanel.BorderColor = Color.Empty;
             extrafoodPanel.Location = new Point(320, 460);
             extrafoodPanel.Name = "extrafoodPanel";
@@ -399,7 +399,7 @@
             // 
             // proteinValueLabel
             // 
-            proteinValueLabel.BackColor = Color.FloralWhite;
+            proteinValueLabel.BackColor = Color.Transparent;
             proteinValueLabel.Font = new Font("Verdana", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             proteinValueLabel.Location = new Point(118, 379);
             proteinValueLabel.Name = "proteinValueLabel";
@@ -410,7 +410,7 @@
             // 
             // fatValueLabel
             // 
-            fatValueLabel.BackColor = Color.FloralWhite;
+            fatValueLabel.BackColor = Color.Transparent;
             fatValueLabel.Font = new Font("Verdana", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             fatValueLabel.Location = new Point(118, 461);
             fatValueLabel.Name = "fatValueLabel";
@@ -421,7 +421,7 @@
             // 
             // carboValueLabel
             // 
-            carboValueLabel.BackColor = Color.FloralWhite;
+            carboValueLabel.BackColor = Color.Transparent;
             carboValueLabel.Font = new Font("Verdana", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             carboValueLabel.Location = new Point(118, 543);
             carboValueLabel.Name = "carboValueLabel";
@@ -432,7 +432,7 @@
             // 
             // caloriesValueLabel
             // 
-            caloriesValueLabel.BackColor = Color.FloralWhite;
+            caloriesValueLabel.BackColor = Color.Transparent;
             caloriesValueLabel.Font = new Font("Verdana", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             caloriesValueLabel.Location = new Point(65, 34);
             caloriesValueLabel.Name = "caloriesValueLabel";

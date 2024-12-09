@@ -39,7 +39,7 @@ namespace HealthyLife_Pt2.Forms.MealForms
 
         private MealAddition createMealAddition(Point location)
         {
-            MealAddition mealAddition = new MealAddition();
+            MealAddition mealAddition = new MealAddition(user);
             mealAddition.Location = location;
             this.Controls.Add(mealAddition);
             mealAdditions.Add(mealAddition);

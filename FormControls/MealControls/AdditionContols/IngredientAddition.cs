@@ -2,16 +2,7 @@
 using HealthyLife_Pt2.Forms.MealForms.DescriptionForms;
 using HealthyLife_Pt2.Models;
 using HealthyLIfe_Pt2.Forms;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace HealthyLIfe_Pt2.FormControls
 {
@@ -28,9 +19,12 @@ namespace HealthyLIfe_Pt2.FormControls
         List<Button> productButtonsList = new List<Button>();
         List<Button> productInfoButtonsList = new List<Button>();
 
-        public IngredientAddition()
+        User user;
+
+        public IngredientAddition(User user)
         {
             InitializeComponent();
+            this.user = user;
 
             textBox1.TextChanged += delegate (object? sender, EventArgs e)
             {
@@ -122,8 +116,18 @@ namespace HealthyLIfe_Pt2.FormControls
             if (sender == null)
                 return;
             buttonInfoProducts.TryGetValue((Button)sender, out Product? p);
-            ProductDescriptoinForm productDescriptoinForm = new ProductDescriptoinForm(p);
-            productDescriptoinForm.ShowDialog();
+            ProductDescriptoinForm productDescriptoinForm = new ProductDescriptoinForm(p);            
+            if (user.role)
+                productDescriptoinForm.deleteButton.Visible = true;
+            DialogResult dialogResult = productDescriptoinForm.ShowDialog();
+            if (dialogResult == DialogResult.Yes)
+            {
+                products.Remove(p);
+                if (currentProduct != null && currentProduct.Equals(p))
+                    currentProduct = null;
+                loadData();
+            }
+
             /*
             StringBuilder sb = new StringBuilder(
                 $"{p.description}" +
@@ -155,7 +159,7 @@ namespace HealthyLIfe_Pt2.FormControls
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            ProductCreationForm productCreationForm = new ProductCreationForm();
+            ProductCreationForm productCreationForm = new ProductCreationForm(user);
             productCreationForm.FormClosed += delegate (object? sender, FormClosedEventArgs e)
             {
                 if (sender == null)

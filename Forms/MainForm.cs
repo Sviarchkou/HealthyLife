@@ -97,5 +97,11 @@ namespace HealthyLife_Pt2.Forms
                 userWeightForm = new UserWeightForm(user);
             setForm(userWeightForm);
         }
+
+        private void profileButton_Click(object sender, EventArgs e)
+        {
+            Profile profile = new Profile(user);
+            setForm(profile);
+        }
     }
 }

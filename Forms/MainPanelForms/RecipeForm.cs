@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using HealthyLife_Pt2.Forms.MealForms.DescriptionForms;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace HealthyLife_Pt2.Forms.MainPanelForms
 {
@@ -142,11 +143,24 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
             };
             recipeFormButton.RecipeFormButtonClicked += delegate (object? sender, EventArgs e)
             {
-                if (sender == null) return;
+                if (sender == null)
+                    return;
                 RecipeDescriptionForm recipeDescriptionForm = new RecipeDescriptionForm(((RecipeFormButton)sender).recipe);
-                recipeDescriptionForm.ShowDialog();
-            };
+                if (user.role)
+                    recipeDescriptionForm.deleteButton.Visible = true;
+                
+                DialogResult dialogResult = recipeDescriptionForm.ShowDialog();
+                if (dialogResult == DialogResult.Yes)
+                {
+                    recipes.Remove(((RecipeFormButton)sender).recipe);
+                    if (searchPanel1.SearhText == "Поиск...")
+                        searchPanel1.SearhText = "";                    
+                    updateList();
+                    searchPanel1.SearhText = "Поиск...";
 
+                }
+            };
+           
             Controls.Add(recipeFormButton);
         }
 
@@ -162,7 +176,7 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
 
         private void recipeCreationButton_Click(object sender, EventArgs e)
         {
-            RecipeCreationForm recipeCreationForm = new RecipeCreationForm();
+            RecipeCreationForm recipeCreationForm = new RecipeCreationForm(user);
             recipeCreationForm.Show();
             recipeCreationForm.FormClosed += delegate (object? sender, FormClosedEventArgs e)
             {

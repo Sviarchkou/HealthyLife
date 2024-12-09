@@ -29,7 +29,27 @@ namespace HealthyLife_Pt2.Controllers
             }
             return diets;
         }
-        
+
+        public async Task<List<Diet>> selectUserDiets(string user_id)
+        {
+            DBConnector db = new DBConnector();
+            db.Open();
+            DataTable dataTable = await db.select($"SELECT * FROM user_has_diet WHERE user_id = '{user_id}'");
+            db.Close();
+
+            List<Diet> diets = new List<Diet>();
+
+            foreach (DataRow row in dataTable.Rows)
+            {
+                try
+                {
+                    diets.Add(await findById(row[1].ToString()));
+                }
+                catch (Exception) { }
+            }
+            return diets;
+        }
+
         public async Task<Diet> findById(string diet_id)
         {
             DBConnector db = new DBConnector();
@@ -91,6 +111,40 @@ namespace HealthyLife_Pt2.Controllers
             db.Close();
 
             return diet.id;
+        }
+
+        public async Task<bool> isUnreleted(Diet diet)
+        {
+            DBConnector db = new DBConnector();
+            db.Open();
+            DataTable dataTable = await db.select($"SELECT * FROM user_has_diets WHERE diet_id = '{diet.id}'");
+            db.Close();
+            if (dataTable.Rows.Count > 0)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public async Task deleteDiet(Diet diet)
+        {
+            DBConnector db = new DBConnector();
+            db.Open();
+
+            await db.remove($"DELETE FROM user_has_diet WHERE diet_id = '{diet.id}'");
+
+            MealController mealController = new MealController();
+            List<Meal> meals = await mealController.selectFromDietHasMeals(diet.id.ToString());
+            await db.remove($"DELETE FROM diet_has_meals WHERE diet_id = '{diet.id}'");
+            foreach (Meal meal in meals)
+            {
+                await mealController.deleteMeal(meal);
+            }
+
+            await db.remove($"DELETE FROM diets WHERE id = '{diet.id}'");
+
+            db.Close();
         }
 
     }

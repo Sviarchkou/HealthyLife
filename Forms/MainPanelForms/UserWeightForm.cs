@@ -136,8 +136,8 @@ namespace HealthyLife_Pt2.Forms.MealForms
                 userWeightsForChart.Add(new UserWeightChartData(userWeightsForChart.Last().date.AddDays(-1), 0));
                 userWeightsForChart.Add(new UserWeightChartData(startDate, 0));
             }
-            weightChart.ChartAreas[0].AxisY.Minimum = min - 20;
-            weightChart.ChartAreas[0].AxisY.Maximum = max + 20;
+            weightChart.ChartAreas[0].AxisY.Minimum = min - 7;
+            weightChart.ChartAreas[0].AxisY.Maximum = max + 7;
 
             weightChart.DataBind();
         }

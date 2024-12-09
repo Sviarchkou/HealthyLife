@@ -78,6 +78,7 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
                 {
                     if (sender == null) return;
                     RecipeDescriptionForm recipeDescriptionForm = new RecipeDescriptionForm(((RecipeFormButton)sender).recipe);
+                    recipeDescriptionForm.deleteButton.Dispose();
                     recipeDescriptionForm.ShowDialog();
                 };
             }                

@@ -35,7 +35,7 @@ namespace HealthyLife_Pt2.Forms
             user.setSexAsString(data[0]);
             user.weight = Double.Parse(data[1]);
             user.height = Int32.Parse(data[2]);
-            user.dateOfBirth = DateOnly.Parse(data[3]);
+            user.dateOfBirth = DateTime.Parse(data[3]);
 
             str = await CacheWorker.readData(activityLevel);
             user.setActivityAsString(str[0].ToString());

@@ -42,7 +42,6 @@
             oneYearButton = new Button();
             AllTimeButton = new Button();
             elementChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            button1 = new Button();
             addWeightButton = new FormControls.MyPanel();
             toolTip = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)weightChart).BeginInit();
@@ -197,16 +196,6 @@
             elementChart.GetToolTipText += elementChart_GetToolTipText;
             elementChart.Click += elementChart_Click;
             // 
-            // button1
-            // 
-            button1.Font = new Font("Verdana", 10.8F);
-            button1.Location = new Point(701, 527);
-            button1.Name = "button1";
-            button1.Size = new Size(137, 61);
-            button1.TabIndex = 7;
-            button1.Text = "Добавить запись веса";
-            button1.UseVisualStyleBackColor = true;
-            // 
             // addWeightButton
             // 
             addWeightButton.BorderColor = Color.DarkGray;
@@ -233,7 +222,6 @@
             BackColor = Color.White;
             ClientSize = new Size(850, 600);
             Controls.Add(addWeightButton);
-            Controls.Add(button1);
             Controls.Add(elementChart);
             Controls.Add(AllTimeButton);
             Controls.Add(oneYearButton);
@@ -260,7 +248,6 @@
         private Button oneYearButton;
         private Button AllTimeButton;
         private System.Windows.Forms.DataVisualization.Charting.Chart elementChart;
-        private Button button1;
         private FormControls.MyPanel addWeightButton;
         private ToolTip toolTip;
     }

@@ -17,9 +17,12 @@ namespace HealthyLIfe_Pt2.Forms
         
         public Product? product { get; private set; }
 
-        public ProductCreationForm()
+        User user;
+
+        public ProductCreationForm(User user)
         {
             InitializeComponent();
+            this.user = user;
             addButton.Text = "Дабавить";
         }
 
@@ -47,6 +50,9 @@ namespace HealthyLIfe_Pt2.Forms
             }
 
             product.element = element;
+            
+            if (user.role == true)
+                product.verified = true; 
 
             ProductController productController = new ProductController();
             await productController.insertProduct(product);

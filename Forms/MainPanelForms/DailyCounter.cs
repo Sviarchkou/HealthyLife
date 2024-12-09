@@ -22,6 +22,7 @@ namespace HealthyLife_Pt2.Forms
         private Element currentElement;
         private DailyElement dailyElement;
         private DailyMeal dailyMeal;
+
         public DailyCounter(User user)
         {
             InitializeComponent();
@@ -109,7 +110,7 @@ namespace HealthyLife_Pt2.Forms
                     breakfastsDiscription.Text = dailyMeal.meal.breakfast.name.Substring(0, 21) + "...";
                 else
                     breakfastsDiscription.Text = dailyMeal.meal.breakfast.name;
-                breakfastAddButton.PanelColor = Color.GreenYellow;
+                breakfastAddButton.PanelColor = Color.FromArgb(141, 255, 122);
             }
             else
             {
@@ -123,7 +124,7 @@ namespace HealthyLife_Pt2.Forms
                     lunchDiscription.Text = dailyMeal.meal.lunch.name.Substring(0, 21) + "...";
                 else
                     lunchDiscription.Text = dailyMeal.meal.lunch.name;
-                lunchAddButton.PanelColor = Color.GreenYellow;
+                lunchAddButton.PanelColor = Color.FromArgb(141, 255, 122);
             }
             else
             {
@@ -138,7 +139,7 @@ namespace HealthyLife_Pt2.Forms
                     dinnerDiscription.Text = dailyMeal.meal.dinner.name.Substring(0, 21) + "...";
                 else
                     dinnerDiscription.Text = dailyMeal.meal.dinner.name;
-                dinnerAddButton.PanelColor = Color.GreenYellow;
+                dinnerAddButton.PanelColor = Color.FromArgb(141, 255, 122);
             }
             else
             {
@@ -153,7 +154,7 @@ namespace HealthyLife_Pt2.Forms
                     extrafoodDiscription.Text = str.Substring(0, 21) + "...";
                 else
                     extrafoodDiscription.Text = str;
-                extrafoodAddButton.PanelColor = Color.GreenYellow;
+                extrafoodAddButton.PanelColor = Color.FromArgb(141, 255, 122);
             }
             else
             {
@@ -168,19 +169,22 @@ namespace HealthyLife_Pt2.Forms
             Application.Exit();
         }
 
+        Color prevColor;
         private void meal_MouseEnter(object sender, EventArgs e)
         {
-            ((MyPanel)sender).PanelColor = Color.White;
+            prevColor = ((MyPanel)sender).PanelColor;
+            ((MyPanel)sender).PanelColor = ThemeColors.ChangeColorBrightness(((MyPanel)sender).PanelColor, -0.03);
         }
 
         private void meal_MouseLeave(object sender, EventArgs e)
         {
-            ((MyPanel)sender).PanelColor = Color.LavenderBlush;
+            ((MyPanel)sender).PanelColor = prevColor;
+            //((MyPanel)sender).PanelColor = ThemeColors.ChangeColorBrightness(((MyPanel)sender).PanelColor, -0.3);
         }
 
         private void breakfastAddButton_Click(object sender, EventArgs e)
         {
-            MealAddForm mealAddition = new MealAddForm();
+            MealAddForm mealAddition = new MealAddForm(user);
             mealAddition.Show();
             mealAddition.FormClosed += delegate (object? sender, FormClosedEventArgs e)
             {
@@ -194,7 +198,7 @@ namespace HealthyLife_Pt2.Forms
 
         private void lunchAddButton_Click(object sender, EventArgs e)
         {
-            MealAddForm mealAddForm = new MealAddForm();
+            MealAddForm mealAddForm = new MealAddForm(user);
             mealAddForm.Show();
             mealAddForm.FormClosed += delegate (object? sender, FormClosedEventArgs e)
             {
@@ -208,7 +212,7 @@ namespace HealthyLife_Pt2.Forms
 
         private void dinnerAddButton_Click(object sender, EventArgs e)
         {
-            MealAddForm mealAddForm = new MealAddForm();
+            MealAddForm mealAddForm = new MealAddForm(user);
             mealAddForm.Show();
             mealAddForm.FormClosed += delegate (object? sender, FormClosedEventArgs e)
             {
@@ -222,7 +226,7 @@ namespace HealthyLife_Pt2.Forms
 
         private void extrafoodAddButton_Click(object sender, EventArgs e)
         {
-            ExtraFoodAddForm extraFoodAddForm = new ExtraFoodAddForm(dailyMeal.meal.extraFood);
+            ExtraFoodAddForm extraFoodAddForm = new ExtraFoodAddForm(dailyMeal.meal.extraFood, user);
             extraFoodAddForm.Show();
             extraFoodAddForm.FormClosed += delegate (object? sender, FormClosedEventArgs e)
             {

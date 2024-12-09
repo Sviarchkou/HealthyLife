@@ -1,4 +1,5 @@
-﻿using HealthyLife_Pt2.Models;
+﻿using HealthyLife_Pt2.Controllers;
+using HealthyLife_Pt2.Models;
 using HealthyLIfe_Pt2;
 using System;
 using System.Collections.Generic;
@@ -17,13 +18,22 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
         Product product;
 
         public ProductDescriptoinForm(Product product)
-        {   
+        {
             InitializeComponent();
             this.product = product;
-            
+
             fillForm();
+            if (product.verified)
+            {
+                approvedMark.Visible = true;
+                toolTip.SetToolTip(this.approvedMark, "Данный продукт одобрен профессионалом");
+            }
+
             toolTip.SetToolTip(this.vitaminsInfo, vitaminsInfo.Text);
             toolTip.SetToolTip(this.mineralsInfo, mineralsInfo.Text);
+
+
+            this.DialogResult = DialogResult.No;
         }
 
         private void fillForm()
@@ -31,7 +41,7 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
             if (product.photo != null && product.photo != "")
                 pictureBox1.Image = MyImageConverter.converFromStringBytes(product.photo);
 
-            category.Text = product.category; 
+            category.Text = product.category;
             nameLabel.Text = product.name;
             if (product.description != "")
                 description.Text = product.description;
@@ -53,5 +63,31 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
                 vitaminsInfo.Text = product.element.vitamins.ToString();
         }
 
+        private async void deleteButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Вы уверены, что хотите удалить этот продукт?", "", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+                return;
+
+            ProductController productController = new ProductController();
+            if (!await productController.isUnreleted(product))
+            {
+                MessageBox.Show("Невозможно удалить продукт, т.к. он используется другими пользователя");
+            }
+            else
+            {
+                try
+                {
+                    await productController.deleteProduct(product);
+                    this.DialogResult = DialogResult.Yes;
+                    MessageBox.Show("Продукт удалён");
+                    this.Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Не получилось удалить этот продукт(");
+                }
+            }
+        }
     }
 }

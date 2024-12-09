@@ -74,8 +74,7 @@ namespace HealthyLife_Pt2.Controllers
             user.setGoalAsString((string)row[8]);
             if (!row[9].Equals(System.DBNull.Value))
             {
-                DateTime dateTime = (DateTime)row[9];
-                user.dateOfBirth = new DateOnly(dateTime.Year, dateTime.Month, dateTime.Day);
+                user.dateOfBirth = (DateTime)row[9];
             }
 
             if (!row[10].Equals(System.DBNull.Value))

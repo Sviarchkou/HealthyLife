@@ -28,11 +28,13 @@ namespace HealthyLIfe_Pt2.Forms
         Point ingredientStartPoint = new Point(pointX, 40);
         int step = 110;
 
-        public RecipeCreationForm()
+        User user;
+        public RecipeCreationForm(User user)
         {
             InitializeComponent();
             fillProducts();
 
+            this.user = user;
             addIngredientPanel.Text = "Добавить ингредиент";
         }
 
@@ -47,7 +49,7 @@ namespace HealthyLIfe_Pt2.Forms
 
         private void createIngredAdd(Point point)
         {
-            IngredientAddition ingredientAddition = new IngredientAddition();
+            IngredientAddition ingredientAddition = new IngredientAddition(user);
             ingredientAddition.Location = point;
             ingredientAddition.products = products;
             ingredientAddition.Disposed += ingredAdd_Dispose;
@@ -113,15 +115,14 @@ namespace HealthyLIfe_Pt2.Forms
             pictureBox1.Image = image;
         }
 
-        private async Task<bool> updateElements()
-        {
-            
+        private bool updateElements()
+        {            
             recipe.ingredients.Clear();
             foreach (IngredientAddition ingr in ingredientAdditions)
             {
                 try
                 {
-                    Ingredient ingredient = ingr.getIngredient();                    
+                    Ingredient ingredient = ingr.getIngredient();
                     recipe.ingredients.Add(ingredient);
                 }
                 catch (Exception ex)
@@ -132,7 +133,7 @@ namespace HealthyLIfe_Pt2.Forms
             }
 
             RecipeController recipeController = new RecipeController();
-            await recipeController.updateElement(recipe);
+            recipeController.updateElement(recipe);
 
             caloriesCounter.Text = recipe.element.calories.ToString();
             proteinCounter.Text = recipe.element.proteins.ToString();
@@ -142,14 +143,14 @@ namespace HealthyLIfe_Pt2.Forms
             return true;
         }
 
-        private async void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            await updateElements();
+            updateElements();
         }
 
         private async void button2_Click(object sender, EventArgs e)
         {
-            if (!await updateElements())
+            if (!updateElements())
                 return;
             if (recipe.ingredients.Count == 0)
             {
@@ -157,6 +158,12 @@ namespace HealthyLIfe_Pt2.Forms
                 return;
             }
 
+            recipe.verified = true;
+            foreach (Ingredient ingr in recipe.ingredients)
+            {
+                if (!ingr.product.verified)
+                    recipe.verified = false;
+            }
 
             recipe.name = nameTextBox.Text;
             recipe.description = descriptionTextBox.Text;            
@@ -165,6 +172,7 @@ namespace HealthyLIfe_Pt2.Forms
             try
             {
                 await recipeController.insertRecipe(recipe);
+                await recipeController.insertUserRecipe(user, recipe);
                 MessageBox.Show("Рецепт добавлен");
             } catch(Exception ex)
             {

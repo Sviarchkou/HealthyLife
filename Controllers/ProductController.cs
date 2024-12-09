@@ -91,5 +91,30 @@ namespace HealthyLife_Pt2.Controllers
             return product_id;
         }
 
+        public async Task<bool> isUnreleted(Product product)
+        {
+            
+            IngredientController ingredientController = new IngredientController();
+            if ((await ingredientController.select($"SELECT * FROM ingredients WHERE product_id = '{product.id}'")).Count > 0)
+                return false;
+
+            ExtraFoodController extraFoodController = new ExtraFoodController();
+            if ((await extraFoodController.select($"SELECT * FROM extra_food WHERE product_id = '{product.id}'")).Count > 0)
+                return false;
+
+            return true;
+        }
+
+        public async Task deleteProduct(Product product)
+        {
+            DBConnector db = new DBConnector();
+            db.Open();
+
+            await db.remove($"DELETE FROM products WHERE id = '{product.id}'");
+            await db.remove($"DELETE FROM elements WHERE id = '{product.element.id}'");
+            
+            db.Close();
+        }
+
     }
 }

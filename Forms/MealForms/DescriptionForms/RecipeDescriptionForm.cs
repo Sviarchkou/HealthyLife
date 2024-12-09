@@ -1,4 +1,5 @@
-﻿using HealthyLife_Pt2.FormControls.MealControls;
+﻿using HealthyLife_Pt2.Controllers;
+using HealthyLife_Pt2.FormControls.MealControls;
 using HealthyLife_Pt2.Models;
 using HealthyLIfe_Pt2;
 using System;
@@ -20,15 +21,22 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
         Point startPoint = new Point(30, 370);
         int stepX = 360;
         int stepY = 100;
-        
+
         public RecipeDescriptionForm(Recipe recipe)
         {
             InitializeComponent();
             this.recipe = recipe;
             fillControl();
 
+            if (recipe.verified)
+            {
+                approvedMark.Visible = true;
+                toolTip.SetToolTip(this.approvedMark, "Данный рецепт одобрен профессионалом");
+            }
             toolTip.SetToolTip(this.vitaminsInfo, vitaminsInfo.Text);
             toolTip.SetToolTip(this.mineralsInfo, mineralsInfo.Text);
+
+            this.DialogResult = DialogResult.No;
         }
 
         private void fillControl()
@@ -37,7 +45,7 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
                 pictureBox1.Image = MyImageConverter.converFromStringBytes(recipe.photo);
 
             nameLabel.Text = recipe.name;
-            
+
             caloriesCounter.Text = recipe.element.calories.ToString();
             proteinCounter.Text = recipe.element.proteins.ToString();
             fatsCounter.Text = recipe.element.fats.ToString();
@@ -56,7 +64,7 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
             for (; i < recipe.ingredients.Count; i++)
             {
                 if (i % 2 == 0)
-                    createProductButton(recipe.ingredients[i], new Point(startPoint.X , startPoint.Y + stepY * (i / 2)));
+                    createProductButton(recipe.ingredients[i], new Point(startPoint.X, startPoint.Y + stepY * (i / 2)));
                 else
                     createProductButton(recipe.ingredients[i], new Point(startPoint.X + stepX, startPoint.Y + stepY * (i / 2)));
             }
@@ -80,5 +88,31 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
 
         }
 
+        private async void deleteButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Вы уверены, что хотите удалить этот рецепт?", "", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+                return;
+
+            RecipeController recipeController = new RecipeController();
+            if (!await recipeController.isUnreleted(recipe))
+            {
+                MessageBox.Show("Невозможно удалить рецепт, т.к. он используется другими пользователя");
+            }
+            else
+            {
+                try
+                {
+                    await recipeController.deleteRecipe(recipe);
+                    this.DialogResult = DialogResult.Yes;
+                    MessageBox.Show("Рецепт удалён");
+                    this.Close();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Не получилось удалить этот рецепт(");
+                }
+            }
+        }
     }
 }

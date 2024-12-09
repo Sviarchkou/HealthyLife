@@ -17,6 +17,7 @@ namespace HealthyLife_Pt2.FormControls
     public partial class RecipeAddition : UserControl
     {
         public Recipe recipe { get; private set; }
+
         public RecipeAddition(Recipe recipe)
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace HealthyLife_Pt2.FormControls
         private void label1_Click(object sender, EventArgs e)
         {
             RecipeDescriptionForm recipeDescriptionForm = new RecipeDescriptionForm(recipe);
+            recipeDescriptionForm.deleteButton.Dispose();
             recipeDescriptionForm.ShowDialog();
         }
     }

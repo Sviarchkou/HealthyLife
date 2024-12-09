@@ -133,7 +133,7 @@ public class User
         }
     }
 
-    public DateOnly dateOfBirth { get; set; }
+    public DateTime dateOfBirth { get; set; }
     public string? photo { get; set; }
     public Diet diet { get; set; }
     public Element element { get; set; }

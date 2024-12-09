@@ -56,7 +56,12 @@
             caloriesLabel = new Label();
             category = new Label();
             toolTip = new ToolTip(components);
+            approvedMark = new PictureBox();
+            deleteButton = new Button();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)approvedMark).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // description
@@ -358,6 +363,43 @@
             toolTip.InitialDelay = 50;
             toolTip.ReshowDelay = 10;
             // 
+            // approvedMark
+            // 
+            approvedMark.BackColor = Color.Transparent;
+            approvedMark.Image = Properties.Resources.approve;
+            approvedMark.Location = new Point(0, 0);
+            approvedMark.Name = "approvedMark";
+            approvedMark.Size = new Size(54, 51);
+            approvedMark.SizeMode = PictureBoxSizeMode.Zoom;
+            approvedMark.TabIndex = 184;
+            approvedMark.TabStop = false;
+            approvedMark.Visible = false;
+            // 
+            // deleteButton
+            // 
+            deleteButton.BackColor = Color.Red;
+            deleteButton.FlatAppearance.BorderSize = 0;
+            deleteButton.FlatStyle = FlatStyle.Flat;
+            deleteButton.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            deleteButton.Location = new Point(314, 0);
+            deleteButton.Name = "deleteButton";
+            deleteButton.Size = new Size(149, 40);
+            deleteButton.TabIndex = 0;
+            deleteButton.Text = "УДАЛИТЬ";
+            deleteButton.UseVisualStyleBackColor = false;
+            deleteButton.Visible = false;
+            deleteButton.Click += deleteButton_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(deleteButton);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 463);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(782, 40);
+            panel1.TabIndex = 185;
+            // 
             // ProductDescriptoinForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -365,6 +407,8 @@
             AutoScroll = true;
             BackColor = Color.FloralWhite;
             ClientSize = new Size(782, 503);
+            Controls.Add(panel1);
+            Controls.Add(approvedMark);
             Controls.Add(category);
             Controls.Add(description);
             Controls.Add(vitaminsInfo);
@@ -397,6 +441,8 @@
             Name = "ProductDescriptoinForm";
             StartPosition = FormStartPosition.CenterParent;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)approvedMark).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -430,5 +476,8 @@
         private Label caloriesLabel;
         private Label category;
         private ToolTip toolTip;
+        private PictureBox approvedMark;
+        public Button deleteButton;
+        private Panel panel1;
     }
 }

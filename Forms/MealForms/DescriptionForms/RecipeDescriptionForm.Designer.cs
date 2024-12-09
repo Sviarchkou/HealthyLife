@@ -55,8 +55,12 @@
             vitamonsLabel = new Label();
             description = new Label();
             panel1 = new Panel();
+            deleteButton = new Button();
             toolTip = new ToolTip(components);
+            approvedMark = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)approvedMark).BeginInit();
             SuspendLayout();
             // 
             // carboCounter
@@ -249,9 +253,9 @@
             // 
             nameLabel.BackColor = Color.Transparent;
             nameLabel.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            nameLabel.Location = new Point(30, 10);
+            nameLabel.Location = new Point(49, 9);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(720, 59);
+            nameLabel.Size = new Size(676, 59);
             nameLabel.TabIndex = 149;
             nameLabel.Text = "Название dfgh sdfgjh  dsfkgh  dfjgh kdjfg k dkfjghksjdfhg ksjdf gdk fjgh kdjsfhg kdjfh kjsdfh g dsf f";
             nameLabel.TextAlign = ContentAlignment.TopCenter;
@@ -341,11 +345,39 @@
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(deleteButton);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 472);
+            panel1.Location = new Point(0, 463);
             panel1.Name = "panel1";
-            panel1.Size = new Size(782, 31);
+            panel1.Size = new Size(782, 40);
             panel1.TabIndex = 158;
+            // 
+            // deleteButton
+            // 
+            deleteButton.BackColor = Color.Red;
+            deleteButton.FlatAppearance.BorderSize = 0;
+            deleteButton.FlatStyle = FlatStyle.Flat;
+            deleteButton.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            deleteButton.Location = new Point(314, 0);
+            deleteButton.Name = "deleteButton";
+            deleteButton.Size = new Size(149, 40);
+            deleteButton.TabIndex = 0;
+            deleteButton.Text = "УДАЛИТЬ";
+            deleteButton.UseVisualStyleBackColor = false;
+            deleteButton.Visible = false;
+            deleteButton.Click += deleteButton_Click;
+            // 
+            // approvedMark
+            // 
+            approvedMark.BackColor = Color.Transparent;
+            approvedMark.Image = Properties.Resources.approve;
+            approvedMark.Location = new Point(0, -2);
+            approvedMark.Name = "approvedMark";
+            approvedMark.Size = new Size(54, 51);
+            approvedMark.SizeMode = PictureBoxSizeMode.Zoom;
+            approvedMark.TabIndex = 185;
+            approvedMark.TabStop = false;
+            approvedMark.Visible = false;
             // 
             // RecipeDescriptionForm
             // 
@@ -354,6 +386,8 @@
             AutoScroll = true;
             BackColor = Color.FloralWhite;
             ClientSize = new Size(782, 503);
+            Controls.Add(nameLabel);
+            Controls.Add(approvedMark);
             Controls.Add(panel1);
             Controls.Add(description);
             Controls.Add(vitaminsInfo);
@@ -362,7 +396,6 @@
             Controls.Add(mineralsInfo);
             Controls.Add(myPanel2);
             Controls.Add(mineralsLabel);
-            Controls.Add(nameLabel);
             Controls.Add(pictureBox1);
             Controls.Add(carboCounter);
             Controls.Add(fatsCounter);
@@ -386,6 +419,8 @@
             Name = "RecipeDescriptionForm";
             StartPosition = FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)approvedMark).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -419,5 +454,7 @@
         private Label description;
         private Panel panel1;
         private ToolTip toolTip;
+        private PictureBox approvedMark;
+        public Button deleteButton;
     }
 }

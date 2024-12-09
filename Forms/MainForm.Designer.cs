@@ -41,7 +41,7 @@
             // 
             // formPanel
             // 
-            formPanel.BackColor = Color.Tomato;
+            formPanel.BackColor = Color.FloralWhite;
             formPanel.Dock = DockStyle.Right;
             formPanel.Location = new Point(206, 0);
             formPanel.Margin = new Padding(0);
@@ -51,7 +51,7 @@
             // 
             // panel1
             // 
-            panel1.BackColor = Color.DarkViolet;
+            panel1.BackColor = Color.FromArgb(43, 31, 46);
             panel1.Controls.Add(products);
             panel1.Controls.Add(userWeightButton);
             panel1.Controls.Add(profileButton);
@@ -67,7 +67,7 @@
             // 
             // products
             // 
-            products.BackColor = Color.DarkViolet;
+            products.BackColor = Color.FromArgb(43, 31, 46);
             products.FlatAppearance.BorderSize = 0;
             products.FlatStyle = FlatStyle.Flat;
             products.Font = new Font("Verdana", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
@@ -82,7 +82,7 @@
             // 
             // userWeightButton
             // 
-            userWeightButton.BackColor = Color.DarkViolet;
+            userWeightButton.BackColor = Color.FromArgb(43, 31, 46);
             userWeightButton.FlatAppearance.BorderSize = 0;
             userWeightButton.FlatStyle = FlatStyle.Flat;
             userWeightButton.Font = new Font("Verdana", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
@@ -98,7 +98,7 @@
             // 
             // profileButton
             // 
-            profileButton.BackColor = Color.DarkViolet;
+            profileButton.BackColor = Color.FromArgb(43, 31, 46);
             profileButton.FlatAppearance.BorderSize = 0;
             profileButton.FlatStyle = FlatStyle.Flat;
             profileButton.Font = new Font("Verdana", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
@@ -110,12 +110,13 @@
             profileButton.TabIndex = 3;
             profileButton.Text = "Профиль";
             profileButton.UseVisualStyleBackColor = false;
+            profileButton.Click += profileButton_Click;
             profileButton.MouseEnter += button_MouseEnter;
             profileButton.MouseLeave += button_MouseLeave;
             // 
             // button3
             // 
-            button3.BackColor = Color.DarkViolet;
+            button3.BackColor = Color.FromArgb(43, 31, 46);
             button3.FlatAppearance.BorderSize = 0;
             button3.FlatStyle = FlatStyle.Flat;
             button3.Font = new Font("Verdana", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
@@ -133,7 +134,7 @@
             // 
             // dietMenuButton
             // 
-            dietMenuButton.BackColor = Color.DarkViolet;
+            dietMenuButton.BackColor = Color.FromArgb(43, 31, 46);
             dietMenuButton.FlatAppearance.BorderSize = 0;
             dietMenuButton.FlatStyle = FlatStyle.Flat;
             dietMenuButton.Font = new Font("Verdana", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
@@ -151,7 +152,7 @@
             // 
             // counterButton
             // 
-            counterButton.BackColor = Color.DarkViolet;
+            counterButton.BackColor = Color.FromArgb(43, 31, 46);
             counterButton.FlatAppearance.BorderSize = 0;
             counterButton.FlatStyle = FlatStyle.Flat;
             counterButton.Font = new Font("Verdana", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);

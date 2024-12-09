@@ -18,7 +18,7 @@ namespace HealthyLife_Pt2.Forms.MealForms.AddFroms
 {
     public partial class ExtraFoodAddForm : Form
     {
-        //Dictionary<Product, int> selected;
+
         List<ExtraFood> selectedExtraFood = new List<ExtraFood>();
 
         List<Product> products = new List<Product>();
@@ -31,10 +31,14 @@ namespace HealthyLife_Pt2.Forms.MealForms.AddFroms
         private Point startPoint = new Point(25, 105);
         private int step = 90;
 
-        public ExtraFoodAddForm(List<ExtraFood> selectedExtraFood)
+        User user;
+
+        public ExtraFoodAddForm(List<ExtraFood> selectedExtraFood, User user)
         {
             InitializeComponent();
             this.selectedExtraFood = selectedExtraFood;
+            this.user = user;
+
             fillForm();
             searchPanel1.SearchTextChanged += delegate (object? sender, EventArgs e)
             {
@@ -89,19 +93,6 @@ namespace HealthyLife_Pt2.Forms.MealForms.AddFroms
                 currentExtraFoodAdditions[i].Location = new Point(startPoint.X, startPoint.Y + i * step);
             }
 
-
-            /*
-            for (int i = 0; i < extraFoodAdditions.Count; i++)
-            {
-                Controls.Remove(extraFoodAdditions[i]);                
-            }
-            extraFoodAdditions.Clear();
-
-            for (int i = 0; i < filteredProducts.Count(); i++)
-            {
-                createProductAddition(filteredProducts.ElementAt(i), new Point(startPoint.X, startPoint.Y + i * step));
-            }
-            */
         }
 
         private ExtraFoodAddition createProductAddition(Product product, Point location)
@@ -141,7 +132,7 @@ namespace HealthyLife_Pt2.Forms.MealForms.AddFroms
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            ProductCreationForm productCreationForm = new ProductCreationForm();
+            ProductCreationForm productCreationForm = new ProductCreationForm(user);
             productCreationForm.FormClosed += delegate (object? sender, FormClosedEventArgs e)
             {
                 if (sender == null)

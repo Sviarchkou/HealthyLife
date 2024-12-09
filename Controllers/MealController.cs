@@ -205,5 +205,15 @@ namespace HealthyLife_Pt2.Controllers
             ExtraFoodController extraFoodController = new ExtraFoodController();
             await extraFoodController.updateByMeal(meal);
         }
+
+        public async Task deleteMeal(Meal meal)
+        {
+            DBConnector db = new DBConnector();
+            db.Open();
+            await db.remove($"DELETE FROM meals WHERE id = '{meal.id}'");
+            await db.remove($"DELETE FROM elements WHERE id = '{meal.element.id}'");
+            db.Close();
+        }
+
     }
 }

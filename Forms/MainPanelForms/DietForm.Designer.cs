@@ -45,6 +45,7 @@
             dietCreationButton.Rad = 60;
             dietCreationButton.Size = new Size(256, 58);
             dietCreationButton.TabIndex = 7;
+            dietCreationButton.Visible = false;
             dietCreationButton.Click += dietCreationButton_Click;
             dietCreationButton.MouseEnter += button_MouseEnter;
             dietCreationButton.MouseLeave += button_MouseLeave;

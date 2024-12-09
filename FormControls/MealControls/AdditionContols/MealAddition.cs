@@ -1,5 +1,6 @@
 ﻿using HealthyLife_Pt2.Controllers;
 using HealthyLife_Pt2.Forms;
+using HealthyLife_Pt2.Forms.MealForms.AddFroms;
 using HealthyLife_Pt2.Models;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,8 @@ namespace HealthyLife_Pt2.FormControls.MealControls
     {
         public Meal meal { get; private set; } = new Meal();
 
-        public string DayLabel { 
+        public string DayLabel
+        {
             get => dayLabel.Text;
             set => dayLabel.Text = value == null ? "" : value;
         }
@@ -112,5 +114,21 @@ namespace HealthyLife_Pt2.FormControls.MealControls
             label4.BackColor = Color.IndianRed;
         }
 
+        private void extraFoodAddButton_Click(object sender, EventArgs e)
+        {
+            ExtraFoodAddForm extraFoodAddForm = new ExtraFoodAddForm(meal.extraFood);
+            extraFoodAddForm.Show();
+            extraFoodAddForm.FormClosed += delegate (object? sender, FormClosedEventArgs e)
+            {
+                if (sender == null)
+                    return;
+                meal.extraFood = ((ExtraFoodAddForm)sender).getSelectedExtraFoods();
+                foreach (ExtraFood extraFood in meal.extraFood)
+                {
+                    extraFood.meal = meal;
+                }
+            };
+            updateElement();
+        }
     }
 }

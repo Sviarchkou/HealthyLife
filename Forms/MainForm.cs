@@ -1,5 +1,6 @@
 ﻿using HealthyLife_Pt2.FormControls;
 using HealthyLife_Pt2.Forms.MainPanelForms;
+using HealthyLife_Pt2.Forms.MealForms;
 using HealthyLife_Pt2.Models;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace HealthyLife_Pt2.Forms
         DailyCounter dailyCounter;
         DietForm dietForm;
         RecipeForm recipeForm;
-
+        UserWeightForm userWeightForm;
         public MainForm(User user)
         {
             InitializeComponent();
@@ -88,6 +89,13 @@ namespace HealthyLife_Pt2.Forms
             if (recipeForm == null)
                 recipeForm = new RecipeForm(user);
             setForm(recipeForm);
+        }
+
+        private void userWeightButton_Click(object sender, EventArgs e)
+        {
+            if (userWeightForm == null)
+                userWeightForm = new UserWeightForm(user);
+            setForm(userWeightForm);
         }
     }
 }

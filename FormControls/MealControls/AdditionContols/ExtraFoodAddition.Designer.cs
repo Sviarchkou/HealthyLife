@@ -39,6 +39,7 @@
             counterLabel = new Label();
             label1 = new Label();
             weightTextBox = new TextBox();
+            weightLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)productPicture).BeginInit();
             SuspendLayout();
             // 
@@ -163,6 +164,7 @@
             // 
             // weightTextBox
             // 
+            weightTextBox.BackColor = Color.White;
             weightTextBox.Font = new Font("Verdana", 9.2F);
             weightTextBox.ForeColor = Color.Gray;
             weightTextBox.Location = new Point(332, 17);
@@ -174,11 +176,26 @@
             weightTextBox.Click += weightTextBox_Click;
             weightTextBox.TextChanged += weightTextBox_TextChanged;
             // 
+            // weightLabel
+            // 
+            weightLabel.BackColor = Color.White;
+            weightLabel.Font = new Font("Verdana", 9.2F);
+            weightLabel.ForeColor = Color.Black;
+            weightLabel.Location = new Point(332, 18);
+            weightLabel.Margin = new Padding(0);
+            weightLabel.Name = "weightLabel";
+            weightLabel.Size = new Size(54, 23);
+            weightLabel.TabIndex = 83;
+            weightLabel.Text = "100";
+            weightLabel.TextAlign = ContentAlignment.MiddleCenter;
+            weightLabel.Visible = false;
+            // 
             // ExtraFoodAddition
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
+            Controls.Add(weightLabel);
             Controls.Add(label1);
             Controls.Add(weightTextBox);
             Controls.Add(counterLabel);
@@ -208,5 +225,6 @@
         private Label counterLabel;
         private Label label1;
         private TextBox weightTextBox;
+        private Label weightLabel;
     }
 }

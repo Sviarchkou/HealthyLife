@@ -11,6 +11,6 @@ namespace HealthyLife_Pt2.Models
         public int id { get; set; }
         public User user { get; set; }
         public Meal meal { get; set; }
-        public DateOnly update_at { get; set; }
+        public DateTime update_at { get; set; }
     }
 }

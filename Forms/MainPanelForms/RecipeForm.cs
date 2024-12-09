@@ -88,6 +88,8 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
                     createRecipeButton(recipes[i], new Point(startPoint.X + stepX, startPoint.Y + stepY * (i / 2)));
                 }
             }
+
+            recipeCreationButton.Enabled = true;
         }
 
         private void filterRecipes()

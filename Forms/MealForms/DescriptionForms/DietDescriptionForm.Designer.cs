@@ -28,20 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            panel1 = new Panel();
             SuspendLayout();
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Transparent;
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 663);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1082, 40);
+            panel1.TabIndex = 6;
             // 
             // DietDescriptionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(782, 503);
+            ClientSize = new Size(1082, 703);
+            Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Name = "DietDescriptionForm";
             StartPosition = FormStartPosition.CenterScreen;
+            Load += DietDescriptionForm_Load;
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Panel panel1;
     }
 }

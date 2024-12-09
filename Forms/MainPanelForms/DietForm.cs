@@ -31,14 +31,18 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
             this.user = user;
 
             InitializeComponent();
-            
             fillForm();
+            
+            dietCreationButton.Text = "Создать рацион";
+            
         }
 
         public async void fillForm()
         {
             DietController dietController = new DietController();
             diets = await dietController.select("SELECT * FROM diets");
+            dietCreationButton.Enabled = true;
+
             int n = diets.Count / 3 ;
             for (int i = 0; i <= n; i++)
             {
@@ -51,6 +55,8 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
                     //;
                 }
             }
+
+
         }
 
         private void createDietButton(Diet diet, Point location)

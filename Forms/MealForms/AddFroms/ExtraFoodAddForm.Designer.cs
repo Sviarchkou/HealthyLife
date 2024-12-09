@@ -30,6 +30,8 @@
         {
             searchPanel1 = new FormControls.SearchPanel();
             createButton = new FormControls.MyPanel();
+            infoButton = new FormControls.MyPanel();
+            panel1 = new Panel();
             SuspendLayout();
             // 
             // searchPanel1
@@ -46,12 +48,34 @@
             createButton.BackColor = Color.Transparent;
             createButton.BorderColor = Color.DarkGray;
             createButton.Font = new Font("Verdana", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            createButton.Location = new Point(480, 25);
+            createButton.Location = new Point(470, 25);
             createButton.Name = "createButton";
             createButton.PanelColor = Color.Gainsboro;
             createButton.Rad = 60;
-            createButton.Size = new Size(177, 58);
+            createButton.Size = new Size(187, 58);
             createButton.TabIndex = 19;
+            createButton.Click += createButton_Click;
+            // 
+            // infoButton
+            // 
+            infoButton.BorderColor = Color.DarkGray;
+            infoButton.Font = new Font("Verdana", 10.2F);
+            infoButton.Location = new Point(500, 107);
+            infoButton.Name = "infoButton";
+            infoButton.PanelColor = Color.Gainsboro;
+            infoButton.Rad = 30;
+            infoButton.Size = new Size(157, 77);
+            infoButton.TabIndex = 21;
+            infoButton.Click += infoButton_Click;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Transparent;
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 443);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(682, 30);
+            panel1.TabIndex = 22;
             // 
             // ExtraFoodAddForm
             // 
@@ -60,6 +84,8 @@
             AutoScroll = true;
             BackColor = Color.FloralWhite;
             ClientSize = new Size(682, 473);
+            Controls.Add(panel1);
+            Controls.Add(infoButton);
             Controls.Add(searchPanel1);
             Controls.Add(createButton);
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
@@ -74,5 +100,7 @@
 
         private FormControls.SearchPanel searchPanel1;
         private FormControls.MyPanel createButton;
+        private FormControls.MyPanel infoButton;
+        private Panel panel1;
     }
 }

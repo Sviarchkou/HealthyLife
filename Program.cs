@@ -17,6 +17,7 @@ namespace HealthyLife_Pt2
     {
 
         [STAThread]
+        //static async Task Main(string[] args)
         static void Main(string[] args)
         {
             
@@ -24,6 +25,20 @@ namespace HealthyLife_Pt2
             ApplicationConfiguration.Initialize();
             Application.Run(new WellcomeScrin()); ;
             
+            
+            /*
+            StringBuilder commandHeader = new StringBuilder("INSERT INTO user_weight (user_id, updated_at, weight, goal) ");
+            StringBuilder values = new StringBuilder($"VALUES (" +
+                $"'67c1272e-c8e5-42e1-816e-aa326ecac90e', " +
+                $"'2024-11-27', " +
+                $"70," +
+                $"75) RETURNING id;");
+
+            DBConnector db = new DBConnector();
+            db.Open();
+            await db.insert(commandHeader.Append(values).ToString());
+            db.Close();
+            */
 
             /*
             byte[] image = File.ReadAllBytes("D:\\Лицей\\Выпускной\\IMG_1330.jpg");
@@ -240,19 +255,17 @@ namespace HealthyLife_Pt2
             */
 
             /*
-            DBConnector db = new DBConnector();
-            db.Open();
+            UserWeight userWeight = new UserWeight();
+            userWeight.weight = 75.6;
+            userWeight.goal = 75.6;
+            userWeight.user = new User();
+            userWeight.user.id = new Guid("67c1272e-c8e5-42e1-816e-aa326ecac90e");
 
-            StringBuilder commandHeader = new StringBuilder();
-            StringBuilder values = new StringBuilder();
-
-            int element_id = 11;
-
-            commandHeader.Append("INSERT INTO user_require_elements (user_id, element_id)");
-            values.Append($"VALUES ('f0b5fadd-0acb-4938-a819-a011dc7168eb', {element_id});");
-            await db.insert(commandHeader.Append(values).ToString());
+            UserWeightController userWeightController = new UserWeightController();
+            await userWeightController.insertUserWeight(userWeight);
 
             */
+
 
             /*
             

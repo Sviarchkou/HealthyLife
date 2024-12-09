@@ -44,10 +44,18 @@ namespace HealthyLife_Pt2.Forms
             str = await CacheWorker.readData(goalReg);
             user.setGoalAsString(str[0].ToString());
 
-            UserController userController = new UserController();
+            UserController userController = new UserController();            
             try
             {
                 await userController.insertUser(user);
+
+                UserWeight userWeight = new UserWeight();
+                userWeight.weight = user.weight;
+                userWeight.user = user;
+                userWeight.goal = user.weight;
+
+                UserWeightController userWeightController = new UserWeightController();
+                await userWeightController.insertTodayUserWeight(userWeight);
 
             }
             catch (Exception ex)

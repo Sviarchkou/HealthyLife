@@ -138,7 +138,7 @@ namespace HealthyLife_Pt2.Controllers
 
             foreach (ExtraFood extraFood in meal.extraFood)
             {
-                meal.element = elementController.sumElements(extraFood.product.element, meal.element);
+                meal.element = elementController.sumElements(extraFood.calculateElement(), meal.element);
             }
         }
 

@@ -30,5 +30,9 @@ namespace HealthyLife_Pt2.Models
 
             return element;
         }
+        public override string ToString()
+        {
+            return $"{product.name} ({weight} г.)";
+        }
     }
 }

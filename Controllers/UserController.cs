@@ -105,6 +105,7 @@ namespace HealthyLife_Pt2.Controllers
             values.Append(") RETURNING id;");
 
             Guid user_id = await insert(commandHeader.Append(values).ToString());
+            user.id = user_id;
 
             commandHeader.Clear();
             values.Clear();

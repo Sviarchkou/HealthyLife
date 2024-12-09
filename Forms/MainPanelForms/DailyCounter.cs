@@ -147,7 +147,20 @@ namespace HealthyLife_Pt2.Forms
             }
 
             if (dailyMeal.meal.extraFood != null && dailyMeal.meal.extraFood.Count != 0)
-                extrafoodDiscription.Text = dailyMeal.meal.extraFood.ToString();
+            {
+                string str = String.Join(", ", dailyMeal.meal.extraFood);
+                if (str.Length > 21)
+                    extrafoodDiscription.Text = str.Substring(0, 21) + "...";
+                else
+                    extrafoodDiscription.Text = str;
+                extrafoodAddButton.PanelColor = Color.GreenYellow;
+            }
+            else
+            {
+                extrafoodAddButton.PanelColor = Color.LavenderBlush;
+                extrafoodDiscription.Text = "Перекусов пока нет";
+            }
+                
         }
 
         private void MainMenu_FormClosed(object sender, FormClosedEventArgs e)

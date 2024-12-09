@@ -14,9 +14,8 @@ namespace HealthyLIfe_Pt2.Forms
 {
     public partial class ProductCreationForm : Form
     {
-        public List<Product> existedProducts;
         
-        private Product product = new Product();
+        public Product? product { get; private set; }
 
         public ProductCreationForm()
         {
@@ -26,6 +25,7 @@ namespace HealthyLIfe_Pt2.Forms
 
         private async void addButton_Click(object sender, EventArgs e)
         {
+            product = new Product();
             product.name = nameTextBox.Text;
             product.category = categoryTextBox.Text;
             product.description = descriptionTextBox.Text;
@@ -51,8 +51,6 @@ namespace HealthyLIfe_Pt2.Forms
             ProductController productController = new ProductController();
             await productController.insertProduct(product);
 
-
-            existedProducts.Add(product);
             MessageBox.Show("Продукт добавлен");
             this.Close();
         }

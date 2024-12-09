@@ -1,0 +1,121 @@
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.csproj.AssemblyReference.cache
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe_Pt2.Properties.Resources.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.csproj.GenerateResource.cache
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.GeneratedMSBuildEditorConfig.editorconfig
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.AssemblyInfoInputs.cache
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.AssemblyInfo.cs
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.csproj.CoreCompileInputs.cache
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\HealthyLIfe Pt2.exe
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\HealthyLIfe Pt2.deps.json
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\HealthyLIfe Pt2.runtimeconfig.json
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\HealthyLIfe Pt2.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\HealthyLIfe Pt2.pdb
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Memory.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Npgsql.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyL.B2747C6E.Up2Date
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\refint\HealthyLIfe Pt2.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.pdb
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.genruntimeconfig.cache
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\ref\HealthyLIfe Pt2.dll
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.CircularProgressBar.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.MyPanel.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.MyProgressBar.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.RecipeButton.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.Authorization.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MainMenu.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealAddForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Controllers.ActivityLevelForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.FinalRegForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.Registrarion.GoalForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.Registration.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.Registrarion.UserDataForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.WellcomeScrin.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe_Pt2.Forms.RecipeCreationForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe_Pt2.Forms.ProductCreationForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe_Pt2.Forms.MyMessageBox.resources
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.sourcelink.json
+D:\БГУИР\2-й курс\КПО\Курсач\Pt2\HealthyLIfe Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe_Pt2.FormControls.IngredientAddition.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.csproj.AssemblyReference.cache
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.CircularProgressBar.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe_Pt2.FormControls.IngredientAddition.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.MyPanel.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.MyProgressBar.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.Authorization.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealAddForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe_Pt2.Forms.MyMessageBox.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe_Pt2.Forms.ProductCreationForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe_Pt2.Forms.RecipeCreationForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Controllers.ActivityLevelForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.FinalRegForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.Registrarion.GoalForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.Registration.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.Registrarion.UserDataForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.WellcomeScrin.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe_Pt2.Properties.Resources.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.csproj.GenerateResource.cache
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.GeneratedMSBuildEditorConfig.editorconfig
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.AssemblyInfoInputs.cache
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.AssemblyInfo.cs
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.csproj.CoreCompileInputs.cache
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.sourcelink.json
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\refint\HealthyLIfe Pt2.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe Pt2.pdb
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\HealthyLife Pt2.exe
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\HealthyLife Pt2.deps.json
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\HealthyLife Pt2.runtimeconfig.json
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\HealthyLife Pt2.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\HealthyLife Pt2.pdb
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Memory.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Npgsql.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife Pt2.genruntimeconfig.cache
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\ref\HealthyLife Pt2.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.DailyCounter.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MainForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.MealControls.DietButton.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MainPanelForms.DietForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.MealControls.MealAddition.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealForms.DietCreationForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.MealControls.RecipeFormButton.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.searchPanel.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MainPanelForms.RecipeForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyL.B1C2420E.Up2Date
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\System.Diagnostics.DiagnosticSource.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealForms.UserWeightForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.MealControls.ProductButton.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealForms.DietDescriptionForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealForms.DescriptionForms.RecipeDescriptionForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealForms.DescriptionForms.ProductDescriptoinForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.RecipeAddition.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealForms.AddFroms.ExtraFoodAddForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.MealControls.AdditionContols.ExtraFoodAddition.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\WinForms.DataVisualization.Utilities.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\bin\Debug\net8.0-windows\WinForms.DataVisualization.dll
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealForms.DescriptionForms.ExtraFoodDescriptionForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealForms.AddFroms.WeightAddForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealForms.DescriptionForms.DietDailyMealDescriptionForm.resources

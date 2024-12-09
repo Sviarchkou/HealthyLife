@@ -10,12 +10,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace HealthyLife_Pt2.FormControls.MealControls.AdditionContols
 {
     public partial class ExtraFoodAddition : UserControl
     {
         public int Count { get; set; }
+        public bool onlyInfo { get; set; } = false;
+
         public Color PanelColor
         {
             get => productPanel.PanelColor;
@@ -40,15 +43,24 @@ namespace HealthyLife_Pt2.FormControls.MealControls.AdditionContols
             }
             set
             {
-                weightTextBox.Text = value.ToString();
-                PanelColor = Color.LightGreen;
-                selected = true;
-                weightTextBox.ForeColor = Color.Black;
-                isDefaultWeight = false;
+                if (onlyInfo)
+                {
+                    weightTextBox.Visible = false;
+                    weightLabel.Visible = true;
+                    weightLabel.Text = value.ToString();
+                }
+                else
+                {
+                    weightTextBox.Text = value.ToString();
+                    PanelColor = Color.LightGreen;
+                    selected = true;
+                    weightTextBox.ForeColor = Color.Black;
+                    isDefaultWeight = false;
+                }
             }
         }
 
-        Product product;
+        public Product product { get; private set; }
         private bool isDefaultWeight = true;
         
         public ExtraFoodAddition(Product product)

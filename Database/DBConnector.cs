@@ -13,8 +13,7 @@ namespace HealthyLife_Pt2.Database
     {
         private static string connectionString = "Host=localhost;Port=5432;Database=healthylife;Username=healthylife;Password=healthylife";
         public static NpgsqlConnection connection { get; } = new NpgsqlConnection(connectionString);
-        
-        Mutex mutex = new Mutex();
+
         /*
         public DBConnector()
         {
@@ -53,7 +52,6 @@ namespace HealthyLife_Pt2.Database
         public async Task<DataTable> select(string str)
         {
 
-            mutex.WaitOne();
             NpgsqlCommand command = new NpgsqlCommand(str, connection);
 
             DataTable dataTable = new DataTable();
@@ -78,13 +76,11 @@ namespace HealthyLife_Pt2.Database
                 command.Dispose();
             });
 
-            mutex.ReleaseMutex();
             return dataTable;
         }
 
         private async Task<int> pullRequestCommand(string str)
         {
-            mutex.WaitOne();
             NpgsqlCommand command = new NpgsqlCommand(str, connection);
 
             int n = 0;
@@ -106,7 +102,6 @@ namespace HealthyLife_Pt2.Database
 
                 command.Dispose();
             });
-            mutex.ReleaseMutex();
             return n;
         }
 

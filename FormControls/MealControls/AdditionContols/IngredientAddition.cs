@@ -156,7 +156,18 @@ namespace HealthyLIfe_Pt2.FormControls
         private void addButton_Click(object sender, EventArgs e)
         {
             ProductCreationForm productCreationForm = new ProductCreationForm();
-            productCreationForm.existedProducts = products;
+            productCreationForm.FormClosed += delegate (object? sender, FormClosedEventArgs e)
+            {
+                if (sender == null)
+                    return;
+                Product? p = ((ProductCreationForm)sender).product;
+                
+                if (p == null)
+                    return;
+
+                products.Add(p);
+
+            };
             productCreationForm.Show();
         }
 

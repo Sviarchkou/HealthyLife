@@ -30,12 +30,14 @@
         {
             createButton = new FormControls.MyPanel();
             searchPanel1 = new FormControls.SearchPanel();
+            panel1 = new Panel();
             SuspendLayout();
             // 
             // createButton
             // 
             createButton.BackColor = Color.Transparent;
             createButton.BorderColor = Color.DarkGray;
+            createButton.Enabled = false;
             createButton.Font = new Font("Verdana", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             createButton.Location = new Point(480, 25);
             createButton.Name = "createButton";
@@ -55,6 +57,15 @@
             searchPanel1.Size = new Size(439, 58);
             searchPanel1.TabIndex = 16;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Transparent;
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 443);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(682, 30);
+            panel1.TabIndex = 23;
+            // 
             // MealAddForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -62,6 +73,7 @@
             AutoScroll = true;
             BackColor = Color.FloralWhite;
             ClientSize = new Size(682, 473);
+            Controls.Add(panel1);
             Controls.Add(searchPanel1);
             Controls.Add(createButton);
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
@@ -76,5 +88,6 @@
         #endregion
         private FormControls.MyPanel createButton;
         private FormControls.SearchPanel searchPanel1;
+        private Panel panel1;
     }
 }

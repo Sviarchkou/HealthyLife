@@ -73,9 +73,7 @@ namespace HealthyLife_Pt2.Controllers
             MealController mealController = new MealController();
             dailyMeal.meal = await mealController.findById(row[2].ToString());
 
-
-            DateTime dateTime = (DateTime)row[3];
-            dailyMeal.update_at = new DateOnly(dateTime.Year, dateTime.Month, dateTime.Day);
+            dailyMeal.update_at = (DateTime)row[3];
 
             return dailyMeal;
         }
@@ -97,7 +95,7 @@ namespace HealthyLife_Pt2.Controllers
             DailyMeal dailyMeal = new DailyMeal();
             dailyMeal.user = user;
             dailyMeal.meal = meal;
-            dailyMeal.update_at = new DateOnly(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            dailyMeal.update_at = DateTime.Now;
             string date = $"{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}";
 
             DBConnector db = new DBConnector();

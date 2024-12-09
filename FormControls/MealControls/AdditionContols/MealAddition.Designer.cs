@@ -159,6 +159,7 @@
             extraFoodAddButton.Rad = 50;
             extraFoodAddButton.Size = new Size(50, 50);
             extraFoodAddButton.TabIndex = 130;
+            extraFoodAddButton.Click += extraFoodAddButton_Click;
             extraFoodAddButton.MouseEnter += meal_MouseEnter;
             extraFoodAddButton.MouseLeave += meal_MouseLeave;
             // 

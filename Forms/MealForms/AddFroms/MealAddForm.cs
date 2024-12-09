@@ -49,7 +49,6 @@ namespace HealthyLife_Pt2.Forms
             };
 
         }
-
         private async void fillForm()
         {
 
@@ -77,11 +76,12 @@ namespace HealthyLife_Pt2.Forms
                     recipes = temp;
             }
 
-
             for (int i = 0; i < recipes.Count; i++)
             {
                 createRecipeButton(recipes[i], new Point(recipeStartPoint.X, recipeStartPoint.Y + i * step), new Point(plusStartPoint.X, plusStartPoint.Y + i * step));                
             }
+
+            createButton.Enabled = true;
         }
 
         private void createRecipeButton(Recipe recipe, Point recipeLocation, Point plusLocation)

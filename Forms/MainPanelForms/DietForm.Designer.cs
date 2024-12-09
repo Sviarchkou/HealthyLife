@@ -30,11 +30,15 @@
         {
             dietCreationButton = new FormControls.MyPanel();
             searchPanel1 = new FormControls.SearchPanel();
+            panel1 = new Panel();
             SuspendLayout();
             // 
             // dietCreationButton
             // 
             dietCreationButton.BorderColor = Color.Empty;
+            dietCreationButton.Enabled = false;
+            dietCreationButton.Font = new Font("Verdana", 10.2F);
+            dietCreationButton.ForeColor = Color.Black;
             dietCreationButton.Location = new Point(545, 27);
             dietCreationButton.Name = "dietCreationButton";
             dietCreationButton.PanelColor = Color.Gainsboro;
@@ -50,8 +54,18 @@
             searchPanel1.BackColor = Color.Transparent;
             searchPanel1.Location = new Point(38, 27);
             searchPanel1.Name = "searchPanel1";
+            searchPanel1.SearhText = "Поиск...";
             searchPanel1.Size = new Size(450, 58);
             searchPanel1.TabIndex = 8;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Transparent;
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 560);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(850, 40);
+            panel1.TabIndex = 9;
             // 
             // DietForm
             // 
@@ -60,6 +74,7 @@
             AutoScroll = true;
             BackColor = Color.White;
             ClientSize = new Size(850, 600);
+            Controls.Add(panel1);
             Controls.Add(searchPanel1);
             Controls.Add(dietCreationButton);
             FormBorderStyle = FormBorderStyle.None;
@@ -73,5 +88,6 @@
         #endregion
         private FormControls.MyPanel dietCreationButton;
         private FormControls.SearchPanel searchPanel1;
+        private Panel panel1;
     }
 }

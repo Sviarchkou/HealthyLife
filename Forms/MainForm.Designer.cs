@@ -94,6 +94,7 @@
             userWeightButton.TabIndex = 4;
             userWeightButton.Text = "Прогресс";
             userWeightButton.UseVisualStyleBackColor = false;
+            userWeightButton.Click += userWeightButton_Click;
             // 
             // profileButton
             // 

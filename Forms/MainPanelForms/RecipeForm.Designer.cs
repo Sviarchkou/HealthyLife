@@ -30,6 +30,7 @@
         {
             recipeCreationButton = new FormControls.MyPanel();
             searchPanel1 = new FormControls.SearchPanel();
+            panel1 = new Panel();
             SuspendLayout();
             // 
             // recipeCreationButton
@@ -51,8 +52,18 @@
             searchPanel1.BackColor = Color.Transparent;
             searchPanel1.Location = new Point(41, 27);
             searchPanel1.Name = "searchPanel1";
+            searchPanel1.SearhText = "Поиск...";
             searchPanel1.Size = new Size(440, 58);
             searchPanel1.TabIndex = 14;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Transparent;
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 560);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(850, 40);
+            panel1.TabIndex = 15;
             // 
             // RecipeForm
             // 
@@ -61,6 +72,7 @@
             AutoScroll = true;
             BackColor = Color.FloralWhite;
             ClientSize = new Size(850, 600);
+            Controls.Add(panel1);
             Controls.Add(searchPanel1);
             Controls.Add(recipeCreationButton);
             FormBorderStyle = FormBorderStyle.None;
@@ -76,5 +88,6 @@
 
         private FormControls.MyPanel recipeCreationButton;
         private FormControls.SearchPanel searchPanel1;
+        private Panel panel1;
     }
 }

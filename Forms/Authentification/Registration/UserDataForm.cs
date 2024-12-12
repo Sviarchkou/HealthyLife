@@ -117,7 +117,7 @@ namespace HealthyLife_Pt2.Forms.Registrarion
                 MessageBox.Show("Недопустимые значения роста");
                 b = true;
             }
-            if (!DateOnly.TryParse(dateOfBirth.Text, out DateOnly result3) || result3.Year < 1925 || result3.Year > 2025)
+            if (!DateTime.TryParse(dateOfBirth.Text, out DateTime result3) || result3 < DateTime.Now.Date.AddYears(-80) || result3 > DateTime.Now.Date)
             {
                 MessageBox.Show("Недопустимые значения даты рождения");
                 b = true;

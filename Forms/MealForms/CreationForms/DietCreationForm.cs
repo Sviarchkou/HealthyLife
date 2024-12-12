@@ -148,6 +148,7 @@ namespace HealthyLife_Pt2.Forms.MealForms
 
             DietController dietController = new DietController();
             diet.id = await dietController.insertDiet(diet);
+            await dietController.insertUserDiet(user, diet);
 
             MessageBox.Show("Рацион успешно добавлен!");
 
@@ -156,13 +157,17 @@ namespace HealthyLife_Pt2.Forms.MealForms
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Image? image;
-            diet.photo = MyImageConverter.chooseImage(out image);
+            try
+            {
+                Image? image;
+                diet.photo = MyImageConverter.chooseImage(out image);
 
-            if (image == null)
-                return;
+                if (image == null)
+                    return;
 
-            pictureBox1.Image = image;
-        }
+                pictureBox1.Image = image;
+            }
+            catch (Exception ex) { MessageBox.Show("Не получилось добавить фото("); }
+            }
     }
 }

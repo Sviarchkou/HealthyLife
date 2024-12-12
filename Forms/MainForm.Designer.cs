@@ -33,7 +33,7 @@
             products = new Button();
             userWeightButton = new Button();
             profileButton = new Button();
-            button3 = new Button();
+            recipeButton = new Button();
             dietMenuButton = new Button();
             counterButton = new Button();
             panel1.SuspendLayout();
@@ -55,7 +55,7 @@
             panel1.Controls.Add(products);
             panel1.Controls.Add(userWeightButton);
             panel1.Controls.Add(profileButton);
-            panel1.Controls.Add(button3);
+            panel1.Controls.Add(recipeButton);
             panel1.Controls.Add(dietMenuButton);
             panel1.Controls.Add(counterButton);
             panel1.Dock = DockStyle.Left;
@@ -72,13 +72,14 @@
             products.FlatStyle = FlatStyle.Flat;
             products.Font = new Font("Verdana", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
             products.ForeColor = Color.White;
-            products.Location = new Point(0, 389);
+            products.Location = new Point(0, 480);
             products.Margin = new Padding(0);
             products.Name = "products";
             products.Size = new Size(206, 62);
             products.TabIndex = 5;
             products.Text = "Продукты";
             products.UseVisualStyleBackColor = false;
+            products.Visible = false;
             // 
             // userWeightButton
             // 
@@ -95,6 +96,8 @@
             userWeightButton.Text = "Прогресс";
             userWeightButton.UseVisualStyleBackColor = false;
             userWeightButton.Click += userWeightButton_Click;
+            userWeightButton.MouseEnter += button_MouseEnter;
+            userWeightButton.MouseLeave += button_MouseLeave;
             // 
             // profileButton
             // 
@@ -114,23 +117,23 @@
             profileButton.MouseEnter += button_MouseEnter;
             profileButton.MouseLeave += button_MouseLeave;
             // 
-            // button3
+            // recipeButton
             // 
-            button3.BackColor = Color.FromArgb(43, 31, 46);
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Verdana", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            button3.ForeColor = Color.White;
-            button3.Location = new Point(0, 265);
-            button3.Margin = new Padding(0);
-            button3.Name = "button3";
-            button3.Size = new Size(206, 62);
-            button3.TabIndex = 2;
-            button3.Text = "Рецепты";
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
-            button3.MouseEnter += button_MouseEnter;
-            button3.MouseLeave += button_MouseLeave;
+            recipeButton.BackColor = Color.FromArgb(43, 31, 46);
+            recipeButton.FlatAppearance.BorderSize = 0;
+            recipeButton.FlatStyle = FlatStyle.Flat;
+            recipeButton.Font = new Font("Verdana", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            recipeButton.ForeColor = Color.White;
+            recipeButton.Location = new Point(0, 265);
+            recipeButton.Margin = new Padding(0);
+            recipeButton.Name = "recipeButton";
+            recipeButton.Size = new Size(206, 62);
+            recipeButton.TabIndex = 2;
+            recipeButton.Text = "Рецепты";
+            recipeButton.UseVisualStyleBackColor = false;
+            recipeButton.Click += recipeButton_Click;
+            recipeButton.MouseEnter += button_MouseEnter;
+            recipeButton.MouseLeave += button_MouseLeave;
             // 
             // dietMenuButton
             // 
@@ -179,7 +182,6 @@
             MinimumSize = new Size(1074, 647);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
             FormClosed += MainForm_FormClosed;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
@@ -190,7 +192,7 @@
         private Panel panel1;
         private Button counterButton;
         private Button dietMenuButton;
-        private Button button3;
+        private Button recipeButton;
         private Button userWeightButton;
         private Button profileButton;
         private Button products;

@@ -1,4 +1,4 @@
-﻿namespace HealthyLife_Pt2.Forms.MainPanelForms
+﻿namespace HealthyLife_Pt2.Forms.MainPanelForms.ProfileForms
 {
     partial class Profile
     {
@@ -45,6 +45,7 @@
             recipeButton = new Button();
             dietButton = new Button();
             panel1 = new Panel();
+            editButton = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
             // 
@@ -72,20 +73,20 @@
             // heightTextLabel
             // 
             heightTextLabel.AutoSize = true;
-            heightTextLabel.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            heightTextLabel.Location = new Point(516, 117);
+            heightTextLabel.Font = new Font("Verdana", 12F, FontStyle.Bold);
+            heightTextLabel.Location = new Point(536, 117);
             heightTextLabel.Name = "heightTextLabel";
-            heightTextLabel.Size = new Size(57, 25);
+            heightTextLabel.Size = new Size(64, 25);
             heightTextLabel.TabIndex = 2;
             heightTextLabel.Text = "Рост";
             // 
             // currentWeightTextLabel
             // 
             currentWeightTextLabel.AutoSize = true;
-            currentWeightTextLabel.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            currentWeightTextLabel.Font = new Font("Verdana", 12F, FontStyle.Bold);
             currentWeightTextLabel.Location = new Point(262, 117);
             currentWeightTextLabel.Name = "currentWeightTextLabel";
-            currentWeightTextLabel.Size = new Size(146, 25);
+            currentWeightTextLabel.Size = new Size(159, 25);
             currentWeightTextLabel.TabIndex = 3;
             currentWeightTextLabel.Text = "Текущий вес";
             // 
@@ -93,7 +94,7 @@
             // 
             sexLabel.AutoSize = true;
             sexLabel.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            sexLabel.Location = new Point(643, 142);
+            sexLabel.Location = new Point(663, 142);
             sexLabel.Name = "sexLabel";
             sexLabel.Size = new Size(66, 25);
             sexLabel.TabIndex = 4;
@@ -103,7 +104,7 @@
             // 
             heightLabel.AutoSize = true;
             heightLabel.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            heightLabel.Location = new Point(516, 142);
+            heightLabel.Location = new Point(536, 142);
             heightLabel.Name = "heightLabel";
             heightLabel.Size = new Size(74, 25);
             heightLabel.TabIndex = 6;
@@ -142,10 +143,10 @@
             // sexTextLabel
             // 
             sexTextLabel.AutoSize = true;
-            sexTextLabel.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            sexTextLabel.Location = new Point(643, 117);
+            sexTextLabel.Font = new Font("Verdana", 12F, FontStyle.Bold);
+            sexTextLabel.Location = new Point(663, 117);
             sexTextLabel.Name = "sexTextLabel";
-            sexTextLabel.Size = new Size(51, 25);
+            sexTextLabel.Size = new Size(57, 25);
             sexTextLabel.TabIndex = 10;
             sexTextLabel.Text = "Пол";
             // 
@@ -162,10 +163,10 @@
             // activityLevelTextLabel
             // 
             activityLevelTextLabel.AutoSize = true;
-            activityLevelTextLabel.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            activityLevelTextLabel.Font = new Font("Verdana", 12F, FontStyle.Bold);
             activityLevelTextLabel.Location = new Point(262, 192);
             activityLevelTextLabel.Name = "activityLevelTextLabel";
-            activityLevelTextLabel.Size = new Size(221, 25);
+            activityLevelTextLabel.Size = new Size(246, 25);
             activityLevelTextLabel.TabIndex = 11;
             activityLevelTextLabel.Text = "Уровень активности";
             // 
@@ -173,7 +174,7 @@
             // 
             goalLabel.AutoSize = true;
             goalLabel.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            goalLabel.Location = new Point(516, 217);
+            goalLabel.Location = new Point(536, 217);
             goalLabel.Name = "goalLabel";
             goalLabel.Size = new Size(74, 25);
             goalLabel.TabIndex = 14;
@@ -182,10 +183,10 @@
             // goalTextLabel
             // 
             goalTextLabel.AutoSize = true;
-            goalTextLabel.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            goalTextLabel.Location = new Point(516, 192);
+            goalTextLabel.Font = new Font("Verdana", 12F, FontStyle.Bold);
+            goalTextLabel.Location = new Point(536, 192);
             goalTextLabel.Name = "goalTextLabel";
-            goalTextLabel.Size = new Size(62, 25);
+            goalTextLabel.Size = new Size(69, 25);
             goalTextLabel.TabIndex = 13;
             goalTextLabel.Text = "Цель";
             // 
@@ -228,6 +229,21 @@
             panel1.Size = new Size(850, 40);
             panel1.TabIndex = 19;
             // 
+            // editButton
+            // 
+            editButton.BackColor = Color.Gainsboro;
+            editButton.FlatAppearance.BorderSize = 0;
+            editButton.FlatStyle = FlatStyle.Flat;
+            editButton.Font = new Font("Verdana", 10.8F);
+            editButton.Location = new Point(642, 9);
+            editButton.Margin = new Padding(0);
+            editButton.Name = "editButton";
+            editButton.Size = new Size(199, 38);
+            editButton.TabIndex = 20;
+            editButton.Text = "Редактировать";
+            editButton.UseVisualStyleBackColor = false;
+            editButton.Click += editButton_Click;
+            // 
             // Profile
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -235,6 +251,7 @@
             AutoScroll = true;
             BackColor = Color.FloralWhite;
             ClientSize = new Size(850, 600);
+            Controls.Add(editButton);
             Controls.Add(panel1);
             Controls.Add(dietButton);
             Controls.Add(recipeButton);
@@ -282,5 +299,6 @@
         private Button recipeButton;
         private Button dietButton;
         private Panel panel1;
+        private Button editButton;
     }
 }

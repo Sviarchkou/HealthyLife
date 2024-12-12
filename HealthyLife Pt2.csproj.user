@@ -28,9 +28,6 @@
     <Compile Update="FormControls\MyPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="FormControls\MyProgressBar.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="FormControls\MealControls\AdditionContols\RecipeAddition.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -46,7 +43,10 @@
     <Compile Update="Forms\MainPanelForms\DietForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\MainPanelForms\Profile.cs">
+    <Compile Update="Forms\MainPanelForms\ProfileForms\Profile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\MainPanelForms\ProfileForms\ProfileEditingForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\MainPanelForms\RecipeForm.cs">
@@ -80,9 +80,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\MealForms\DescriptionForms\RecipeDescriptionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\MyMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\MealForms\CreationForms\ProductCreationForm.cs">

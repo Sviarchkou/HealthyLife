@@ -2,6 +2,7 @@
 using HealthyLife_Pt2.FormControls;
 using HealthyLife_Pt2.FormControls.MealControls;
 using HealthyLife_Pt2.Forms.MealForms;
+using HealthyLife_Pt2.Forms.MealForms.DescriptionForms;
 using HealthyLife_Pt2.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using System;
@@ -21,6 +22,8 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
         User user;
 
         List<Diet> diets = new List<Diet>();
+        IEnumerable<Diet> filteredDiets = new List<Diet>();
+
         List<DietButton> dietButtons = new List<DietButton>();
         Point startPoint = new Point(45, 110);
         int stepX = 260;
@@ -48,6 +51,11 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
             if (user.role)
                 dietCreationButton.Enabled = true;
 
+            searchPanel1.SearchTextChanged += delegate (object? sender, EventArgs e)
+            {
+                updateList();
+            };
+
             int n = diets.Count / 3 ;
             for (int i = 0; i <= n; i++)
             {
@@ -60,6 +68,41 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
                     //;
                 }
             }
+
+
+        }
+
+        private void filterDiets()
+        {
+            string str = searchPanel1.SearhText;
+            filteredDiets = from d in diets where d.name.ToLower().Contains(str.ToLower()) select d;
+        }
+
+        private async void updateList()
+        {
+            if (searchPanel1.SearhText == "")
+                filteredDiets = diets;
+            else
+                await Task.Run(() => filterDiets());
+
+            for (int i = 0; i < dietButtons.Count; i++)
+            {
+                Controls.Remove(dietButtons[i]);
+            }
+            dietButtons.Clear();
+
+            int n = diets.Count / 3;
+            for (int i = 0; i <= n; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    int index = i * 3 + j;
+                    if (index >= filteredDiets.Count())
+                        return;
+                    createDietButton(filteredDiets.ElementAt(i * 3 + j), new Point(startPoint.X + j * stepX, startPoint.Y + i * stepY));                    
+                }
+            }
+
         }
 
         private void createDietButton(Diet diet, Point location)
@@ -83,8 +126,14 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
                     MessageBox.Show("Что-то пошло не так(");
                     return;
                 }
-                DietDescriptionForm descriptionForm = new DietDescriptionForm(((DietButton)sender).diet);
-                descriptionForm.ShowDialog();
+                DietDescriptionForm descriptionForm = new DietDescriptionForm(((DietButton)sender).diet, user);
+                DialogResult dialogResult = descriptionForm.ShowDialog();
+                if (dialogResult == DialogResult.Yes)
+                {
+                    diets.Remove(((DietButton)sender).diet);
+                    if (searchPanel1.SearhText == "Поиск...")
+                        searchPanel1.SearhText = "";                
+                }
             };
 
             dietButtons.Add(dietButton);

@@ -79,13 +79,13 @@ namespace HealthyLife_Pt2
 
         ///// DCR calculation /////
 
-        public int maleDCR(double weight, int height, int age)
+        private int maleDCR(double weight, int height, int age)
             => (int)(maleFormulaBMR(weight, height, age) * activityLevel);
 
-        public int femaleDCR(double weight, int height, int age)
+        private int femaleDCR(double weight, int height, int age)
             => (int)(femaleFormulaBMR(weight, height, age) * activityLevel);
 
-        public int calcDCR(double weight, int height, int age)
+        private int calcDCR(double weight, int height, int age)
         {
             switch (sex)
             {
@@ -101,6 +101,21 @@ namespace HealthyLife_Pt2
 
 
         ///// Elements calculation /////
+
+        public int caloriesCalc(double weight, int height, int age)
+        {
+            switch (goal)
+            {
+                case Goal.loss:
+                    return (int)(calcDCR(weight, height, age) * LOSS_GOAL_CALORIES_INDEX);
+                case Goal.maintenance:
+                    return (int)(calcDCR(weight, height, age) * MAINTENANCE_GOAL_CALORIES_INDEX);
+                case Goal.gain:
+                    return (int)(calcDCR(weight, height, age) * GAIN_GOAL_CALORIES_INDEX);
+                default:
+                    throw new ArgumentException();
+            }
+        }
 
         public double proteinsCalc(double weight, int height, int age)
         {
@@ -121,11 +136,11 @@ namespace HealthyLife_Pt2
             switch (goal)
             {
                 case Goal.loss:
-                    return (int)(maleDCR(weight, height, age) * LOSS_GOAL_CALORIES_INDEX * LOSS_GOAL_FATS_INDEX / FAT_EIN);
+                    return (int)(calcDCR(weight, height, age) * LOSS_GOAL_CALORIES_INDEX * LOSS_GOAL_FATS_INDEX / FAT_EIN);
                 case Goal.maintenance:
-                    return (int)(maleDCR(weight, height, age) * MAINTENANCE_GOAL_CALORIES_INDEX * MAINTENANCE_GOAL_FATS_INDEX / FAT_EIN);
+                    return (int)(calcDCR(weight, height, age) * MAINTENANCE_GOAL_CALORIES_INDEX * MAINTENANCE_GOAL_FATS_INDEX / FAT_EIN);
                 case Goal.gain:
-                    return (int)(maleDCR(weight, height, age) * GAIN_GOAL_CALORIES_INDEX * GAIN_GOAL_FATS_INDEX / FAT_EIN);
+                    return (int)(calcDCR(weight, height, age) * GAIN_GOAL_CALORIES_INDEX * GAIN_GOAL_FATS_INDEX / FAT_EIN);
                 default:
                     throw new ArgumentException();
             }

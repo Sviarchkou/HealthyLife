@@ -131,7 +131,7 @@ namespace HealthyLife_Pt2.Forms
             if (sender == null)
                 return;
             int i = myPanels.IndexOf((MyPanel)sender);
-            recipe = recipes[i];
+            recipe = filteredRecipes.ElementAt(i);
             //recipeButtons[i].BackColor = Color.YellowGreen;
             this.Close();
         }

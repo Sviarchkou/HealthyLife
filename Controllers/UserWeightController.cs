@@ -39,7 +39,7 @@ namespace HealthyLife_Pt2.Controllers
 
             if (dataTable.Rows.Count == 0)
                 return false;
-            
+            userWeight.id = (int)dataTable.Rows[0][0];
             return true;
         }
 

@@ -1,11 +1,13 @@
 ﻿using HealthyLife_Pt2.Database;
 using HealthyLife_Pt2.Models;
+using HealthyLIfe_Pt2;
 using Npgsql;
 using System.Data;
 using System.Data.Common;
 using System.Diagnostics;
 using System.Linq.Expressions;
 using System.Text;
+using System.Xml.Linq;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -99,6 +101,12 @@ namespace HealthyLife_Pt2.Controllers
             dateOfbirth = user.dateOfBirth.Year + "-" + user.dateOfBirth.Month + "-" + user.dateOfBirth.Day;
             commandHeader.Append(", date_of_birth");
             values.Append($", '{dateOfbirth}'");
+            
+            if (user.photo != null && user.photo != "")
+            {
+                commandHeader.Append(", photo");
+                values.Append($", '{user.photo}'");
+            }
 
             commandHeader.Append(") ");
             values.Append(") RETURNING id;");
@@ -110,7 +118,7 @@ namespace HealthyLife_Pt2.Controllers
             values.Clear();
 
             ElementCalculator calculator = new ElementCalculator(user);
-            int calories = calculator.calcDCR(user.weight, user.height, user.getAge());
+            int calories = calculator.caloriesCalc(user.weight, user.height, user.getAge());
             double proteins = calculator.proteinsCalc(user.weight, user.height, user.getAge());
             double fats = calculator.fatsCalc(user.weight, user.height, user.getAge());
             double carbohydrates = calculator.carohydratesCalc(user.weight, user.height, user.getAge());
@@ -228,6 +236,66 @@ namespace HealthyLife_Pt2.Controllers
             await db.insert(commandHeader.Append(values).ToString());
 
             return user.id;
+        }
+
+        public async Task updateUser(User user, bool loginChanged)
+        {
+
+            StringBuilder commandHeader = new StringBuilder("UPDATE users " +
+                $"SET " +
+                $"sex = '{user.getSexAsString()}', " +
+                $"weight = {doubleToDbString(user.weight)}, " +
+                $"height = {user.height}, " +
+                $"activity = '{user.getActivityAsString()}', " +
+                $"goal = '{user.getGoalAsString()}', " +
+                $"date_of_birth = '{user.dateOfBirth.Year + "-" + user.dateOfBirth.Month + "-" + user.dateOfBirth.Day}'");
+            if (user.photo != null && user.photo != "")
+            {
+                commandHeader.Append($", photo = '{user.photo}'");
+            }
+            if (loginChanged)
+                commandHeader.Append($", username = '{user.username}'");
+            commandHeader.Append($" WHERE id = '{user.id}'");
+
+            DBConnector db = new DBConnector();
+            db.Open();
+            await db.update(commandHeader.ToString());
+            db.Close();
+
+            UserWeight userWeight = new UserWeight();
+            userWeight.weight = user.weight;
+            userWeight.user = user;
+            userWeight.updated_at = DateTime.Now.Date;
+            userWeight.goal = user.weight;
+
+            UserWeightController userWeightController = new UserWeightController();
+
+            if (await userWeightController.alreadyExist(userWeight))
+                await userWeightController.updateUserWeight(userWeight);
+            else
+                await userWeightController.insertUserWeight(userWeight);
+
+            Element element = new Element();
+
+            ElementCalculator calculator = new ElementCalculator(user);
+            element.calories = calculator.caloriesCalc(user.weight, user.height, user.getAge());
+            element.proteins = calculator.proteinsCalc(user.weight, user.height, user.getAge());
+            element.fats = calculator.fatsCalc(user.weight, user.height, user.getAge());
+            element.carbohydrates = calculator.carohydratesCalc(user.weight, user.height, user.getAge());
+
+            Element requiredElement = await selectRequiredElement(user);
+
+            ElementController elementController = new ElementController();
+            if (requiredElement == null)
+            {
+                await elementController.insertElement(element);
+            }
+            else
+            {
+                element.id = requiredElement.id;
+                await elementController.updateElement(element);
+            }
+
         }
 
         /*

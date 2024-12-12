@@ -21,9 +21,10 @@ CREATE TABLE user_weight
 (
     id         serial PRIMARY KEY         NOT NULL UNIQUE,
     user_id    uuid REFERENCES users (id) NOT NULL,
-    updated_at date                       NOT NULL UNIQUE,
+    updated_at date                       NOT NULL,
     weight     real                       NOT NULL,
-    goal       real
+    goal       real,
+    UNIQUE (user_id, updated_at)
 );
 
 CREATE TABLE elements

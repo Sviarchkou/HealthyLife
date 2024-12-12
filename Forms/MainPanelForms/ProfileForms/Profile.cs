@@ -1,22 +1,12 @@
 ﻿using HealthyLife_Pt2.Controllers;
 using HealthyLife_Pt2.FormControls.MealControls;
-using HealthyLife_Pt2.FormControls;
 using HealthyLife_Pt2.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using HealthyLife_Pt2.Forms.MealForms.DescriptionForms;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using HealthyLife_Pt2.Forms.MealForms;
 using HealthyLIfe_Pt2;
+using HealthyLife_Pt2.Forms.MainPanelForms.Profile;
 
-namespace HealthyLife_Pt2.Forms.MainPanelForms
+namespace HealthyLife_Pt2.Forms.MainPanelForms.ProfileForms
 {
     public partial class Profile : Form
     {
@@ -44,11 +34,11 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
         {
             loginLabel.Text = user.username;
             ageLabel.Text = user.getAge().ToString();
-            currentWeightLabel.Text = (Math.Round(user.weight*10)/10).ToString();
+            currentWeightLabel.Text = (Math.Round(user.weight * 10) / 10).ToString();
             heightLabel.Text = user.height.ToString();
-            sexLabel.Text = user.getSexAsString();
-            activityLevelLabel.Text = user.getActivityAsString();
-            goalLabel.Text = user.getGoalAsString();
+            sexLabel.Text = user.getSexAsStringRu();
+            activityLevelLabel.Text = user.getActivityAsStringRu();
+            goalLabel.Text = user.getGoalAsStringRu();
             if (user.photo != null && user.photo != "")
                 pictureBox.Image = MyImageConverter.converFromStringBytes(user.photo);
 
@@ -100,7 +90,14 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
                 if (sender == null)
                     return;
                 RecipeDescriptionForm recipeDescriptionForm = new RecipeDescriptionForm(((RecipeFormButton)sender).recipe);
-                recipeDescriptionForm.ShowDialog();
+                DialogResult dialogResult = recipeDescriptionForm.ShowDialog();
+                if (dialogResult == DialogResult.Yes)
+                {
+                    recipes.Remove(((RecipeFormButton)sender).recipe);
+                    recipeFormButtons.Clear();
+                    fillRecipeList();
+                }
+
             };
 
             Controls.Add(recipeFormButton);
@@ -144,8 +141,15 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
                     MessageBox.Show("Что-то пошло не так(");
                     return;
                 }
-                DietDescriptionForm descriptionForm = new DietDescriptionForm(((DietButton)sender).diet);
-                descriptionForm.ShowDialog();
+                DietDescriptionForm descriptionForm = new DietDescriptionForm(((DietButton)sender).diet, user);
+                DialogResult dialogResult = descriptionForm.ShowDialog();
+                if (dialogResult == DialogResult.Yes)
+                {
+                    diets.Remove(((DietButton)sender).diet);
+                    dietButtons.Clear();
+                    fillDietList();
+                }
+
             };
 
             dietButtons.Add(dietButton);
@@ -162,7 +166,7 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
             foreach (RecipeFormButton recipeFormButton in recipeFormButtons)
             {
                 recipeFormButton.Visible = true;
-            }            
+            }
         }
 
         private void dietButton_Click(object sender, EventArgs e)
@@ -175,6 +179,13 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
             {
                 dietButton.Visible = true;
             }
+        }
+
+        private void editButton_Click(object sender, EventArgs e)
+        {
+            ProfileEditingForm profileEditingForm = new ProfileEditingForm(user);
+            profileEditingForm.ShowDialog();
+            fillForm();
         }
     }
 }

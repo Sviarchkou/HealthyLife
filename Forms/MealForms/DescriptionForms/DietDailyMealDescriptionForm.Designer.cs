@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             dayLabel = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
+            breakfastLabel = new Label();
+            lunchLabel = new Label();
+            dinnerLabel = new Label();
+            extraFoodLabel = new Label();
             SuspendLayout();
             // 
             // dayLabel
@@ -45,45 +45,45 @@
             dayLabel.TabIndex = 0;
             dayLabel.Text = "День №1";
             // 
-            // label2
+            // breakfastLabel
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label2.Location = new Point(124, 40);
-            label2.Name = "label2";
-            label2.Size = new Size(94, 25);
-            label2.TabIndex = 1;
-            label2.Text = "Завтрак";
+            breakfastLabel.AutoSize = true;
+            breakfastLabel.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            breakfastLabel.Location = new Point(124, 40);
+            breakfastLabel.Name = "breakfastLabel";
+            breakfastLabel.Size = new Size(94, 25);
+            breakfastLabel.TabIndex = 1;
+            breakfastLabel.Text = "Завтрак";
             // 
-            // label3
+            // lunchLabel
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label3.Location = new Point(467, 40);
-            label3.Name = "label3";
-            label3.Size = new Size(64, 25);
-            label3.TabIndex = 2;
-            label3.Text = "Обед";
+            lunchLabel.AutoSize = true;
+            lunchLabel.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            lunchLabel.Location = new Point(467, 40);
+            lunchLabel.Name = "lunchLabel";
+            lunchLabel.Size = new Size(64, 25);
+            lunchLabel.TabIndex = 2;
+            lunchLabel.Text = "Обед";
             // 
-            // label4
+            // dinnerLabel
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label4.Location = new Point(792, 40);
-            label4.Name = "label4";
-            label4.Size = new Size(66, 25);
-            label4.TabIndex = 3;
-            label4.Text = "Ужин";
+            dinnerLabel.AutoSize = true;
+            dinnerLabel.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dinnerLabel.Location = new Point(792, 40);
+            dinnerLabel.Name = "dinnerLabel";
+            dinnerLabel.Size = new Size(66, 25);
+            dinnerLabel.TabIndex = 3;
+            dinnerLabel.Text = "Ужин";
             // 
-            // label5
+            // extraFoodLabel
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label5.Location = new Point(20, 405);
-            label5.Name = "label5";
-            label5.Size = new Size(123, 25);
-            label5.TabIndex = 4;
-            label5.Text = "Перекусы:";
+            extraFoodLabel.AutoSize = true;
+            extraFoodLabel.Font = new Font("Verdana", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            extraFoodLabel.Location = new Point(20, 405);
+            extraFoodLabel.Name = "extraFoodLabel";
+            extraFoodLabel.Size = new Size(123, 25);
+            extraFoodLabel.TabIndex = 4;
+            extraFoodLabel.Text = "Перекусы:";
             // 
             // DietDailyMealDescriptionForm
             // 
@@ -92,10 +92,10 @@
             AutoSize = true;
             BackColor = Color.White;
             ClientSize = new Size(1005, 550);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
+            Controls.Add(extraFoodLabel);
+            Controls.Add(dinnerLabel);
+            Controls.Add(lunchLabel);
+            Controls.Add(breakfastLabel);
             Controls.Add(dayLabel);
             FormBorderStyle = FormBorderStyle.None;
             MaximumSize = new Size(1005, 99999);
@@ -108,9 +108,9 @@
         #endregion
 
         private Label dayLabel;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
+        private Label breakfastLabel;
+        private Label lunchLabel;
+        private Label dinnerLabel;
+        private Label extraFoodLabel;
     }
 }

@@ -1,6 +1,5 @@
 ﻿using HealthyLife_Pt2.Database;
 using HealthyLife_Pt2.Models;
-using Microsoft.VisualBasic.ApplicationServices;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -106,18 +105,26 @@ namespace HealthyLife_Pt2.Controllers
             foreach(Meal meal in diet.meals)
             {
                 await db.insert($"INSERT INTO diet_has_meals (meal_id, diet_id) VALUES ({meal.id}, {diet.id});");
-            }
-            
+            }            
+
             db.Close();
 
             return diet.id;
+        }
+
+        public async Task insertUserDiet(User user, Diet diet)
+        {
+            DBConnector db = new DBConnector();
+            db.Open();
+            await db.insert($"INSERT INTO user_has_diet (diet_id, user_id) VALUES ({diet.id}, '{user.id}');");
+            db.Close();
         }
 
         public async Task<bool> isUnreleted(Diet diet)
         {
             DBConnector db = new DBConnector();
             db.Open();
-            DataTable dataTable = await db.select($"SELECT * FROM user_has_diets WHERE diet_id = '{diet.id}'");
+            DataTable dataTable = await db.select($"SELECT * FROM user_has_diet WHERE diet_id = '{diet.id}'");
             db.Close();
             if (dataTable.Rows.Count > 0)
             {
@@ -136,12 +143,15 @@ namespace HealthyLife_Pt2.Controllers
 
             MealController mealController = new MealController();
             List<Meal> meals = await mealController.selectFromDietHasMeals(diet.id.ToString());
+
+            db.Open();
             await db.remove($"DELETE FROM diet_has_meals WHERE diet_id = '{diet.id}'");
             foreach (Meal meal in meals)
             {
                 await mealController.deleteMeal(meal);
             }
 
+            db.Open();
             await db.remove($"DELETE FROM diets WHERE id = '{diet.id}'");
 
             db.Close();

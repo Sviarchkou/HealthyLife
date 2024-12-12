@@ -3,13 +3,18 @@ using HealthyLife_Pt2.Database;
 using HealthyLife_Pt2.Forms;
 using HealthyLife_Pt2.Models;
 using HealthyLIfe_Pt2.Forms;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Npgsql;
+using System;
 using System.Data;
 using System.Drawing.Imaging;
 using System.Resources;
 using System.Text;
 using System.Text.Json;
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Xml;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace HealthyLife_Pt2
 {
@@ -20,13 +25,12 @@ namespace HealthyLife_Pt2
         //static async Task Main(string[] args)
         static void Main(string[] args)
         {
-
+            
             Application.EnableVisualStyles();
             ApplicationConfiguration.Initialize();
             Application.Run(new WellcomeScrin()); ;
-
-
-
+            
+            
             /*
             StringBuilder commandHeader = new StringBuilder("INSERT INTO user_weight (user_id, updated_at, weight, goal) ");
             StringBuilder values = new StringBuilder($"VALUES (" +
@@ -287,7 +291,9 @@ namespace HealthyLife_Pt2
             
             
             */
+
             /*
+            
             string str = "Host=localhost;Port=5432;Database=healthylife;Username=healthylife;Password=healthylife";
             NpgsqlConnection npgsqlConnection = new NpgsqlConnection(str);
             npgsqlConnection.Open();
@@ -296,21 +302,31 @@ namespace HealthyLife_Pt2
 
             command.Connection = npgsqlConnection;
             command.CommandType = CommandType.Text;
-            command.CommandText = 
-                "ALTER TABLE extra_food " +
-                "DROP COLUMN id";
+            command.CommandText =
+            "DROP TABLE user_weight;" +
+            "\n" +
+            "CREATE TABLE user_weight (" +
+            "id         serial PRIMARY KEY         NOT NULL UNIQUE, "+
+            "user_id    uuid REFERENCES users(id) NOT NULL, " +
+            "updated_at date                       NOT NULL," +
+            "weight     real                       NOT NULL, "+
+            "goal       real," +
+            "UNIQUE(user_id, updated_at)"+
+            ");";
 
+  
             command.ExecuteNonQuery();
 
             command.Dispose();
-            
+
             */
+
             /*
+            
+            
         var dbContext = new MyDbContext();
         string migrationScript = File.ReadAllText("path/to/migration.sql");
         dbContext.RunMigrationScript(migrationScript);
-            
-
 
             string str = "Host=localhost;Port=5432;Database=healthylife;Username=healthylife;Password=healthylife";
             Npgsql.NpgsqlConnection npgsqlConnection = new Npgsql.NpgsqlConnection(str);

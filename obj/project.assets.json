@@ -822,10 +822,6 @@
       "outputPath": "D:\\БГУИР\\2-й курс\\КПО\\Курсач\\HealthyLife Pt2\\HealthyLIfe Pt2\\obj\\",
       "projectStyle": "PackageReference",
       "UsingMicrosoftNETSdk": false,
-      "configFilePaths": [
-        "C:\\Users\\Evgeniy\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-      ],
       "originalTargetFrameworks": [
         "net8.0-windows"
       ],

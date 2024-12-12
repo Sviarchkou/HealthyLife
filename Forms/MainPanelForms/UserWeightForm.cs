@@ -119,7 +119,7 @@ namespace HealthyLife_Pt2.Forms.MealForms
             int min = 200;
             foreach (UserWeight userWeight in userWeights)
             {
-                if (userWeight.updated_at < startDate)
+                if (userWeight.updated_at < startDate && userWeightsForChart.Count > 0)
                 {
                     if (userWeightsForChart.Last().date != startDate)
                         userWeightsForChart.Add(new UserWeightChartData(startDate, userWeightsForChart.Last().weight));
@@ -131,7 +131,7 @@ namespace HealthyLife_Pt2.Forms.MealForms
                 if (userWeight.weight < min)
                     min = (int)userWeight.weight;
             }
-            if (userWeightsForChart.Last().date != startDate)
+            if (userWeightsForChart.Count > 0 && userWeightsForChart.Last().date != startDate)
             {
                 userWeightsForChart.Add(new UserWeightChartData(userWeightsForChart.Last().date.AddDays(-1), 0));
                 userWeightsForChart.Add(new UserWeightChartData(startDate, 0));
@@ -149,7 +149,7 @@ namespace HealthyLife_Pt2.Forms.MealForms
             int min = 5000;
             foreach (DailyElement dailyElement in dailyElements)
             {
-                if (dailyElement.date < startDate)
+                if (dailyElement.date < startDate && dailyElementsForChart.Count > 0)
                 {
                     if (dailyElementsForChart.Last().date != startDate)
                         dailyElementsForChart.Add(new DailyElementChartData(startDate, dailyElementsForChart.Last().calories));
@@ -161,7 +161,7 @@ namespace HealthyLife_Pt2.Forms.MealForms
                 if (dailyElement.element.calories < min)
                     min = (int)dailyElement.element.calories;
             }
-            if (dailyElementsForChart.Last().date != startDate)
+            if (dailyElementsForChart.Count > 0 && dailyElementsForChart.Last().date != startDate)
             {
                 dailyElementsForChart.Add(new DailyElementChartData(dailyElementsForChart.Last().date.AddDays(-1), 0));
                 dailyElementsForChart.Add(new DailyElementChartData(startDate, 0));
@@ -226,27 +226,31 @@ namespace HealthyLife_Pt2.Forms.MealForms
             selectedButton.BackColor = Color.FromArgb(220, 255, 192);
             selectedButton = AllTimeButton;
             selectedButton.BackColor = Color.GreenYellow;
-
-            /// WeightChart ///
-
-            userWeightsForChart.Clear();
             int max = 0;
             int min = 200;
-            foreach (UserWeight userWeight in userWeights)
+
+            /// WeightChart ///
+            if (userWeights.Count != 0)
             {
-                userWeightsForChart.Add(new UserWeightChartData(userWeight.updated_at, userWeight.weight));
-                if (userWeight.weight > max)
-                    max = (int)userWeight.weight;
-                if (userWeight.weight < min)
-                    min = (int)userWeight.weight;
+                userWeightsForChart.Clear();
+                
+                foreach (UserWeight userWeight in userWeights)
+                {
+                    userWeightsForChart.Add(new UserWeightChartData(userWeight.updated_at, userWeight.weight));
+                    if (userWeight.weight > max)
+                        max = (int)userWeight.weight;
+                    if (userWeight.weight < min)
+                        min = (int)userWeight.weight;
+                }
+                weightChart.ChartAreas[0].AxisY.Minimum = min - 20;
+                weightChart.ChartAreas[0].AxisY.Maximum = max + 20;
+                weightChart.ChartAreas[0].AxisX.Interval = (userWeightsForChart.First().date - userWeightsForChart.Last().date).Days / 5 + 1;
+                weightChart.DataBind();
             }
-            weightChart.ChartAreas[0].AxisY.Minimum = min - 20;
-            weightChart.ChartAreas[0].AxisY.Maximum = max + 20;
-            weightChart.ChartAreas[0].AxisX.Interval = (userWeightsForChart.First().date - userWeightsForChart.Last().date).Days / 5 + 1;
-            weightChart.DataBind();
 
             /// ElemetChart ///
-
+            if (dailyElements.Count == 0)
+                return;
             dailyElementsForChart.Clear();
             max = 0;
             min = 5000;

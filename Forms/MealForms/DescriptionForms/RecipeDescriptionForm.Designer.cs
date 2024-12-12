@@ -358,9 +358,9 @@
             deleteButton.FlatAppearance.BorderSize = 0;
             deleteButton.FlatStyle = FlatStyle.Flat;
             deleteButton.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            deleteButton.Location = new Point(314, 0);
+            deleteButton.Location = new Point(328, 9);
             deleteButton.Name = "deleteButton";
-            deleteButton.Size = new Size(149, 40);
+            deleteButton.Size = new Size(149, 28);
             deleteButton.TabIndex = 0;
             deleteButton.Text = "УДАЛИТЬ";
             deleteButton.UseVisualStyleBackColor = false;

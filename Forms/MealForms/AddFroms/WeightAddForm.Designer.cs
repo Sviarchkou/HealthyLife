@@ -81,7 +81,6 @@
             weightTextBox.Size = new Size(40, 21);
             weightTextBox.TabIndex = 90;
             weightTextBox.TabStop = false;
-            weightTextBox.Text = "123";
             weightTextBox.TextAlign = HorizontalAlignment.Center;
             // 
             // myPanel7

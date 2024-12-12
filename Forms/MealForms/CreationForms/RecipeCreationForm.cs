@@ -106,13 +106,16 @@ namespace HealthyLIfe_Pt2.Forms
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Image? image;
-            recipe.photo = MyImageConverter.chooseImage(out image);
+            try
+            {
+                Image? image;
+                recipe.photo = MyImageConverter.chooseImage(out image);
 
-            if (image == null)
-                return;
+                if (image == null)
+                    return;
 
-            pictureBox1.Image = image;
+                pictureBox1.Image = image;
+            } catch(Exception ex) { MessageBox.Show("Не получилось добавить фото("); }
         }
 
         private bool updateElements()

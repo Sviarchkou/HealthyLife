@@ -14,7 +14,6 @@ namespace HealthyLife_Pt2.Forms.MealForms.AddFroms
 {
     public partial class WeightAddForm : Form
     {
-
         public UserWeight userWeight { get; private set; } = new UserWeight();
         public bool updated { get; private set; } = false;
         public bool setted { get; private set; } = false;
@@ -22,8 +21,11 @@ namespace HealthyLife_Pt2.Forms.MealForms.AddFroms
         {
             InitializeComponent();            
             addButton.Text = "Добавить";
-
+            
             userWeight.user = user;
+            dateTimePicker.MaxDate = DateTime.Now.Date;
+            dateTimePicker.MinDate = DateTime.Now.Date.AddYears(-1);
+            dateTimePicker.Value = DateTime.Now.Date;
         }
 
         private async void addButton_Click(object sender, EventArgs e)
@@ -54,6 +56,14 @@ namespace HealthyLife_Pt2.Forms.MealForms.AddFroms
             }
 
             setted = true;
+
+            if (dateTimePicker.Value.Date.Equals(DateTime.Now.Date))
+            {
+                userWeight.user.weight = weight;
+                UserController userController = new UserController();
+                await userController.update($"UPDATE users SET weight = '{weight}' WHERE id = '{userWeight.user.id}'");                
+            }
+
             MessageBox.Show("Запись добавлена");
 
             this.Close();

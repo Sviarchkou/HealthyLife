@@ -52,10 +52,8 @@ D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\
 D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.CircularProgressBar.resources
 D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe_Pt2.FormControls.IngredientAddition.resources
 D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.MyPanel.resources
-D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.FormControls.MyProgressBar.resources
 D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.Authorization.resources
 D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealAddForm.resources
-D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe_Pt2.Forms.MyMessageBox.resources
 D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe_Pt2.Forms.ProductCreationForm.resources
 D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLIfe_Pt2.Forms.RecipeCreationForm.resources
 D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Controllers.ActivityLevelForm.resources
@@ -119,4 +117,5 @@ D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\
 D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealForms.DescriptionForms.ExtraFoodDescriptionForm.resources
 D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealForms.AddFroms.WeightAddForm.resources
 D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MealForms.DescriptionForms.DietDailyMealDescriptionForm.resources
-D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MainPanelForms.Profile.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MainPanelForms.Profile.ProfileEditingForm.resources
+D:\БГУИР\2-й курс\КПО\Курсач\HealthyLife Pt2\HealthyLIfe Pt2\obj\Debug\net8.0-windows\HealthyLife_Pt2.Forms.MainPanelForms.ProfileForms.Profile.resources

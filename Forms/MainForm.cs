@@ -1,5 +1,6 @@
 ﻿using HealthyLife_Pt2.FormControls;
 using HealthyLife_Pt2.Forms.MainPanelForms;
+using HealthyLife_Pt2.Forms.MainPanelForms.ProfileForms;
 using HealthyLife_Pt2.Forms.MealForms;
 using HealthyLife_Pt2.Models;
 using System;
@@ -18,10 +19,13 @@ namespace HealthyLife_Pt2.Forms
     {
         User user;
 
-        DailyCounter dailyCounter;
-        DietForm dietForm;
-        RecipeForm recipeForm;
-        UserWeightForm userWeightForm;
+        DailyCounter dailyCounter;        
+
+        Button currentButton = new Button();
+        Color activeColor = Color.DarkViolet;
+        Color defautltColor = Color.FromArgb(43, 31, 46);
+        Color tempColor = Color.FromArgb(43, 31, 46);
+
         public MainForm(User user)
         {
             InitializeComponent();
@@ -59,47 +63,55 @@ namespace HealthyLife_Pt2.Forms
 
         private void button_MouseEnter(object sender, EventArgs e)
         {
+            tempColor = ((Button)sender).BackColor;
             ((Button)sender).BackColor = Color.Coral;
         }
 
         private void button_MouseLeave(object sender, EventArgs e)
         {
-            ((Button)sender).BackColor = Color.DarkViolet;
+            ((Button)sender).BackColor = tempColor;
+        }
+
+        private void setCurrentButton(Button button)
+        {
+            currentButton.BackColor = defautltColor;
+            currentButton = button;
+            currentButton.BackColor = activeColor;
+            tempColor = activeColor;
         }
 
         private void counterButton_Click(object sender, EventArgs e)
         {
-            if (dailyCounter == null)
-                dailyCounter = new DailyCounter(user);
+            setCurrentButton((Button)sender);
+            dailyCounter = new DailyCounter(user);
             setForm(dailyCounter);
-            //((Button)sender).MouseLeave -= button_MouseLeave;
 
         }
 
         private void dietMenuButton_Click(object sender, EventArgs e)
         {
-            if (dietForm == null)
-                dietForm = new DietForm(user);
+            setCurrentButton((Button)sender);
+            DietForm dietForm = new DietForm(user);
             setForm(dietForm);
-            //((Button)sender).MouseLeave -= button_MouseLeave;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void recipeButton_Click(object sender, EventArgs e)
         {
-            if (recipeForm == null)
-                recipeForm = new RecipeForm(user);
+            setCurrentButton((Button)sender);
+            RecipeForm recipeForm = new RecipeForm(user);
             setForm(recipeForm);
         }
 
         private void userWeightButton_Click(object sender, EventArgs e)
         {
-            if (userWeightForm == null)
-                userWeightForm = new UserWeightForm(user);
+            setCurrentButton((Button)sender);
+            UserWeightForm userWeightForm = new UserWeightForm(user);
             setForm(userWeightForm);
         }
 
         private void profileButton_Click(object sender, EventArgs e)
         {
+            setCurrentButton((Button)sender);
             Profile profile = new Profile(user);
             setForm(profile);
         }

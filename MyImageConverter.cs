@@ -12,26 +12,23 @@ namespace HealthyLIfe_Pt2
         {
             
             StringBuilder sb = new StringBuilder();
-            try
+            using (var dialog = new OpenFileDialog())
             {
-                using (var dialog = new OpenFileDialog())
+                dialog.Filter = "Image files (*.jpeg, *.png, *.jpg) | *.jpeg; *.png; *.jpg";
+                if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    dialog.Filter = "Image files (*.jpeg, *.png, *.jpg) | *.jpeg; *.png; *.jpg";
-                    if (dialog.ShowDialog() == DialogResult.OK)
-                    {
-                        image = Image.FromFile(dialog.FileName);
-                        byte[] image_bytes = File.ReadAllBytes(dialog.FileName);
+                    image = Image.FromFile(dialog.FileName);
+                    byte[] image_bytes = File.ReadAllBytes(dialog.FileName);
 
-                        foreach (byte b in image_bytes)
-                        {
-                            sb.Append(b + ",");
-                        }
+                    foreach (byte b in image_bytes)
+                    {
+                        sb.Append(b + ",");
                     }
-                    else
-                        image = null;
                 }
+                else
+                    image = null;
             }
-            catch (Exception ex) {}
+
             image = null;
             return sb.ToString();
         }

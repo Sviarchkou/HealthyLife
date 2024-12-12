@@ -75,7 +75,6 @@
             descriptionTextBox.Size = new Size(345, 214);
             descriptionTextBox.TabIndex = 93;
             descriptionTextBox.TabStop = false;
-            descriptionTextBox.Text = "Поиск";
             // 
             // myPanel6
             // 
@@ -108,7 +107,6 @@
             nameTextBox.Size = new Size(340, 23);
             nameTextBox.TabIndex = 90;
             nameTextBox.TabStop = false;
-            nameTextBox.Text = "Поиск";
             // 
             // myPanel2
             // 
@@ -133,13 +131,14 @@
             // 
             // listBox1
             // 
+            listBox1.BackColor = Color.White;
             listBox1.Font = new Font("Verdana", 11F);
             listBox1.FormattingEnabled = true;
             listBox1.ItemHeight = 22;
             listBox1.Items.AddRange(new object[] { "Похудение", "Поддержание веса", "Набор массы" });
             listBox1.Location = new Point(185, 445);
             listBox1.Name = "listBox1";
-            listBox1.Size = new Size(244, 26);
+            listBox1.Size = new Size(222, 70);
             listBox1.TabIndex = 102;
             // 
             // label2

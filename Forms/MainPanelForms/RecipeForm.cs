@@ -155,9 +155,6 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
                     recipes.Remove(((RecipeFormButton)sender).recipe);
                     if (searchPanel1.SearhText == "Поиск...")
                         searchPanel1.SearhText = "";                    
-                    updateList();
-                    searchPanel1.SearhText = "Поиск...";
-
                 }
             };
            

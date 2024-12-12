@@ -49,6 +49,12 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
             createRecipeFormButton(meal.lunch, new Point(startPoint.X + stepRecipeX, startPoint.Y));
             createRecipeFormButton(meal.dinner, new Point(startPoint.X + 2 * stepRecipeX, startPoint.Y));
 
+            if (meal.extraFood.Count == 0)
+            {
+                extraFoodLabel.Text = "Перекусов нет";
+                return;
+            }
+
             for (int i = 0; i < meal.extraFood.Count;  i++)
             {
                 if (i % 2 == 0)

@@ -4,21 +4,21 @@ using System.Collections.Generic;
 namespace HealthyLife_Pt2.Models;
 public enum Sex
 {
-    male,
-    female,
-    other
+    male = 0,
+    female = 1,
+    other = 2
 }
 public enum Goal
 {
-    loss,
-    maintenance,
-    gain
+    loss = 0,
+    maintenance = 1,
+    gain = 2
 }
 public enum Activity
 {
-    low,
-    medium,
-    high
+    low = 0,
+    medium = 1,
+    high = 2
 }
 
 public class User
@@ -39,6 +39,20 @@ public class User
                 return "female";
             case Sex.other:
                 return "other";
+            default:
+                return "";
+        }
+    }
+    public string getSexAsStringRu()
+    {
+        switch (sex)
+        {
+            case Sex.male:
+                return "Мужской";
+            case Sex.female:
+                return "Женский";
+            case Sex.other:
+                return "Другое";
             default:
                 return "";
         }
@@ -79,6 +93,20 @@ public class User
                 return "";
         }
     }
+    public string getActivityAsStringRu()
+    {
+        switch (activity)
+        {
+            case Activity.low:
+                return "Низкий";
+            case Activity.medium:
+                return "Средний";
+            case Activity.high:
+                return "Высокий";
+            default:
+                return "";
+        }
+    }
     public void setActivityAsString(string str)
     {
         switch (str)
@@ -98,7 +126,6 @@ public class User
         }
     }
     
-    
     public Goal goal { get; set; }
     public string getGoalAsString()
     {
@@ -110,6 +137,20 @@ public class User
                 return "maintenance";
             case Goal.gain:
                 return "gain";
+            default:
+                return "";
+        }
+    }
+    public string getGoalAsStringRu()
+    {
+        switch (goal)
+        {
+            case Goal.loss:
+                return "Похудение";
+            case Goal.maintenance:
+                return "Поддержание веса";
+            case Goal.gain:
+                return "Набор массы";
             default:
                 return "";
         }

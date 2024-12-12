@@ -72,6 +72,16 @@ namespace HealthyLife_Pt2.Forms
         private async void register_Click(object sender, EventArgs e)
         {
             UserController userController = new UserController();
+            if (login.Text.Length == 0)
+            {
+                MessageBox.Show("логин не может быть путсым");
+                return;
+            }
+            if (login.Text.Length > 20)
+            {
+                MessageBox.Show("Слишком длинный логин");
+                return;
+            }
             if (await userController.findByUsername(login.Text) != null)
             {
                 MessageBox.Show("Такой логин уже существует");

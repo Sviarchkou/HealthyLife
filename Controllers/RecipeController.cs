@@ -190,16 +190,18 @@ namespace HealthyLife_Pt2.Controllers
 
         public async Task<bool> isUnreleted(Recipe recipe)
         {
-
+            
             DBConnector db = new DBConnector();
+            DataTable dataTable;
+            /*
             db.Open();
-            DataTable dataTable = await db.select($"SELECT * FROM user_has_recipes WHERE recipe_id = '{recipe.id}'");
+            dataTable = await db.select($"SELECT * FROM user_has_recipes WHERE recipe_id = '{recipe.id}'");
             db.Close();
             if (dataTable.Rows.Count > 0)
             {
                 return false;
             }
-           
+            */
             db.Open();
             dataTable = await db.select($"SELECT * FROM diet_has_meals");
             db.Close();

@@ -235,7 +235,7 @@
             lunchDiscription.Location = new Point(438, 239);
             lunchDiscription.MaximumSize = new Size(250, 20);
             lunchDiscription.Name = "lunchDiscription";
-            lunchDiscription.Size = new Size(238, 20);
+            lunchDiscription.Size = new Size(250, 20);
             lunchDiscription.TabIndex = 24;
             lunchDiscription.Text = "Рекомендуется 470 ккал . .  . .";
             // 
@@ -359,7 +359,7 @@
             extrafoodDiscription.Location = new Point(438, 522);
             extrafoodDiscription.MaximumSize = new Size(250, 20);
             extrafoodDiscription.Name = "extrafoodDiscription";
-            extrafoodDiscription.Size = new Size(238, 20);
+            extrafoodDiscription.Size = new Size(250, 20);
             extrafoodDiscription.TabIndex = 34;
             extrafoodDiscription.Text = "Рекомендуется 470 ккал . .  . .";
             // 
@@ -445,7 +445,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FloralWhite;
+            BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(850, 600);
             Controls.Add(caloriesValueLabel);

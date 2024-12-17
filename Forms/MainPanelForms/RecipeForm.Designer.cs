@@ -70,7 +70,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            BackColor = Color.FloralWhite;
+            BackColor = Color.White;
             ClientSize = new Size(850, 600);
             Controls.Add(panel1);
             Controls.Add(searchPanel1);

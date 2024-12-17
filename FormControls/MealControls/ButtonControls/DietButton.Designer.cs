@@ -32,6 +32,7 @@
             pictureBox = new PictureBox();
             name = new Label();
             description = new Label();
+            caloriesLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             SuspendLayout();
             // 
@@ -53,7 +54,7 @@
             // 
             // pictureBox
             // 
-            pictureBox.BackColor = Color.FromArgb(128, 64, 0);
+            pictureBox.BackColor = Color.SaddleBrown;
             pictureBox.Image = Properties.Resources.Backgound;
             pictureBox.Location = new Point(0, 0);
             pictureBox.Margin = new Padding(5);
@@ -83,21 +84,35 @@
             // description
             // 
             description.BackColor = Color.Gainsboro;
-            description.Font = new Font("Verdana", 10.8F);
+            description.Font = new Font("Verdana", 9.8F);
             description.Location = new Point(12, 176);
             description.Name = "description";
-            description.Size = new Size(203, 22);
+            description.Size = new Size(220, 22);
             description.TabIndex = 30;
-            description.Text = "Description";
+            description.Text = "Для поддержания веса";
             description.Click += dietButtonClicked;
             description.MouseEnter += dietButtonMouseEnter;
             description.MouseLeave += dietButtonMouseLeave;
+            // 
+            // caloriesLabel
+            // 
+            caloriesLabel.BackColor = Color.SaddleBrown;
+            caloriesLabel.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            caloriesLabel.ForeColor = Color.White;
+            caloriesLabel.Location = new Point(62, 0);
+            caloriesLabel.Margin = new Padding(0, 0, 0, 0);
+            caloriesLabel.Name = "caloriesLabel";
+            caloriesLabel.Size = new Size(110, 25);
+            caloriesLabel.TabIndex = 31;
+            caloriesLabel.Text = "3000 ккал";
+            caloriesLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // DietButton
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
+            Controls.Add(caloriesLabel);
             Controls.Add(description);
             Controls.Add(name);
             Controls.Add(pictureBox);
@@ -114,5 +129,6 @@
         private PictureBox pictureBox;
         private Label name;
         private Label description;
+        private Label caloriesLabel;
     }
 }

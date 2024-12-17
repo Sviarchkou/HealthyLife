@@ -16,6 +16,7 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
 {
     public partial class DietDailyMealDescriptionForm : Form
     {
+        User user;
         Meal meal;
         Recipe emptyRecipe = new Recipe();        
 
@@ -31,10 +32,11 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
             set => this.dayLabel.Text = value;
         }
 
-        public DietDailyMealDescriptionForm(Meal meal)
+        public DietDailyMealDescriptionForm(Meal meal, User user)
         {
             InitializeComponent();
 
+            this.user = user;
             this.meal = meal;
 
             emptyRecipe.name = "Нет рецепта для этого приёма пищи";
@@ -83,7 +85,7 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
                 recipeFormButton.RecipeFormButtonClicked += delegate (object? sender, EventArgs e)
                 {
                     if (sender == null) return;
-                    RecipeDescriptionForm recipeDescriptionForm = new RecipeDescriptionForm(((RecipeFormButton)sender).recipe);
+                    RecipeDescriptionForm recipeDescriptionForm = new RecipeDescriptionForm(((RecipeFormButton)sender).recipe, user);
                     recipeDescriptionForm.deleteButton.Dispose();
                     recipeDescriptionForm.ShowDialog();
                 };

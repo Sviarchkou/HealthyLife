@@ -1,6 +1,7 @@
 ﻿using HealthyLife_Pt2.Controllers;
 using HealthyLife_Pt2.FormControls.MealControls;
 using HealthyLife_Pt2.Models;
+using HealthyLife_Pt2.Properties;
 using HealthyLIfe_Pt2;
 using System;
 using System.Collections.Generic;
@@ -17,15 +18,21 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
     public partial class RecipeDescriptionForm : Form
     {
         Recipe recipe;
+        User user;
 
         Point startPoint = new Point(30, 370);
         int stepX = 360;
         int stepY = 100;
 
-        public RecipeDescriptionForm(Recipe recipe)
+        Image notSelectedImage = Resources.saveNotSelected;
+        Image selectedImage = Resources.saveSelected;
+        bool selected = false;
+
+        public RecipeDescriptionForm(Recipe recipe, User user)
         {
             InitializeComponent();
             this.recipe = recipe;
+            this.user = user;
             fillControl();
 
             if (recipe.verified)
@@ -37,6 +44,7 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
             toolTip.SetToolTip(this.mineralsInfo, mineralsInfo.Text);
 
             this.DialogResult = DialogResult.No;
+            this.user = user;
         }
 
         private void fillControl()
@@ -76,7 +84,15 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
             else
                 description.Text = "Для этого рецепта не нашлось описания (";
 
-
+            foreach (Recipe r in user.recipes)
+            {
+                if (r.Equals(recipe))
+                {
+                    pictureBox2.Image = selectedImage;
+                    selected = true;
+                    break;
+                }
+            }
         }
 
         private void createProductButton(Ingredient ingredient, Point location)
@@ -113,6 +129,23 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
                     MessageBox.Show("Не получилось удалить этот рецепт(");
                 }
             }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            if (!selected)
+            {
+                pictureBox2.Image = selectedImage;
+                user.recipes.Add(recipe);
+                selected = true;
+            }
+            else
+            {
+                pictureBox2.Image = notSelectedImage;
+                user.recipes.Remove(recipe);
+                selected = false;
+            }
+
         }
     }
 }

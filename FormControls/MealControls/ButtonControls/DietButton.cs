@@ -35,8 +35,30 @@ namespace HealthyLife_Pt2.FormControls.MealControls
             InitializeComponent();            
             this.diet = diet;
 
-            description.Text = diet.description;
+            switch (diet.goal)
+            {
+                case Goal.loss:
+                    description.Text = "Для похудения";
+                    break;
+                case Goal.maintenance:
+                    description.Text = "Для поддержания веса";
+                    break;
+                case Goal.gain:
+                    description.Text = "Для набора массы";
+                    break;
+            }
+            
             name.Text = diet.name;
+
+            int value = 0;
+            foreach (Meal meal in diet.meals)
+            {
+                value += meal.element.calories;
+            }
+
+            value /= diet.meals.Count;
+
+            caloriesLabel.Text = value + " ккал";
 
             if (diet.photo == null || diet.photo == "")
                 return;

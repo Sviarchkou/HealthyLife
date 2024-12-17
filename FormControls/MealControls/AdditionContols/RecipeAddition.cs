@@ -18,6 +18,7 @@ namespace HealthyLife_Pt2.FormControls
     {
         public Recipe recipe { get; private set; }
 
+        public event EventHandler? InfoButtonClick;
         public RecipeAddition(Recipe recipe)
         {
             InitializeComponent();
@@ -39,11 +40,9 @@ namespace HealthyLife_Pt2.FormControls
             recipePicture.Image = MyImageConverter.converFromStringBytes(recipe.photo);
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void infoButton_Click(object sender, EventArgs e)
         {
-            RecipeDescriptionForm recipeDescriptionForm = new RecipeDescriptionForm(recipe);
-            recipeDescriptionForm.deleteButton.Dispose();
-            recipeDescriptionForm.ShowDialog();
+            InfoButtonClick?.Invoke(sender, e);
         }
     }
 }

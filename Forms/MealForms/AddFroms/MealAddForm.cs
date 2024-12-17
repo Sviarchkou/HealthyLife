@@ -2,6 +2,7 @@
 using HealthyLife_Pt2.Database;
 using HealthyLife_Pt2.FormControls;
 using HealthyLife_Pt2.FormControls.MealControls;
+using HealthyLife_Pt2.Forms.MealForms.DescriptionForms;
 using HealthyLife_Pt2.Models;
 using HealthyLIfe_Pt2.Forms;
 using System;
@@ -91,6 +92,12 @@ namespace HealthyLife_Pt2.Forms
         {
             RecipeAddition recipeButton = new RecipeAddition(recipe);
             recipeButton.Location = recipeLocation;
+            recipeButton.InfoButtonClick += delegate (object? sender, EventArgs e)
+            {
+                RecipeDescriptionForm recipeDescriptionForm = new RecipeDescriptionForm(recipe, user);
+                recipeDescriptionForm.deleteButton.Dispose();
+                recipeDescriptionForm.ShowDialog();
+            };
             recipeButtons.Add(recipeButton);
 
             MyPanel myPanel = new MyPanel();

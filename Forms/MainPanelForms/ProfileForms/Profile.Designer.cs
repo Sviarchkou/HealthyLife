@@ -235,7 +235,7 @@
             editButton.FlatAppearance.BorderSize = 0;
             editButton.FlatStyle = FlatStyle.Flat;
             editButton.Font = new Font("Verdana", 10.8F);
-            editButton.Location = new Point(642, 9);
+            editButton.Location = new Point(604, 9);
             editButton.Margin = new Padding(0);
             editButton.Name = "editButton";
             editButton.Size = new Size(199, 38);
@@ -249,7 +249,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            BackColor = Color.FloralWhite;
+            BackColor = Color.White;
             ClientSize = new Size(850, 600);
             Controls.Add(editButton);
             Controls.Add(panel1);

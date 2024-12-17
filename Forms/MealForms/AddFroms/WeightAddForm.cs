@@ -60,8 +60,11 @@ namespace HealthyLife_Pt2.Forms.MealForms.AddFroms
             if (dateTimePicker.Value.Date.Equals(DateTime.Now.Date))
             {
                 userWeight.user.weight = weight;
+                string str = weight.ToString();
+                string[] data = str.Split(",");
+                str = data.Length > 1 ? data[0] + "." + data[1] : data[0];
                 UserController userController = new UserController();
-                await userController.update($"UPDATE users SET weight = '{weight}' WHERE id = '{userWeight.user.id}'");                
+                await userController.update($"UPDATE users SET weight = '{str}' WHERE id = '{userWeight.user.id}'");                
             }
 
             MessageBox.Show("Запись добавлена");

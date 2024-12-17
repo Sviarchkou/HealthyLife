@@ -41,7 +41,7 @@
             // 
             // formPanel
             // 
-            formPanel.BackColor = Color.FloralWhite;
+            formPanel.BackColor = Color.White;
             formPanel.Dock = DockStyle.Right;
             formPanel.Location = new Point(206, 0);
             formPanel.Margin = new Padding(0);
@@ -183,6 +183,7 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             FormClosed += MainForm_FormClosed;
+            Load += MainForm_Load;
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }

@@ -176,8 +176,8 @@ public class User
 
     public DateTime dateOfBirth { get; set; }
     public string? photo { get; set; }
-    public Diet diet { get; set; }
     public Element element { get; set; }
+    public List<Diet> selectedDiets { get; set; } = new List<Diet>();
     public List<Diet> diets { get; set; } = new List<Diet>();
     public List<Recipe> recipes { get; set; } = new List<Recipe>();
     public List<UserWeight> userWeights { get; set; } = new List<UserWeight>();

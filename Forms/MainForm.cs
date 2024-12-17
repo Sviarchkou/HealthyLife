@@ -1,4 +1,5 @@
-﻿using HealthyLife_Pt2.FormControls;
+﻿using HealthyLife_Pt2.Controllers;
+using HealthyLife_Pt2.FormControls;
 using HealthyLife_Pt2.Forms.MainPanelForms;
 using HealthyLife_Pt2.Forms.MainPanelForms.ProfileForms;
 using HealthyLife_Pt2.Forms.MealForms;
@@ -19,7 +20,8 @@ namespace HealthyLife_Pt2.Forms
     {
         User user;
 
-        DailyCounter dailyCounter;        
+        DailyCounter dailyCounter;
+        Profile profile;
 
         Button currentButton = new Button();
         Color activeColor = Color.DarkViolet;
@@ -48,6 +50,9 @@ namespace HealthyLife_Pt2.Forms
         {
             if (dailyCounter != null)
                 await dailyCounter.loadData();
+            if (profile != null)
+                await profile.loadData();
+            
             Application.Exit();
         }
 
@@ -112,8 +117,25 @@ namespace HealthyLife_Pt2.Forms
         private void profileButton_Click(object sender, EventArgs e)
         {
             setCurrentButton((Button)sender);
-            Profile profile = new Profile(user);
+            profile = new Profile(user);
             setForm(profile);
+        }
+
+        private async void MainForm_Load(object sender, EventArgs e)
+        {
+
+            RecipeController recipeController = new RecipeController();
+            user.recipes = await recipeController.selectUserRecipes(user.id.ToString());            
+
+            DietController dietController = new DietController();
+            user.selectedDiets = await dietController.selectUserDiets(user.id.ToString());
+            
+            if (user.role)
+            {
+                UserController userController = new UserController();
+                user.diets = await userController.selectDiets(user);                
+            }
+
         }
     }
 }

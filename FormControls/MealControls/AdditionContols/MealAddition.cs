@@ -30,6 +30,11 @@ namespace HealthyLife_Pt2.FormControls.MealControls
         {
             InitializeComponent();
             this.user = user;
+
+            breakfastAddButton.Text = "+";
+            lunchAddButton.Text = "+";
+            dinnerAddButton.Text = "+";
+            extraFoodAddButton.Text = "+";
         }
 
 
@@ -95,6 +100,23 @@ namespace HealthyLife_Pt2.FormControls.MealControls
             };
         }
 
+        private void extraFoodAddButton_Click(object sender, EventArgs e)
+        {
+            ExtraFoodAddForm extraFoodAddForm = new ExtraFoodAddForm(meal.extraFood, user);
+            extraFoodAddForm.Show();
+            extraFoodAddForm.FormClosed += delegate (object? sender, FormClosedEventArgs e)
+            {
+                if (sender == null)
+                    return;
+                meal.extraFood = ((ExtraFoodAddForm)sender).getSelectedExtraFoods();
+                foreach (ExtraFood extraFood in meal.extraFood)
+                {
+                    extraFood.meal = meal;
+                }
+                updateElement();
+            };
+        }
+
         private void updateElement()
         {
             MealController mealController = new MealController();
@@ -117,21 +139,6 @@ namespace HealthyLife_Pt2.FormControls.MealControls
             label4.BackColor = Color.IndianRed;
         }
 
-        private void extraFoodAddButton_Click(object sender, EventArgs e)
-        {
-            ExtraFoodAddForm extraFoodAddForm = new ExtraFoodAddForm(meal.extraFood, user);
-            extraFoodAddForm.Show();
-            extraFoodAddForm.FormClosed += delegate (object? sender, FormClosedEventArgs e)
-            {
-                if (sender == null)
-                    return;
-                meal.extraFood = ((ExtraFoodAddForm)sender).getSelectedExtraFoods();
-                foreach (ExtraFood extraFood in meal.extraFood)
-                {
-                    extraFood.meal = meal;
-                }
-            };
-            updateElement();
-        }
+        
     }
 }

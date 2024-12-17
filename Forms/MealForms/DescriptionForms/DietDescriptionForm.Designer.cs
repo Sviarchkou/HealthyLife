@@ -33,7 +33,9 @@
             nameLabel = new Label();
             goalLabel = new Label();
             description = new Label();
+            pictureBox2 = new PictureBox();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -95,21 +97,37 @@
             description.TabIndex = 158;
             description.Text = "Название dfgh sdfgjh  dsппfkgh  dfjgh kdjfg k dkfjghksjdfhg ksjdf gdk fjgh kdjsfhg kdjfh kjsdfh g dsf f";
             // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Image = Properties.Resources.saveNotSelected;
+            pictureBox2.Location = new Point(1031, 4);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(51, 35);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 187;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            // 
             // DietDescriptionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            BackColor = SystemColors.ControlLightLight;
+            BackColor = Color.White;
             ClientSize = new Size(1082, 703);
+            Controls.Add(pictureBox2);
             Controls.Add(description);
             Controls.Add(goalLabel);
             Controls.Add(nameLabel);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            MaximumSize = new Size(1135, 750);
+            MinimumSize = new Size(1100, 750);
             Name = "DietDescriptionForm";
             StartPosition = FormStartPosition.CenterScreen;
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -121,5 +139,6 @@
         private Label nameLabel;
         private Label goalLabel;
         private Label description;
+        private PictureBox pictureBox2;
     }
 }

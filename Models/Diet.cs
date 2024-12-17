@@ -47,4 +47,18 @@ public class Diet
 
     public List<Meal> meals { get; set; } = new List<Meal>();
     public List<User> users { get; set; } = new List<User>();
+
+
+    public override bool Equals(object? obj)
+    {
+        if (obj as Diet == null) return false;
+        return base.Equals((Diet)obj);
+    }
+    public bool Equals(Diet diet)
+    {
+        if (this.id == diet.id)
+            return true;
+        return false;
+    }
+
 }

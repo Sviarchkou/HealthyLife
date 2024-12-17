@@ -83,6 +83,7 @@
             weightChart.TabIndex = 0;
             weightChart.Text = "weightChart";
             weightChart.GetToolTipText += weightChart_GetToolTipText;
+            weightChart.MouseLeave += weightChart_MouseLeave;
             // 
             // sevenDaysButton
             // 
@@ -195,6 +196,7 @@
             elementChart.Text = "elementChart";
             elementChart.GetToolTipText += elementChart_GetToolTipText;
             elementChart.Click += elementChart_Click;
+            elementChart.MouseLeave += weightChart_MouseLeave;
             // 
             // addWeightButton
             // 

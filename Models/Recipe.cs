@@ -14,4 +14,16 @@ public class Recipe
 
     public List<Ingredient> ingredients { get; set; } = new List<Ingredient>();
     public List<User> users { get; set; } = new List<User>();
+
+    public override bool Equals(object? obj)
+    {
+        if (obj as  Recipe == null) return false;
+        return base.Equals((Recipe)obj);
+    }
+    public bool Equals(Recipe recipe)
+    {
+        if (this.id == recipe.id)
+            return true;
+        return false;
+    }
 }

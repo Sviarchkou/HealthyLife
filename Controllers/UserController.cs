@@ -190,53 +190,7 @@ namespace HealthyLife_Pt2.Controllers
             db.Close();
 
             return element;
-        }
-    
-        public async Task<List<Recipe>> selectRecipes(User user)
-        {
-            DBConnector db = new DBConnector();
-            db.Open();
-
-            DataTable recipesTable = await db.select($"SELECT * FROM user_has_recipes WHERE user_id = '{user.id}'");
-
-            List<Recipe> recipes = new List<Recipe>();
-
-            foreach (DataRow row in recipesTable.Rows) {
-                RecipeController recipeController = new RecipeController();
-                recipes.Add(await recipeController.findById(row[1].ToString()));
-            }
-
-            return recipes;
-        }
-
-        public async Task<Guid> insertUserRecipes(User user)
-        {
-            if (user.recipes.Count == 0)
-                throw new Exception("No recipes was added");
-
-            DBConnector db = new DBConnector();
-            db.Open();
-
-
-            StringBuilder commandHeader = new StringBuilder();
-            StringBuilder values = new StringBuilder();
-
-            commandHeader.Append("INSERT INTO user_has_recipes (user_id, recipe_id) VALUES ");
-
-            bool b = false;
-            foreach (Recipe recipe in user.recipes)
-            {
-                if (b)
-                    values.Append($", ");
-                b = true;
-                values.Append($"('{user.id}', {recipe.id})");
-            }
-            values.Append(";");
-
-            await db.insert(commandHeader.Append(values).ToString());
-
-            return user.id;
-        }
+        }       
 
         public async Task updateUser(User user, bool loginChanged)
         {
@@ -298,6 +252,120 @@ namespace HealthyLife_Pt2.Controllers
 
         }
 
+        public async Task<List<Diet>> selectDiets(User user)
+        {
+            DBConnector db = new DBConnector();
+            db.Open();
+
+            DataTable dietsTable = await db.select($"SELECT * FROM diets WHERE user_id = '{user.id}'");
+
+            List<Diet> diets = new List<Diet>();
+
+            foreach (DataRow row in dietsTable.Rows)
+            {
+                Diet diet = new Diet();
+                diet.id = (int)row[0];
+                diet.name = (string)row[1];
+                diet.description = (string)row[2];
+
+                if (!row[4].Equals(System.DBNull.Value))
+                    diet.photo = (string)row[4];
+
+                diet.setGoalAsString((string)row[5]);
+
+                MealController mealController = new MealController();
+                diet.meals = await mealController.selectFromDietHasMeals(diet.id.ToString());
+
+                diets.Add(diet);
+            }
+
+            db.Close();
+            return diets;
+        }
+
+        public async Task insertUserRecipes(User user)
+        {
+            if (user.recipes.Count == 0)
+                throw new Exception("No recipes was added");
+
+            DBConnector db = new DBConnector();
+            db.Open();
+
+
+            StringBuilder commandHeader = new StringBuilder();
+            StringBuilder values = new StringBuilder();
+
+            commandHeader.Append("INSERT INTO user_has_recipes (user_id, recipe_id) VALUES ");
+
+            bool b = false;
+            foreach (Recipe recipe in user.recipes)
+            {
+                if (b)
+                    values.Append($", ");
+                b = true;
+                values.Append($"('{user.id}', {recipe.id})");
+            }
+            values.Append(";");
+
+            await db.insert(commandHeader.Append(values).ToString());
+            db.Close();
+        }
+
+        public async Task insertUserSelectedDiets(User user)
+        {
+            if (user.selectedDiets.Count == 0)
+                throw new Exception("No recipes was added");
+
+            DBConnector db = new DBConnector();
+            db.Open();
+
+
+            StringBuilder commandHeader = new StringBuilder();
+            StringBuilder values = new StringBuilder();
+
+            commandHeader.Append("INSERT INTO user_has_diet (user_id, diet_id) VALUES ");
+
+            bool b = false;
+            foreach (Diet diet in user.selectedDiets)
+            {
+                if (b)
+                    values.Append($", ");
+                b = true;
+                values.Append($"('{user.id}', {diet.id})");
+            }
+            values.Append(";");
+
+            await db.insert(commandHeader.Append(values).ToString());
+            db.Close();
+        }
+
+        public async Task deleteUserRecipes(User user)
+        {
+            DBConnector db = new DBConnector();
+            db.Open();
+            await db.remove($"DELETE FROM user_has_recipes WHERE user_id = '{user.id}'");
+            db.Close();
+        }
+
+        public async Task deleteUserSelectedDiets(User user)
+        {
+            DBConnector db = new DBConnector();
+            db.Open();
+            await db.remove($"DELETE FROM user_has_diet WHERE user_id = '{user.id}'");
+            db.Close();
+        }
+
+        public async Task updateUserRecipes(User user)
+        {
+            await deleteUserRecipes(user);
+            await insertUserRecipes(user);
+        }
+
+        public async Task updateUserSelectedDiets(User user)
+        {
+            await deleteUserSelectedDiets(user);
+            await insertUserSelectedDiets(user);
+        }
         /*
         public async Task<List<Meal>> selectALLUserDailyMeals(User user)
         {

@@ -69,7 +69,7 @@
             recipeDiscription = new Label();
             recipePanel = new MyPanel();
             recipePicture = new PictureBox();
-            label1 = new Label();
+            infoButton = new Label();
             ((System.ComponentModel.ISupportInitialize)recipePicture).BeginInit();
             SuspendLayout();
             // 
@@ -124,26 +124,26 @@
             recipePicture.TabIndex = 27;
             recipePicture.TabStop = false;
             // 
-            // label1
+            // infoButton
             // 
-            label1.BackColor = Color.FromArgb(255, 255, 128);
-            label1.Font = new Font("Georgia", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.ForeColor = SystemColors.ControlText;
-            label1.Location = new Point(453, 4);
-            label1.Margin = new Padding(3);
-            label1.Name = "label1";
-            label1.Size = new Size(20, 20);
-            label1.TabIndex = 28;
-            label1.Text = "i";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
-            label1.Click += label1_Click;
+            infoButton.BackColor = Color.FromArgb(255, 255, 128);
+            infoButton.Font = new Font("Georgia", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            infoButton.ForeColor = SystemColors.ControlText;
+            infoButton.Location = new Point(453, 4);
+            infoButton.Margin = new Padding(3);
+            infoButton.Name = "infoButton";
+            infoButton.Size = new Size(20, 20);
+            infoButton.TabIndex = 28;
+            infoButton.Text = "i";
+            infoButton.TextAlign = ContentAlignment.MiddleCenter;
+            infoButton.Click += infoButton_Click;
             // 
             // RecipeAddition
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
-            Controls.Add(label1);
+            Controls.Add(infoButton);
             Controls.Add(recipePicture);
             Controls.Add(recipeDiscription);
             Controls.Add(recipeLabel);
@@ -162,6 +162,6 @@
         private Label recipeDiscription;
         private MyPanel recipePanel;
         private PictureBox recipePicture;
-        private Label label1;
+        private Label infoButton;
     }
 }

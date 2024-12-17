@@ -14,10 +14,11 @@ namespace HealthyLIfe_Pt2.Forms
 {
     public partial class ProductCreationForm : Form
     {
-        
+
         public Product? product { get; private set; }
 
         User user;
+        string? productImage;
 
         public ProductCreationForm(User user)
         {
@@ -32,6 +33,8 @@ namespace HealthyLIfe_Pt2.Forms
             product.name = nameTextBox.Text;
             product.category = categoryTextBox.Text;
             product.description = descriptionTextBox.Text;
+            if (productImage != null && productImage != "")
+                product.photo = productImage;
 
             Element element = new Element();
 
@@ -66,7 +69,7 @@ namespace HealthyLIfe_Pt2.Forms
             try
             {
                 Image? image;
-                product.photo = MyImageConverter.chooseImage(out image);
+                productImage = MyImageConverter.chooseImage(out image);
 
                 if (image == null)
                     return;

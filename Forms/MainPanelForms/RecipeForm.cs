@@ -145,7 +145,7 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
             {
                 if (sender == null)
                     return;
-                RecipeDescriptionForm recipeDescriptionForm = new RecipeDescriptionForm(((RecipeFormButton)sender).recipe);
+                RecipeDescriptionForm recipeDescriptionForm = new RecipeDescriptionForm(((RecipeFormButton)sender).recipe, user);
                 if (user.role)
                     recipeDescriptionForm.deleteButton.Visible = true;
                 

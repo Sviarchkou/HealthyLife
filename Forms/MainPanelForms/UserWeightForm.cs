@@ -50,7 +50,7 @@ namespace HealthyLife_Pt2.Forms.MealForms
 
         DateTime startDate = DateTime.Now.AddDays(-7);
 
-        Button selectedButton;
+        Button? selectedButton;
 
         public UserWeightForm(User user)
         {
@@ -212,7 +212,7 @@ namespace HealthyLife_Pt2.Forms.MealForms
         private void oneYearButton_Click(object sender, EventArgs e)
         {
             selectedButton.BackColor = Color.FromArgb(220, 255, 192);
-            selectedButton = oneYearButton; 
+            selectedButton = oneYearButton;
             selectedButton.BackColor = Color.GreenYellow;
 
             startDate = DateTime.Now.AddDays(-365);
@@ -233,7 +233,7 @@ namespace HealthyLife_Pt2.Forms.MealForms
             if (userWeights.Count != 0)
             {
                 userWeightsForChart.Clear();
-                
+
                 foreach (UserWeight userWeight in userWeights)
                 {
                     userWeightsForChart.Add(new UserWeightChartData(userWeight.updated_at, userWeight.weight));
@@ -286,10 +286,10 @@ namespace HealthyLife_Pt2.Forms.MealForms
                             userWeights[i] = ((WeightAddForm)sender).userWeight;
                             updateDate();
                             return;
-                        }                            
-                    }                    
+                        }
+                    }
                 }
-                    
+
                 userWeights.Add(((WeightAddForm)sender).userWeight);
                 userWeights.Sort(delegate (UserWeight userWeight1, UserWeight userWeight2)
                 {
@@ -339,24 +339,28 @@ namespace HealthyLife_Pt2.Forms.MealForms
                     string text = $"{dailyElementsForChart[index].calories} ккал / " + date;
                     this.toolTip.Show(text, elementChart, e.X + 15, e.Y + 10);
                 }
-                catch (Exception) { }        
+                catch (Exception) { }
             }
 
         }
 
-
         private bool settingIndex(int index)
         {
-            if (index == -1)
+            if (index < 0)
             {
                 this.toolTip.Active = false;
-                return false;   //Объект не принадлежит диаграмме
+                return false;
             }
             else
             {
                 this.toolTip.Active = true;
-                return true;    //Объект принадлежит диаграмме
+                return true;
             }
+        }
+
+        private void weightChart_MouseLeave(object sender, EventArgs e)
+        {
+            this.toolTip.Active = false;
         }
     }
 }

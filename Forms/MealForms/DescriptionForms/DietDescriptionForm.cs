@@ -1,6 +1,7 @@
 ﻿using HealthyLife_Pt2.Controllers;
 using HealthyLife_Pt2.Forms.MealForms.DescriptionForms;
 using HealthyLife_Pt2.Models;
+using HealthyLife_Pt2.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,10 @@ namespace HealthyLife_Pt2.Forms.MealForms
 
         List<Panel> panels = new List<Panel>();
 
+        Image notSelectedImage = Resources.saveNotSelected;
+        Image selectedImage = Resources.saveSelected;
+        bool selected = false;
+
         public DietDescriptionForm(Diet diet, User user)
         {
             InitializeComponent();
@@ -29,12 +34,10 @@ namespace HealthyLife_Pt2.Forms.MealForms
             this.user = user;
             fillForm();
 
-
             if (user.role)
                 deleteButton.Visible = true;
             else
                 deleteButton.Visible = false;
-
 
         }
 
@@ -67,7 +70,7 @@ namespace HealthyLife_Pt2.Forms.MealForms
                 else
                     panel.Location = new Point(startPoint.X, panels.Last().Location.Y + panels.Last().Height + 50);
 
-                DietDailyMealDescriptionForm form = new DietDailyMealDescriptionForm(diet.meals[i]);
+                DietDailyMealDescriptionForm form = new DietDailyMealDescriptionForm(diet.meals[i], user);
 
                 form.TopLevel = false;
                 panel.Controls.Add(form);
@@ -83,6 +86,15 @@ namespace HealthyLife_Pt2.Forms.MealForms
                 Controls.Add(panel);
             }
 
+            foreach (Diet d in user.selectedDiets)
+            {
+                if (d.Equals(diet))
+                {
+                    pictureBox2.Image = selectedImage;
+                    selected = true;
+                    break;
+                }
+            }
         }
 
         private async void deleteButton_Click(object sender, EventArgs e)
@@ -120,5 +132,20 @@ namespace HealthyLife_Pt2.Forms.MealForms
 
         }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            if (!selected)
+            {
+                pictureBox2.Image = selectedImage;
+                user.selectedDiets.Add(diet);
+                selected = true;
+            }
+            else
+            {
+                pictureBox2.Image = notSelectedImage;
+                user.selectedDiets.Remove(diet);
+                selected = false;
+            }
+        }
     }
 }

@@ -58,9 +58,11 @@
             deleteButton = new Button();
             toolTip = new ToolTip(components);
             approvedMark = new PictureBox();
+            pictureBox2 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)approvedMark).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
             // 
             // carboCounter
@@ -255,7 +257,7 @@
             nameLabel.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             nameLabel.Location = new Point(49, 9);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(676, 59);
+            nameLabel.Size = new Size(686, 59);
             nameLabel.TabIndex = 149;
             nameLabel.Text = "Название dfgh sdfgjh  dsfkgh  dfjgh kdjfg k dkfjghksjdfhg ksjdf gdk fjgh kdjsfhg kdjfh kjsdfh g dsf f";
             nameLabel.TextAlign = ContentAlignment.TopCenter;
@@ -379,13 +381,26 @@
             approvedMark.TabStop = false;
             approvedMark.Visible = false;
             // 
+            // pictureBox2
+            // 
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Image = Properties.Resources.saveNotSelected;
+            pictureBox2.Location = new Point(731, 5);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(51, 35);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 186;
+            pictureBox2.TabStop = false;
+            pictureBox2.Click += pictureBox2_Click;
+            // 
             // RecipeDescriptionForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            BackColor = Color.FloralWhite;
+            BackColor = Color.White;
             ClientSize = new Size(782, 503);
+            Controls.Add(pictureBox2);
             Controls.Add(nameLabel);
             Controls.Add(approvedMark);
             Controls.Add(panel1);
@@ -414,13 +429,14 @@
             Controls.Add(myPanel1);
             Controls.Add(caloriesLabel);
             FormBorderStyle = FormBorderStyle.SizableToolWindow;
-            MaximumSize = new Size(800, 550);
+            MaximumSize = new Size(835, 550);
             MinimumSize = new Size(800, 550);
             Name = "RecipeDescriptionForm";
             StartPosition = FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)approvedMark).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -456,5 +472,6 @@
         private ToolTip toolTip;
         private PictureBox approvedMark;
         public Button deleteButton;
+        private PictureBox pictureBox2;
     }
 }

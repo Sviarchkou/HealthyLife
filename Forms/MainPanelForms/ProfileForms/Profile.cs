@@ -5,6 +5,8 @@ using HealthyLife_Pt2.Forms.MealForms.DescriptionForms;
 using HealthyLife_Pt2.Forms.MealForms;
 using HealthyLIfe_Pt2;
 using HealthyLife_Pt2.Forms.MainPanelForms.Profile;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
+using System.Windows.Forms;
 
 namespace HealthyLife_Pt2.Forms.MainPanelForms.ProfileForms
 {
@@ -42,11 +44,27 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms.ProfileForms
             if (user.photo != null && user.photo != "")
                 pictureBox.Image = MyImageConverter.converFromStringBytes(user.photo);
 
-            RecipeController recipeController = new RecipeController();
-            recipes = await recipeController.selectUserRecipes(user.id.ToString());
+            recipes = user.recipes;
+            diets = new List<Diet>(user.selectedDiets);
+            if (user.role)
+            {
+                bool contains = false;
+                foreach(Diet diet in user.diets)
+                {
+                    foreach (Diet d in diets)
+                    {
+                        if (d.Equals(diet))
+                        {
+                            contains = true;
+                            break;
+                        }
+                    }
 
-            DietController dietController = new DietController();
-            diets = await dietController.selectUserDiets(user.id.ToString());
+                    if (!contains) 
+                        diets.Add(diet);
+                }
+                
+            }                
 
             fillRecipeList();
             fillDietList();
@@ -67,6 +85,7 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms.ProfileForms
                 }
             }
         }
+
         private void createRecipeButton(Recipe recipe, Point point)
         {
             RecipeFormButton recipeFormButton = new RecipeFormButton(recipe);
@@ -89,7 +108,7 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms.ProfileForms
             {
                 if (sender == null)
                     return;
-                RecipeDescriptionForm recipeDescriptionForm = new RecipeDescriptionForm(((RecipeFormButton)sender).recipe);
+                RecipeDescriptionForm recipeDescriptionForm = new RecipeDescriptionForm(((RecipeFormButton)sender).recipe, user);
                 DialogResult dialogResult = recipeDescriptionForm.ShowDialog();
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -186,6 +205,13 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms.ProfileForms
             ProfileEditingForm profileEditingForm = new ProfileEditingForm(user);
             profileEditingForm.ShowDialog();
             fillForm();
+        }
+
+        public async Task loadData()
+        {
+            UserController userController = new UserController();
+            await userController.updateUserRecipes(user);
+            await userController.updateUserSelectedDiets(user);
         }
     }
 }

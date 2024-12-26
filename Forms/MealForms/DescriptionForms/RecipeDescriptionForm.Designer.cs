@@ -236,9 +236,9 @@
             caloriesLabel.Font = new Font("Verdana", 10F);
             caloriesLabel.Location = new Point(491, 88);
             caloriesLabel.Name = "caloriesLabel";
-            caloriesLabel.Size = new Size(96, 20);
+            caloriesLabel.Size = new Size(85, 20);
             caloriesLabel.TabIndex = 132;
-            caloriesLabel.Text = "Каллории";
+            caloriesLabel.Text = "Калории";
             // 
             // pictureBox1
             // 

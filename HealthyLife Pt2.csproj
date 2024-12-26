@@ -14,9 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Forms\Authentification\Registration\FinalRegForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="Forms\Authentification\Registration\FinalRegForm.cs" />
   </ItemGroup>
 
 </Project>

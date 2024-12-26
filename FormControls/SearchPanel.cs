@@ -12,6 +12,7 @@ namespace HealthyLife_Pt2.FormControls
 {
     public partial class SearchPanel : UserControl
     {
+        public event EventHandler? FilterClick;
 
         public string SearhText
         {
@@ -40,18 +41,27 @@ namespace HealthyLife_Pt2.FormControls
 
         private void search_Click(object sender, EventArgs e)
         {
-            search.Text = "";
+            if (search.Text == "Поиск...")
+                search.Text = "";
             search.ForeColor = Color.Black;
-        }
-
-        private void searchPanel_Load(object sender, EventArgs e)
-        {
-
+            flowLayoutPanel.Height = 0;
+            this.Height = 60;
         }
 
         private void search_TextChanged(object sender, EventArgs e)
         {
             SearchTextChanged?.Invoke(this, e);
+        }
+
+        private void filter_Click(object sender, EventArgs e)
+        {
+            FilterClick?.Invoke(sender, e);
+        }
+
+        private void filterPanel_Hide(object sender, EventArgs e)
+        {
+            flowLayoutPanel.Height = 0;
+            this.Height = 60;
         }
     }
 }

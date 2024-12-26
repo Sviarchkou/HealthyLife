@@ -1,4 +1,5 @@
 ﻿using HealthyLife_Pt2.Controllers;
+using HealthyLife_Pt2.FormControls;
 using HealthyLife_Pt2.Models;
 using System;
 using System.Collections.Generic;
@@ -29,28 +30,55 @@ namespace HealthyLIfe_Pt2.Forms
 
         private async void addButton_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("После добавления продукт уже нельзя будет изменить. \nВы увеврены, что хотите добавить этот продукт?", "", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+                return;
+
             product = new Product();
+            if (nameTextBox.Text == "")
+            {
+                MessageBox.Show("Невозможно создать продукт без названия");
+                return;
+            }
             product.name = nameTextBox.Text;
+            if (categoryTextBox.Text == "")
+            {
+                MessageBox.Show("Невозможно создать продукт без категории");
+                return;
+            }
             product.category = categoryTextBox.Text;
             product.description = descriptionTextBox.Text;
             if (productImage != null && productImage != "")
                 product.photo = productImage;
 
-            Element element = new Element();
-
-            try
+            if (!Int32.TryParse(caloriesTextBox.Text, out int cal) || cal < 0)
             {
-                element.calories = Int32.Parse(caloriesTextBox.Text);
-                element.proteins = Double.Parse(proteinsTextBox.Text);
-                element.fats = Double.Parse(fatsTextBox.Text);
-                element.carbohydrates = Double.Parse(carboTextBox.Text);
-                element.minerals = mineralsTextBox.Text;
-                element.vitamins = vitaminsTextBox.Text;
-            }catch(Exception ex)
-            {
-                MessageBox.Show("Неверные параметры");
+                MessageBox.Show("Неверное количество калорий");
                 return;
             }
+            if (!Double.TryParse(proteinsTextBox.Text, out double prot) || prot < 0)
+            {
+                MessageBox.Show("Неверное количество белка");
+                return;
+            }
+            if (!Double.TryParse(fatsTextBox.Text, out double fats) || fats < 0)
+            {
+                MessageBox.Show("Неверное количество жиров");
+                return;
+            }
+            if (!Double.TryParse(carboTextBox.Text, out double carbo) || carbo < 0)
+            {
+                MessageBox.Show("Неверное количество углеводов");
+                return;
+            }
+
+            Element element = new Element();
+            element.calories = cal;
+            element.proteins = prot;
+            element.fats = fats;
+            element.carbohydrates = carbo;
+            element.minerals = mineralsTextBox.Text;
+            element.vitamins = vitaminsTextBox.Text;    
 
             product.element = element;
             
@@ -76,6 +104,16 @@ namespace HealthyLIfe_Pt2.Forms
 
                 pictureBox1.Image = image;
             } catch (Exception ex) { MessageBox.Show("Не получилось добавить фото("); }
+        }
+
+        private void button_MouseEnter(object sender, EventArgs e)
+        {
+            ((MyPanel)sender).PanelColor = Color.LightGray;
+        }
+
+        private void button_MouseLeave(object sender, EventArgs e)
+        {
+            ((MyPanel)sender).PanelColor = Color.Gainsboro;
         }
     }
 }

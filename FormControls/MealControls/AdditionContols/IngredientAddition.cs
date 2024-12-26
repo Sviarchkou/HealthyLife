@@ -37,7 +37,7 @@ namespace HealthyLIfe_Pt2.FormControls
             addButton.Text = "Создать продукт";
             addButton.MouseEnter += (object? sender, EventArgs e) => addButton.PanelColor = Color.Aqua;
             addButton.MouseLeave += (object? sender, EventArgs e) => addButton.PanelColor = Color.LavenderBlush;
-
+            
         }
 
 
@@ -46,8 +46,6 @@ namespace HealthyLIfe_Pt2.FormControls
             flowLayoutPanel1.Controls.Clear();
             buttonInfoProducts.Clear();
             buttonProducts.Clear();
-            //productButtonsList.Clear();
-            //productInfoButtonsList.Clear();
 
             List<Product> temp;
             if (textBox1.Text == "")
@@ -57,7 +55,6 @@ namespace HealthyLIfe_Pt2.FormControls
                 filteredProducts = from p in products where p.name.ToLower().Contains(textBox1.Text.ToLower()) select p;
                 temp = filteredProducts.ToList();
             }
-
 
             int i = 0;
             foreach (Product product in temp)
@@ -109,6 +106,9 @@ namespace HealthyLIfe_Pt2.FormControls
             textBox1.Text = p == null ? "" : p.name;
             element.Text = p == null ? "" : p.element.ToString();
             flowLayoutPanel1.Height = 0;
+
+            toolTip = new ToolTip();
+            toolTip.SetToolTip(element, element.Text);
         }
 
         private void infoButtonClick(object? sender, EventArgs e)
@@ -128,28 +128,6 @@ namespace HealthyLIfe_Pt2.FormControls
                 loadData();
             }
 
-            /*
-            StringBuilder sb = new StringBuilder(
-                $"{p.description}" +
-                $"\n\nКалории - {p.element.calories} ккал." +
-                $"\nБелки - {p.element.proteins} г." +
-                $"\nЖиры - {p.element.fats} г." +
-                $"\nУглеводы - {p.element.carbohydrates} г.");
-
-            if (p.element.minerals != null && p.element.minerals != "")
-            {
-                sb.Append($"\nМинералы - {p.element.minerals}");
-            }
-            if (p.element.vitamins != null && p.element.vitamins != "")
-            {
-                sb.Append($"\nВитамины - {p.element.vitamins}");
-            }
-
-            MyMessageBox mb = new MyMessageBox();
-            mb.LabelText = sb.ToString();
-            mb.ShowDialog();
-            //MessageBox.Show(sb.ToString());
-            */
         }
 
         private void textBox1_Click(object sender, EventArgs e)

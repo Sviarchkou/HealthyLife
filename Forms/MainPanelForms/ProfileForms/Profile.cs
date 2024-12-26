@@ -46,26 +46,28 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms.ProfileForms
 
             recipes = user.recipes;
             diets = new List<Diet>(user.selectedDiets);
-            if (user.role)
+            await Task.Run(() =>
             {
-                bool contains = false;
-                foreach(Diet diet in user.diets)
+                if (user.role)
                 {
-                    foreach (Diet d in diets)
+                    bool contains = false;
+                    foreach (Diet diet in user.diets)
                     {
-                        if (d.Equals(diet))
+                        foreach (Diet d in diets)
                         {
-                            contains = true;
-                            break;
+                            if (d.Equals(diet))
+                            {
+                                contains = true;
+                                break;
+                            }
                         }
+
+                        if (!contains)
+                            diets.Add(diet);
                     }
 
-                    if (!contains) 
-                        diets.Add(diet);
                 }
-                
-            }                
-
+            });
             fillRecipeList();
             fillDietList();
         }
@@ -210,8 +212,17 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms.ProfileForms
         public async Task loadData()
         {
             UserController userController = new UserController();
-            await userController.updateUserRecipes(user);
-            await userController.updateUserSelectedDiets(user);
+            try
+            {
+                await userController.updateUserRecipes(user);
+            }
+            catch (Exception ex) { }
+
+            try
+            {
+                await userController.updateUserSelectedDiets(user);
+            }
+            catch (Exception ex) { }
         }
     }
 }

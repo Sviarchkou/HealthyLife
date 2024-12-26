@@ -84,7 +84,6 @@ namespace HealthyLife_Pt2.Controllers
             userWeights.updated_at = (DateTime)row[2];            
             
             userWeights.weight = (float)row[3];
-            userWeights.goal = (float)row[4];
             
             return userWeights;
         }
@@ -94,12 +93,11 @@ namespace HealthyLife_Pt2.Controllers
         {
             string date = $"{userWeight.updated_at.Year}-{userWeight.updated_at.Month}-{userWeight.updated_at.Day}";
 
-            StringBuilder commandHeader = new StringBuilder("INSERT INTO user_weight (user_id, updated_at, weight, goal) ");
+            StringBuilder commandHeader = new StringBuilder("INSERT INTO user_weight (user_id, updated_at, weight) ");
             StringBuilder values = new StringBuilder($"VALUES (" +
                 $"'{userWeight.user.id.ToString()}', " +
                 $"'{date}', " +
-                $"{doubleToDbString(userWeight.weight)}," +
-                $"{doubleToDbString(userWeight.goal)}) RETURNING id;");
+                $"{doubleToDbString(userWeight.weight)}) RETURNING id;");
 
             DBConnector db = new DBConnector();
             db.Open();
@@ -113,12 +111,11 @@ namespace HealthyLife_Pt2.Controllers
             userWeight.updated_at = DateTime.Now;
             string date = $"{DateTime.Now.Year}-{DateTime.Now.Month}-{DateTime.Now.Day}";
 
-            StringBuilder commandHeader = new StringBuilder("INSERT INTO user_weight (user_id, updated_at, weight, goal) ");
+            StringBuilder commandHeader = new StringBuilder("INSERT INTO user_weight (user_id, updated_at, weight) ");
             StringBuilder values = new StringBuilder($"VALUES (" +
                 $"'{userWeight.user.id.ToString()}', " +
                 $"'{date}', " +
-                $"{doubleToDbString(userWeight.weight)}," +
-                $"{doubleToDbString(userWeight.goal)}) RETURNING id;");
+                $"{doubleToDbString(userWeight.weight)}) RETURNING id;");
 
             DBConnector db = new DBConnector();
             db.Open();
@@ -132,8 +129,7 @@ namespace HealthyLife_Pt2.Controllers
             string date = $"{userWeight.updated_at.Year}-{userWeight.updated_at.Month}-{userWeight.updated_at.Day}";
 
             StringBuilder command = new StringBuilder("UPDATE user_weight " +
-                $"SET goal = {doubleToDbString(userWeight.goal)}, " +
-                $"weight = {doubleToDbString(userWeight.weight)} " +
+                $"SET weight = {doubleToDbString(userWeight.weight)} " +
                 $"WHERE id = {userWeight.id}");
 
             DBConnector db = new DBConnector();

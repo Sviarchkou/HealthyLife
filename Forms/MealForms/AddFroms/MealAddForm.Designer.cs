@@ -45,11 +45,13 @@
             createButton.Rad = 60;
             createButton.Size = new Size(177, 58);
             createButton.TabIndex = 2;
-            createButton.Load += createButton_Load;
             createButton.Click += createButton_Click;
+            createButton.MouseEnter += button_MouseEnter;
+            createButton.MouseLeave += button_MouseLeave;
             // 
             // searchPanel1
             // 
+            searchPanel1.AutoSize = true;
             searchPanel1.BackColor = Color.Transparent;
             searchPanel1.Location = new Point(25, 25);
             searchPanel1.Name = "searchPanel1";
@@ -83,6 +85,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             FormClosed += MealAddForm_FormClosed;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

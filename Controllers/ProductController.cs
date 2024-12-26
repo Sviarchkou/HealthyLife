@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HealthyLife_Pt2.Controllers
 {
-    internal class ProductController : DefaultController
+    public class ProductController : DefaultController
     {
         public async Task<List<Product>> select(string str)
         {
@@ -72,7 +72,8 @@ namespace HealthyLife_Pt2.Controllers
         {
             ElementController elementController = new ElementController();
             int element_id = await elementController.insertElement(product.element);
-
+            product.element.id = element_id;
+            
             StringBuilder commandHeader = new StringBuilder("INSERT INTO products (name, category, description, element_id, verified ");
             StringBuilder values = new StringBuilder($"VALUES ('{product.name}', '{product.category}', '{product.description}', '{element_id}', {product.verified}");
             if (product.photo != null || product.photo == "")
@@ -87,7 +88,8 @@ namespace HealthyLife_Pt2.Controllers
             db.Open();
             int product_id = await db.insert(commandHeader.Append(values).ToString());
             db.Close();
-            
+
+            product.id = product_id;
             return product_id;
         }
 
@@ -109,7 +111,7 @@ namespace HealthyLife_Pt2.Controllers
         {
             DBConnector db = new DBConnector();
             db.Open();
-
+            
             await db.remove($"DELETE FROM products WHERE id = '{product.id}'");
             await db.remove($"DELETE FROM elements WHERE id = '{product.element.id}'");
             

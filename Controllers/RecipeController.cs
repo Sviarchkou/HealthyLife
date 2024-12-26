@@ -165,27 +165,7 @@ namespace HealthyLife_Pt2.Controllers
 
             recipe.element.minerals = String.Join(", ", minerals);
             recipe.element.vitamins = String.Join(", ", vitamins);
-            /*
-            StringBuilder commandHeader = new StringBuilder("UPDATE elements SET ");
-            StringBuilder values = new StringBuilder($"" +
-                $"calories = {recipe.element.calories}, " +
-                $"proteins = {doubleToDbString(recipe.element.proteins)}, " +
-                $"fats = {doubleToDbString(recipe.element.fats)}, " +
-                $"carbohydrates = {doubleToDbString(recipe.element.carbohydrates)}");
-
-            if (recipe.element.minerals != null && recipe.element.minerals != "")
-            {
-                values.Append($", minerals = '{recipe.element.minerals}'");
-            }
-
-            if (recipe.element.vitamins != null && recipe.element.vitamins != "")
-            {
-                values.Append($", vitamins '{recipe.element.vitamins}'");
-            }
-
-            values.Append($" WHERE id = {recipe.element.id}");
-            await elementController.update(commandHeader.Append(values).ToString());
-            */
+           
         }
 
         public async Task<bool> isUnreleted(Recipe recipe)
@@ -193,15 +173,7 @@ namespace HealthyLife_Pt2.Controllers
             
             DBConnector db = new DBConnector();
             DataTable dataTable;
-            /*
-            db.Open();
-            dataTable = await db.select($"SELECT * FROM user_has_recipes WHERE recipe_id = '{recipe.id}'");
-            db.Close();
-            if (dataTable.Rows.Count > 0)
-            {
-                return false;
-            }
-            */
+            
             db.Open();
             dataTable = await db.select($"SELECT * FROM diet_has_meals");
             db.Close();
@@ -234,13 +206,22 @@ namespace HealthyLife_Pt2.Controllers
            
         public async Task deleteRecipe(Recipe recipe)
         {
+            List<Meal> meals = new List<Meal>();
+            MealController mealController = new MealController();
+            meals = await mealController.select($"SELECT * FROM meals WHERE breakfast_id = '{recipe.id}' OR lunch_id = '{recipe.id}' OR dinner_id = '{recipe.id}'");            
+            foreach(Meal m in meals)
+            {
+                if (m.breakfast != null && m.breakfast.Equals(recipe)) m.breakfast = null;
+                if (m.lunch != null && m.lunch.Equals(recipe)) m.lunch = null;
+                if (m.dinner != null && m.dinner.Equals(recipe)) m.dinner = null;
+                await mealController.updateMeal(m);
+            }
+
             DBConnector db = new DBConnector();
             db.Open();
-
             await db.remove($"DELETE FROM ingredients WHERE recipe_id = '{recipe.id}'");            
             await db.remove($"DELETE FROM recipes WHERE id = '{recipe.id}'");
-            await db.remove($"DELETE FROM elements WHERE id = '{recipe.element.id}'");
-            
+            await db.remove($"DELETE FROM elements WHERE id = '{recipe.element.id}'");            
             db.Close();
         }
 

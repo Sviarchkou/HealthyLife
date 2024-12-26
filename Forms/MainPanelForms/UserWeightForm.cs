@@ -1,16 +1,7 @@
 ﻿using HealthyLife_Pt2.Controllers;
+using HealthyLife_Pt2.FormControls;
 using HealthyLife_Pt2.Forms.MealForms.AddFroms;
 using HealthyLife_Pt2.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace HealthyLife_Pt2.Forms.MealForms
@@ -303,11 +294,6 @@ namespace HealthyLife_Pt2.Forms.MealForms
             };
         }
 
-        private void elementChart_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void weightChart_GetToolTipText(object? sender, ToolTipEventArgs e)
         {
 
@@ -362,5 +348,16 @@ namespace HealthyLife_Pt2.Forms.MealForms
         {
             this.toolTip.Active = false;
         }
+
+        private void button_MouseEnter(object sender, EventArgs e)
+        {
+            ((MyPanel)sender).PanelColor = Color.FromArgb(220, 255, 192);
+        }
+
+        private void button_MouseLeave(object sender, EventArgs e)
+        {
+            ((MyPanel)sender).PanelColor = Color.Gainsboro;
+        }
+
     }
 }

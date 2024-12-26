@@ -69,6 +69,7 @@
             vitaminsTextBox = new TextBox();
             myPanel8 = new HealthyLife_Pt2.FormControls.MyPanel();
             pictureBox1 = new PictureBox();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -228,9 +229,9 @@
             caloriesLabel.Font = new Font("Verdana", 10F);
             caloriesLabel.Location = new Point(41, 346);
             caloriesLabel.Name = "caloriesLabel";
-            caloriesLabel.Size = new Size(96, 20);
+            caloriesLabel.Size = new Size(85, 20);
             caloriesLabel.TabIndex = 44;
-            caloriesLabel.Text = "Каллории";
+            caloriesLabel.Text = "Калории";
             // 
             // label5
             // 
@@ -248,9 +249,9 @@
             proteinsTextBox.BackColor = Color.Gainsboro;
             proteinsTextBox.BorderStyle = BorderStyle.None;
             proteinsTextBox.Font = new Font("Verdana", 10F);
-            proteinsTextBox.Location = new Point(169, 380);
+            proteinsTextBox.Location = new Point(166, 380);
             proteinsTextBox.Name = "proteinsTextBox";
-            proteinsTextBox.Size = new Size(32, 21);
+            proteinsTextBox.Size = new Size(38, 21);
             proteinsTextBox.TabIndex = 62;
             proteinsTextBox.TabStop = false;
             proteinsTextBox.TextAlign = HorizontalAlignment.Center;
@@ -292,9 +293,9 @@
             fatsTextBox.BackColor = Color.Gainsboro;
             fatsTextBox.BorderStyle = BorderStyle.None;
             fatsTextBox.Font = new Font("Verdana", 10F);
-            fatsTextBox.Location = new Point(260, 380);
+            fatsTextBox.Location = new Point(257, 380);
             fatsTextBox.Name = "fatsTextBox";
-            fatsTextBox.Size = new Size(32, 21);
+            fatsTextBox.Size = new Size(38, 21);
             fatsTextBox.TabIndex = 66;
             fatsTextBox.TabStop = false;
             fatsTextBox.TextAlign = HorizontalAlignment.Center;
@@ -326,9 +327,9 @@
             carboTextBox.BackColor = Color.Gainsboro;
             carboTextBox.BorderStyle = BorderStyle.None;
             carboTextBox.Font = new Font("Verdana", 10F);
-            carboTextBox.Location = new Point(352, 379);
+            carboTextBox.Location = new Point(349, 379);
             carboTextBox.Name = "carboTextBox";
-            carboTextBox.Size = new Size(32, 21);
+            carboTextBox.Size = new Size(38, 21);
             carboTextBox.TabIndex = 69;
             carboTextBox.TabStop = false;
             carboTextBox.TextAlign = HorizontalAlignment.Center;
@@ -348,7 +349,7 @@
             // 
             addButton.BackColor = Color.Transparent;
             addButton.BorderColor = Color.Transparent;
-            addButton.Font = new Font("Verdana", 13.8000011F, FontStyle.Bold);
+            addButton.Font = new Font("Verdana", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
             addButton.ForeColor = Color.DarkViolet;
             addButton.Location = new Point(216, 517);
             addButton.Name = "addButton";
@@ -357,6 +358,8 @@
             addButton.Size = new Size(201, 60);
             addButton.TabIndex = 73;
             addButton.Click += addButton_Click;
+            addButton.MouseEnter += button_MouseEnter;
+            addButton.MouseLeave += button_MouseLeave;
             // 
             // panel1
             // 
@@ -500,13 +503,23 @@
             // 
             pictureBox1.BackColor = Color.Gainsboro;
             pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox1.Location = new Point(43, 507);
+            pictureBox1.Location = new Point(100, 507);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(70, 70);
-            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 89;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Verdana", 10F);
+            label2.Location = new Point(43, 507);
+            label2.Name = "label2";
+            label2.Size = new Size(51, 20);
+            label2.TabIndex = 133;
+            label2.Text = "Фото";
             // 
             // ProductCreationForm
             // 
@@ -514,6 +527,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(457, 603);
+            Controls.Add(label2);
             Controls.Add(pictureBox1);
             Controls.Add(panel8);
             Controls.Add(vitaminsTextBox);
@@ -555,6 +569,7 @@
             Controls.Add(nameLabel);
             Controls.Add(nameTextBox);
             Controls.Add(myPanel2);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Name = "ProductCreationForm";
             StartPosition = FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -605,5 +620,6 @@
         private TextBox vitaminsTextBox;
         private HealthyLife_Pt2.FormControls.MyPanel myPanel8;
         private PictureBox pictureBox1;
+        private Label label2;
     }
 }

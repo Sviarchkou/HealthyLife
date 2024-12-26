@@ -111,7 +111,7 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
 
         private void createExtraFoodButton(ExtraFood extraFood, Point location)
         {
-            ExtraFoodAddition extraFoodAddition = new ExtraFoodAddition(extraFood.product);
+            ExtraFoodAddition extraFoodAddition = new ExtraFoodAddition(extraFood.product, user);
             extraFoodAddition.onlyInfo = true;
             extraFoodAddition.weight = extraFood.weight;
             extraFoodAddition.Location = location;

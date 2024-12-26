@@ -27,6 +27,7 @@ namespace HealthyLife_Pt2.Forms.MealForms.AddFroms
         List<ExtraFoodAddition> extraFoodAdditions = new List<ExtraFoodAddition>();
         List<ExtraFoodAddition> currentExtraFoodAdditions = new List<ExtraFoodAddition>();
 
+        private SearchPanelFilterButtonList searchPanelFilterButtonList = new SearchPanelFilterButtonList(new Product());
 
         private Point startPoint = new Point(25, 105);
         private int step = 90;
@@ -44,6 +45,28 @@ namespace HealthyLife_Pt2.Forms.MealForms.AddFroms
             {
                 updateList();
             };
+            searchPanel1.FilterClick += delegate (object? sender, EventArgs e)
+            {
+                List<Button> buttons = searchPanelFilterButtonList.productFilterButtons;
+                searchPanel1.flowLayoutPanel.Size = new Size(300, buttons.Count * buttons[0].Height);
+                for (int i = 0; i < buttons.Count; i++)
+                {
+                    searchPanel1.flowLayoutPanel.Controls.Add(buttons[i]);
+                    buttons[i].Click += delegate (object? sender, EventArgs e)
+                    {
+                        if (sender == null)
+                            return;
+                        int index = searchPanelFilterButtonList.productFilterButtons.IndexOf((Button)sender);
+                        if (index < 0) return;
+                        products.Sort(searchPanelFilterButtonList.productComparisons[index]);
+                        searchPanel1.SearhText = "";
+                        updateList();
+                        searchPanel1.flowLayoutPanel.Height = 0;
+                        searchPanel1.Height = 60;
+                    };
+                }
+
+            };
 
             createButton.Text = "Добавить продукт";
             infoButton.Text = "Просмотр добавленных продуктов";
@@ -55,7 +78,7 @@ namespace HealthyLife_Pt2.Forms.MealForms.AddFroms
             products = await productController.select("SELECT * FROM products");
             for (int i = 0; i < products.Count; i++)
             {
-                currentExtraFoodAdditions.Add(createProductAddition(products[i], new Point(startPoint.X, startPoint.Y + step * i)));
+                currentExtraFoodAdditions.Add(createExtraFoodAddition(products[i], new Point(startPoint.X, startPoint.Y + step * i)));
             }
 
         }
@@ -74,17 +97,21 @@ namespace HealthyLife_Pt2.Forms.MealForms.AddFroms
                 await Task.Run(() => filterProducts());
 
             currentExtraFoodAdditions.Clear();
-
             foreach (ExtraFoodAddition extraFoodAddition in extraFoodAdditions)
             {
-                if (filteredProducts.Contains(extraFoodAddition.product))
+                extraFoodAddition.Visible = false;
+            }
+
+            foreach (Product p in filteredProducts)
+            {
+                foreach (ExtraFoodAddition extraFoodAddition in extraFoodAdditions)
                 {
-                    currentExtraFoodAdditions.Add(extraFoodAddition);
-                    extraFoodAddition.Visible = true;
-                }
-                else
-                {
-                    extraFoodAddition.Visible = false;
+                    if (p.Equals(extraFoodAddition.product))
+                    {
+                        currentExtraFoodAdditions.Add(extraFoodAddition);
+                        extraFoodAddition.Visible = true;
+                        break;
+                    }
                 }
             }
 
@@ -95,10 +122,18 @@ namespace HealthyLife_Pt2.Forms.MealForms.AddFroms
 
         }
 
-        private ExtraFoodAddition createProductAddition(Product product, Point location)
+        private ExtraFoodAddition createExtraFoodAddition(Product product, Point location)
         {
-            ExtraFoodAddition extraFoodAddition = new ExtraFoodAddition(product);
+            ExtraFoodAddition extraFoodAddition = new ExtraFoodAddition(product, user);
             extraFoodAddition.Location = location;
+            extraFoodAddition.RemovedProduct += delegate ()
+            {
+                products.Remove(extraFoodAddition.product);
+                extraFoodAddition.Dispose();
+                if (searchPanel1.SearhText == "Поиск...")
+                    searchPanel1.SearhText = "";
+                updateList();
+            };
             foreach (ExtraFood extraFood in selectedExtraFood)
             {
                 if (extraFood.product.Equals(product))
@@ -117,6 +152,8 @@ namespace HealthyLife_Pt2.Forms.MealForms.AddFroms
             foreach (ExtraFoodAddition extraFoodAddition in extraFoodAdditions)
             {
                 if (!extraFoodAddition.selected)
+                    continue;
+                if (!products.Contains(extraFoodAddition.product))
                     continue;
                 try
                 {
@@ -143,6 +180,11 @@ namespace HealthyLife_Pt2.Forms.MealForms.AddFroms
                     return;
 
                 products.Add(p);
+                if (searchPanel1.SearhText == "Поиск...")
+                    searchPanel1.SearhText = "";
+                Point point = extraFoodAdditions.Last().Location;
+                createExtraFoodAddition(p, new Point(point.X, point.Y + step));
+                updateList();
             };
             productCreationForm.Show();
             
@@ -150,8 +192,18 @@ namespace HealthyLife_Pt2.Forms.MealForms.AddFroms
 
         private void infoButton_Click(object sender, EventArgs e)
         {
-            ExtraFoodDescriptionForm extraFoodDescriptionForm = new ExtraFoodDescriptionForm(getSelectedExtraFoods());            
+            ExtraFoodDescriptionForm extraFoodDescriptionForm = new ExtraFoodDescriptionForm(getSelectedExtraFoods(), user);            
             extraFoodDescriptionForm.ShowDialog();
+        }
+
+        private void button_MouseEnter(object sender, EventArgs e)
+        {
+            ((MyPanel)sender).PanelColor = Color.LightGray;
+        }
+
+        private void button_MouseLeave(object sender, EventArgs e)
+        {
+            ((MyPanel)sender).PanelColor = Color.Gainsboro;
         }
     }
 }

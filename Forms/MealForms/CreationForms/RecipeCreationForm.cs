@@ -153,6 +153,10 @@ namespace HealthyLIfe_Pt2.Forms
 
         private async void button2_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult = MessageBox.Show("После добавления продукт уже нельзя будет изменить. \nВы увеврены, что хотите добавить этот рацион?", "", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+                return;
+
             if (!updateElements())
                 return;
             if (recipe.ingredients.Count == 0)
@@ -168,7 +172,13 @@ namespace HealthyLIfe_Pt2.Forms
                     recipe.verified = false;
             }
 
+            if (nameTextBox.Text == "")
+            {
+                MessageBox.Show("Невозможно создать рецепт без названия");
+                return;
+            }
             recipe.name = nameTextBox.Text;
+            
             recipe.description = descriptionTextBox.Text;            
 
             RecipeController recipeController = new RecipeController();            

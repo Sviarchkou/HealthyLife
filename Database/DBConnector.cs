@@ -51,7 +51,6 @@ namespace HealthyLife_Pt2.Database
 
         public async Task<DataTable> select(string str)
         {
-
             NpgsqlCommand command = new NpgsqlCommand(str, connection);
 
             DataTable dataTable = new DataTable();

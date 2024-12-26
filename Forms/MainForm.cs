@@ -1,18 +1,8 @@
 ﻿using HealthyLife_Pt2.Controllers;
-using HealthyLife_Pt2.FormControls;
 using HealthyLife_Pt2.Forms.MainPanelForms;
 using HealthyLife_Pt2.Forms.MainPanelForms.ProfileForms;
 using HealthyLife_Pt2.Forms.MealForms;
 using HealthyLife_Pt2.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace HealthyLife_Pt2.Forms
 {
@@ -33,26 +23,15 @@ namespace HealthyLife_Pt2.Forms
             InitializeComponent();
 
             this.user = user;
-            //dailyCounter = new DailyCounter(user);            
-            //
-
-            /*
-            Form childForm = new DailyCounter(user);
-            childForm.TopLevel = false;
-            panel2.Controls.Add(childForm);
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            childForm.BringToFront();
-            childForm.Show();
-            */
         }
+
         private async void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (dailyCounter != null)
                 await dailyCounter.loadData();
             if (profile != null)
                 await profile.loadData();
-            
+
             Application.Exit();
         }
 
@@ -88,7 +67,8 @@ namespace HealthyLife_Pt2.Forms
         private void counterButton_Click(object sender, EventArgs e)
         {
             setCurrentButton((Button)sender);
-            dailyCounter = new DailyCounter(user);
+            if (dailyCounter == null)
+                dailyCounter = new DailyCounter(user);
             setForm(dailyCounter);
 
         }
@@ -123,18 +103,23 @@ namespace HealthyLife_Pt2.Forms
 
         private async void MainForm_Load(object sender, EventArgs e)
         {
-
             RecipeController recipeController = new RecipeController();
-            user.recipes = await recipeController.selectUserRecipes(user.id.ToString());            
+            user.recipes = await recipeController.selectUserRecipes(user.id.ToString());
 
             DietController dietController = new DietController();
             user.selectedDiets = await dietController.selectUserDiets(user.id.ToString());
-            
+
             if (user.role)
             {
                 UserController userController = new UserController();
-                user.diets = await userController.selectDiets(user);                
+                user.diets = await userController.selectDiets(user);
             }
+
+            currentButton = counterButton;
+            currentButton.BackColor = activeColor;
+            tempColor = activeColor;
+            dailyCounter = new DailyCounter(user);
+            setForm(dailyCounter);
 
         }
     }

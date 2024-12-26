@@ -158,7 +158,7 @@
             pictureBox1.Location = new Point(37, 445);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(117, 117);
-            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 133;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
@@ -226,9 +226,9 @@
             Controls.Add(nameLabel);
             Controls.Add(nameTextBox);
             Controls.Add(myPanel2);
+            FormBorderStyle = FormBorderStyle.SizableToolWindow;
             Name = "DietCreationForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "DietCreationForm";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

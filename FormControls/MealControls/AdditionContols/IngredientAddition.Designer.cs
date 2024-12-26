@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             myPanel1 = new HealthyLife_Pt2.FormControls.MyPanel();
             element = new Label();
             addButton = new HealthyLife_Pt2.FormControls.MyPanel();
@@ -38,6 +39,7 @@
             label3 = new Label();
             label4 = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            toolTip = new ToolTip(components);
             SuspendLayout();
             // 
             // myPanel1
@@ -151,8 +153,15 @@
             flowLayoutPanel1.Location = new Point(28, 66);
             flowLayoutPanel1.MaximumSize = new Size(230, 250);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(213, 5);
+            flowLayoutPanel1.Size = new Size(213, 0);
             flowLayoutPanel1.TabIndex = 82;
+            // 
+            // toolTip
+            // 
+            toolTip.AutomaticDelay = 50;
+            toolTip.AutoPopDelay = 10000;
+            toolTip.InitialDelay = 50;
+            toolTip.ReshowDelay = 10;
             // 
             // IngredientAddition
             // 
@@ -189,5 +198,6 @@
         private Label label3;
         private Label label4;
         private FlowLayoutPanel flowLayoutPanel1;
+        private ToolTip toolTip;
     }
 }

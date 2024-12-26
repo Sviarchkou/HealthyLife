@@ -91,7 +91,6 @@
             descriptionTextBox.Size = new Size(345, 225);
             descriptionTextBox.TabIndex = 83;
             descriptionTextBox.TabStop = false;
-            descriptionTextBox.Text = "Поиск";
             // 
             // myPanel6
             // 
@@ -124,7 +123,6 @@
             nameTextBox.Size = new Size(340, 23);
             nameTextBox.TabIndex = 80;
             nameTextBox.TabStop = false;
-            nameTextBox.Text = "Поиск";
             // 
             // myPanel2
             // 
@@ -181,11 +179,11 @@
             // 
             myPanel5.BackColor = Color.Transparent;
             myPanel5.BorderColor = Color.Transparent;
-            myPanel5.Location = new Point(188, 485);
+            myPanel5.Location = new Point(181, 485);
             myPanel5.Name = "myPanel5";
             myPanel5.PanelColor = Color.Gainsboro;
             myPanel5.Rad = 40;
-            myPanel5.Size = new Size(87, 40);
+            myPanel5.Size = new Size(94, 40);
             myPanel5.TabIndex = 122;
             // 
             // label6
@@ -203,11 +201,11 @@
             // 
             myPanel3.BackColor = Color.Transparent;
             myPanel3.BorderColor = Color.Transparent;
-            myPanel3.Location = new Point(188, 577);
+            myPanel3.Location = new Point(181, 577);
             myPanel3.Name = "myPanel3";
             myPanel3.PanelColor = Color.Gainsboro;
             myPanel3.Rad = 40;
-            myPanel3.Size = new Size(87, 40);
+            myPanel3.Size = new Size(94, 40);
             myPanel3.TabIndex = 119;
             // 
             // label4
@@ -244,11 +242,11 @@
             // 
             myPanel1.BackColor = Color.Transparent;
             myPanel1.BorderColor = Color.Transparent;
-            myPanel1.Location = new Point(153, 439);
+            myPanel1.Location = new Point(143, 439);
             myPanel1.Name = "myPanel1";
             myPanel1.PanelColor = Color.Gainsboro;
             myPanel1.Rad = 40;
-            myPanel1.Size = new Size(122, 40);
+            myPanel1.Size = new Size(132, 40);
             myPanel1.TabIndex = 110;
             // 
             // caloriesLabel
@@ -257,9 +255,9 @@
             caloriesLabel.Font = new Font("Verdana", 10F);
             caloriesLabel.Location = new Point(41, 448);
             caloriesLabel.Name = "caloriesLabel";
-            caloriesLabel.Size = new Size(96, 20);
+            caloriesLabel.Size = new Size(85, 20);
             caloriesLabel.TabIndex = 108;
-            caloriesLabel.Text = "Каллории";
+            caloriesLabel.Text = "Калории";
             // 
             // pictureBox1
             // 
@@ -268,7 +266,7 @@
             pictureBox1.Location = new Point(298, 494);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(100, 100);
-            pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 124;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox1_Click;
@@ -288,11 +286,11 @@
             // 
             myPanel4.BackColor = Color.Transparent;
             myPanel4.BorderColor = Color.Transparent;
-            myPanel4.Location = new Point(188, 531);
+            myPanel4.Location = new Point(181, 531);
             myPanel4.Name = "myPanel4";
             myPanel4.PanelColor = Color.Gainsboro;
             myPanel4.Rad = 40;
-            myPanel4.Size = new Size(87, 40);
+            myPanel4.Size = new Size(94, 40);
             myPanel4.TabIndex = 126;
             // 
             // proteinsLabel
@@ -309,44 +307,44 @@
             // 
             caloriesCounter.BackColor = Color.Gainsboro;
             caloriesCounter.Font = new Font("Verdana", 10F);
-            caloriesCounter.Location = new Point(162, 448);
+            caloriesCounter.Location = new Point(150, 448);
             caloriesCounter.Name = "caloriesCounter";
-            caloriesCounter.Size = new Size(53, 20);
+            caloriesCounter.Size = new Size(65, 20);
             caloriesCounter.TabIndex = 128;
-            caloriesCounter.Text = "785";
+            caloriesCounter.Text = "0";
             caloriesCounter.TextAlign = ContentAlignment.MiddleRight;
             // 
             // proteinCounter
             // 
             proteinCounter.BackColor = Color.Gainsboro;
             proteinCounter.Font = new Font("Verdana", 10F);
-            proteinCounter.Location = new Point(196, 494);
+            proteinCounter.Location = new Point(185, 494);
             proteinCounter.Name = "proteinCounter";
-            proteinCounter.Size = new Size(49, 20);
+            proteinCounter.Size = new Size(60, 20);
             proteinCounter.TabIndex = 129;
-            proteinCounter.Text = "60";
+            proteinCounter.Text = "0";
             proteinCounter.TextAlign = ContentAlignment.MiddleRight;
             // 
             // fatsCounter
             // 
             fatsCounter.BackColor = Color.Gainsboro;
             fatsCounter.Font = new Font("Verdana", 10F);
-            fatsCounter.Location = new Point(196, 540);
+            fatsCounter.Location = new Point(185, 540);
             fatsCounter.Name = "fatsCounter";
-            fatsCounter.Size = new Size(49, 20);
+            fatsCounter.Size = new Size(60, 20);
             fatsCounter.TabIndex = 130;
-            fatsCounter.Text = "40";
+            fatsCounter.Text = "0";
             fatsCounter.TextAlign = ContentAlignment.MiddleRight;
             // 
             // carboCounter
             // 
             carboCounter.BackColor = Color.Gainsboro;
             carboCounter.Font = new Font("Verdana", 10F);
-            carboCounter.Location = new Point(196, 586);
+            carboCounter.Location = new Point(185, 586);
             carboCounter.Name = "carboCounter";
-            carboCounter.Size = new Size(49, 20);
+            carboCounter.Size = new Size(60, 20);
             carboCounter.TabIndex = 131;
-            carboCounter.Text = "450";
+            carboCounter.Text = "0";
             carboCounter.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label1
@@ -435,7 +433,6 @@
             MinimumSize = new Size(700, 520);
             Name = "RecipeCreationForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "RecipeCreationForm";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

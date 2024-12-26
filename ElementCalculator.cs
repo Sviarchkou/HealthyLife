@@ -1,6 +1,4 @@
 ﻿using HealthyLife_Pt2.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
-
 
 namespace HealthyLife_Pt2
 {
@@ -45,6 +43,7 @@ namespace HealthyLife_Pt2
         private double weight;
         private int height;
         private int age;
+
         public ElementCalculator(Sex sex, Activity activity, Goal goal)
         {
             switch (activity)

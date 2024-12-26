@@ -29,7 +29,6 @@ namespace HealthyLIfe_Pt2
                     image = null;
             }
 
-            image = null;
             return sb.ToString();
         }
 

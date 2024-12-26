@@ -58,11 +58,6 @@ namespace HealthyLife_Pt2.Forms.MealForms
 
                 for (; index < mealAdditions.Count; index++)
                 {
-                    /*
-                    Point temp = mealAdditions[index].Location;
-                    mealAdditions[index].Location = location;
-                    location = temp;
-                    */
 
                     if (index % 2 != 0)
                         mealAdditions[index].Location = new Point(startPoint.X + stepX, mealAdditions[index].Location.Y - stepY);
@@ -115,19 +110,17 @@ namespace HealthyLife_Pt2.Forms.MealForms
 
         private async void button1_Click(object sender, EventArgs e)
         {
-            List<Meal> meals = new List<Meal>();
+            DialogResult dialogResult = MessageBox.Show("После добавления рацион уже нельзя будет изменить. \nВы увеврены, что хотите добавить этот рацион?", "", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.No)
+                return;
 
-            MealController mealController = new MealController();
-            foreach (MealAddition mealAddition in mealAdditions)
+            if (nameTextBox.Text == "")
             {
-                mealAddition.meal.id = await mealController.insertMeal(mealAddition.meal);
-                meals.Add(mealAddition.meal);
+                MessageBox.Show("Невозможно создать рацион без названия");
+                return;
             }
-
-
             diet.name = nameTextBox.Text;
-            diet.description = descriptionTextBox.Text;
-            diet.meals = meals;
+            diet.description = descriptionTextBox.Text;            
             diet.creator = user;
 
             switch (listBox1.SelectedIndex)
@@ -146,6 +139,16 @@ namespace HealthyLife_Pt2.Forms.MealForms
                     break;
             }
 
+            List<Meal> meals = new List<Meal>();
+
+            MealController mealController = new MealController();
+            foreach (MealAddition mealAddition in mealAdditions)
+            {
+                mealAddition.meal.id = await mealController.insertMeal(mealAddition.meal);
+                meals.Add(mealAddition.meal);
+            }
+
+            diet.meals = meals;
             DietController dietController = new DietController();
             diet.id = await dietController.insertDiet(diet);
             await dietController.insertUserDiet(user, diet);
@@ -168,6 +171,6 @@ namespace HealthyLife_Pt2.Forms.MealForms
                 pictureBox1.Image = image;
             }
             catch (Exception ex) { MessageBox.Show("Не получилось добавить фото("); }
-            }
+        }
     }
 }

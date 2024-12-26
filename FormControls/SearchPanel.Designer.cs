@@ -33,6 +33,7 @@
             panel1 = new Panel();
             search = new TextBox();
             myPanel1 = new MyPanel();
+            flowLayoutPanel = new FlowLayoutPanel();
             SuspendLayout();
             // 
             // filter
@@ -44,6 +45,7 @@
             filter.Name = "filter";
             filter.Size = new Size(30, 30);
             filter.TabIndex = 19;
+            filter.Click += filter_Click;
             // 
             // panel1
             // 
@@ -52,6 +54,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(2, 40);
             panel1.TabIndex = 18;
+            panel1.Click += filterPanel_Hide;
             // 
             // search
             // 
@@ -72,26 +75,38 @@
             // 
             myPanel1.BackColor = Color.Transparent;
             myPanel1.BorderColor = Color.Transparent;
-            myPanel1.Location = new Point(0, 0);
+            myPanel1.Location = new Point(9, 0);
             myPanel1.Margin = new Padding(0);
             myPanel1.Name = "myPanel1";
             myPanel1.PanelColor = Color.Gainsboro;
             myPanel1.Rad = 60;
-            myPanel1.Size = new Size(433, 58);
+            myPanel1.Size = new Size(424, 58);
             myPanel1.TabIndex = 17;
+            myPanel1.Click += filterPanel_Hide;
+            // 
+            // flowLayoutPanel
+            // 
+            flowLayoutPanel.BackColor = Color.White;
+            flowLayoutPanel.Location = new Point(133, 45);
+            flowLayoutPanel.MaximumSize = new Size(300, int.MaxValue);
+            flowLayoutPanel.Name = "flowLayoutPanel";
+            flowLayoutPanel.Size = new Size(300, 0);
+            flowLayoutPanel.TabIndex = 20;
             // 
             // SearchPanel
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             BackColor = Color.Transparent;
+            Controls.Add(flowLayoutPanel);
             Controls.Add(filter);
             Controls.Add(panel1);
             Controls.Add(search);
             Controls.Add(myPanel1);
             Name = "SearchPanel";
-            Size = new Size(437, 60);
-            Load += searchPanel_Load;
+            Size = new Size(436, 60);
+            Click += filterPanel_Hide;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -102,5 +117,6 @@
         private Panel panel1;
         private TextBox search;
         private MyPanel myPanel1;
+        public FlowLayoutPanel flowLayoutPanel;
     }
 }

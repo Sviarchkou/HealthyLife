@@ -169,38 +169,31 @@ namespace HealthyLife_Pt2.Controllers
             string? dinner_id = meal.dinner == null ? "null" : meal.dinner.id.ToString();
             
             StringBuilder command = new StringBuilder("UPDATE meals ");
-
-            bool b = true;
+        
+            command.Append("SET breakfast_id = ");
             if (meal.breakfast != null)
-            {
-                if (b) command.Append("SET ");
-                b = false;
-                command.Append($"breakfast_id = {meal.breakfast.id}");                
-            }
+                command.Append($"{meal.breakfast.id}");
+            else
+                command.Append("NULL");
+
+            command.Append(", lunch_id = ");
             if (meal.lunch != null)
-            {
-                if (b) command.Append("SET ");
-                else command.Append(", ");
-                b = false;
-                command.Append($"lunch_id = {meal.lunch.id}");
-            }
-            if (meal.dinner != null)
-            {
-                if (b) command.Append("SET ");
-                else command.Append(", ");
-                b = false;
-                command.Append($"dinner_id = {meal.dinner.id}");
-            }
+                command.Append($"{meal.lunch.id}");
+            else
+                command.Append("NULL");
             
+            command.Append(", dinner_id = ");
+            if (meal.dinner != null)
+                command.Append($"{meal.dinner.id}");
+            else
+                command.Append("NULL");
+
             DBConnector db = new DBConnector();
 
-            if (!b)
-            {
-                command.Append($" WHERE id = {meal.id}");
-                db.Open();
-                await db.update(command.ToString());
-                db.Close();
-            }
+            command.Append($" WHERE id = {meal.id}");
+            db.Open();
+            await db.update(command.ToString());
+            db.Close();
 
             ExtraFoodController extraFoodController = new ExtraFoodController();
             await extraFoodController.updateByMeal(meal);
@@ -210,6 +203,8 @@ namespace HealthyLife_Pt2.Controllers
         {
             DBConnector db = new DBConnector();
             db.Open();
+            await db.remove($"DELETE FROM user_daily_meal WHERE meal_id = '{meal.id}'");
+            await db.remove($"DELETE FROM extra_food WHERE meal_id = '{meal.id}'");
             await db.remove($"DELETE FROM meals WHERE id = '{meal.id}'");
             await db.remove($"DELETE FROM elements WHERE id = '{meal.element.id}'");
             db.Close();

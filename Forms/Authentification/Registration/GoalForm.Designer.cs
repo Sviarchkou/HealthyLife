@@ -141,7 +141,6 @@
             Controls.Add(label1);
             Name = "GoalForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Goal";
             ResumeLayout(false);
             PerformLayout();
         }

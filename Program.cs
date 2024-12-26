@@ -13,6 +13,7 @@ using System.Text;
 using System.Text.Json;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml;
+using System.Xml.Linq;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -25,12 +26,12 @@ namespace HealthyLife_Pt2
         //static async Task Main(string[] args)
         static void Main(string[] args)
         {
-            
+
             Application.EnableVisualStyles();
             ApplicationConfiguration.Initialize();
-            Application.Run(new WellcomeScrin()); ;
-            
-            
+            Application.Run(new WellcomeScrin());
+
+
             /*
             StringBuilder commandHeader = new StringBuilder("INSERT INTO user_weight (user_id, updated_at, weight, goal) ");
             StringBuilder values = new StringBuilder($"VALUES (" +
@@ -44,7 +45,27 @@ namespace HealthyLife_Pt2
             await db.insert(commandHeader.Append(values).ToString());
             db.Close();
             */
+            /*
+            User user = new User();
+            user.id = new Guid("c30e3b05-42c0-49cb-9690-06e6dde3a410");
 
+            DailyElementController dailyElementController  = new DailyElementController();
+
+            ElementController elementController = new ElementController();
+            List<Element> elements = await elementController.select("SELECT * FROM elements WHERE calories > 1500");
+            int i = -1;
+
+            DBConnector db = new DBConnector();
+            db.Open();
+            foreach (Element e in elements)
+            {
+                string date = $"{DateTime.Now.AddDays(i--).Year}-{DateTime.Now.AddDays(i--).Month}-{DateTime.Now.AddDays(i--).Day}";
+                StringBuilder commandHeader = new StringBuilder("INSERT INTO user_daily_elements (user_id, element_id, updated_at) ");
+                StringBuilder values = new StringBuilder($"VALUES ('{user.id.ToString()}', {e.id}, '{date}') RETURNING id;");
+                
+                await db.insert(commandHeader.Append(values).ToString());                
+            }
+            db.Close();
             /*
             byte[] image = File.ReadAllBytes("D:\\Лицей\\Выпускной\\IMG_1330.jpg");
             StringBuilder sb = new StringBuilder();
@@ -292,8 +313,8 @@ namespace HealthyLife_Pt2
             
             */
 
+
             /*
-            
             string str = "Host=localhost;Port=5432;Database=healthylife;Username=healthylife;Password=healthylife";
             NpgsqlConnection npgsqlConnection = new NpgsqlConnection(str);
             npgsqlConnection.Open();
@@ -310,7 +331,6 @@ namespace HealthyLife_Pt2
             "user_id    uuid REFERENCES users(id) NOT NULL, " +
             "updated_at date                       NOT NULL," +
             "weight     real                       NOT NULL, "+
-            "goal       real," +
             "UNIQUE(user_id, updated_at)"+
             ");";
 

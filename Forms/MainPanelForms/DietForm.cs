@@ -29,6 +29,8 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
         int stepX = 260;
         int stepY = 320;
 
+        private SearchPanelFilterButtonList searchPanelFilterButtonList = new SearchPanelFilterButtonList(new Diet());
+
         public DietForm(User user)
         {
             this.user = user;
@@ -41,7 +43,7 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
                 dietCreationButton.Text = "Создать рацион";
                 dietCreationButton.Visible = true;
             }
-            
+
         }
 
         public async void fillForm()
@@ -54,6 +56,28 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
             searchPanel1.SearchTextChanged += delegate (object? sender, EventArgs e)
             {
                 updateList();
+            };
+            searchPanel1.FilterClick += delegate (object? sender, EventArgs e)
+            {
+                List<Button> buttons = searchPanelFilterButtonList.dietFilterButtons;
+                searchPanel1.flowLayoutPanel.Size = new Size(300, buttons.Count * buttons[0].Height);
+                for (int i = 0; i < buttons.Count; i++)
+                {               
+                    searchPanel1.flowLayoutPanel.Controls.Add(buttons[i]);
+                    buttons[i].Click += delegate (object? sender, EventArgs e)
+                    {
+                        if (sender == null)
+                            return;
+                        int index = searchPanelFilterButtonList.dietFilterButtons.IndexOf((Button)sender);
+                        if (index < 0) return;
+                        diets.Sort(searchPanelFilterButtonList.dietComparisons[index]);
+                        searchPanel1.SearhText = "";
+                        updateList();
+                        searchPanel1.flowLayoutPanel.Height = 0;
+                        searchPanel1.Height = 60;
+                    };
+                }
+
             };
 
             int n = diets.Count / 3 ;
@@ -148,7 +172,7 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
 
         private void button_MouseLeave(object sender, EventArgs e)
         {
-            ((MyPanel)sender).PanelColor = Color.DarkViolet;
+            ((MyPanel)sender).PanelColor = Color.Gainsboro;
         }
 
         private void dietCreationButton_Click(object sender, EventArgs e)

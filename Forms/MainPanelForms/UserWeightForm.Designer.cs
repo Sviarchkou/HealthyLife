@@ -195,7 +195,6 @@
             elementChart.TabIndex = 6;
             elementChart.Text = "elementChart";
             elementChart.GetToolTipText += elementChart_GetToolTipText;
-            elementChart.Click += elementChart_Click;
             elementChart.MouseLeave += weightChart_MouseLeave;
             // 
             // addWeightButton
@@ -209,6 +208,8 @@
             addWeightButton.Size = new Size(159, 60);
             addWeightButton.TabIndex = 8;
             addWeightButton.Click += addWeightButton_Click;
+            addWeightButton.MouseEnter += button_MouseEnter;
+            addWeightButton.MouseLeave += button_MouseLeave;
             // 
             // toolTip
             // 

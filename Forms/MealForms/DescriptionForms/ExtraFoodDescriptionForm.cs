@@ -16,7 +16,7 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
 {
     public partial class ExtraFoodDescriptionForm : Form
     {
-
+        private User user;
         
         List<ExtraFood> extraFoods;
 
@@ -26,9 +26,10 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
         private int step = 80;
 
 
-        public ExtraFoodDescriptionForm(List<ExtraFood> extraFoods)
+        public ExtraFoodDescriptionForm(List<ExtraFood> extraFoods, User user)
         {
             this.extraFoods = extraFoods;
+            this.user = user;
             InitializeComponent();
             fillForm();
         }
@@ -45,7 +46,7 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
 
         private ExtraFoodAddition createProductAddition(Product product, Point location)
         {
-            ExtraFoodAddition extraFoodAddition = new ExtraFoodAddition(product);
+            ExtraFoodAddition extraFoodAddition = new ExtraFoodAddition(product, user);
             extraFoodAddition.onlyInfo = true;
             extraFoodAddition.Location = location;
             foreach (ExtraFood extraFood in extraFoods)

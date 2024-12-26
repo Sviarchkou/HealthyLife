@@ -10,13 +10,16 @@
     <Compile Update="FormControls\MealControls\AdditionContols\ExtraFoodAddition.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="FormControls\MealControls\ButtonControls\DietButton.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="FormControls\MealControls\AdditionContols\IngredientAddition.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="FormControls\MealControls\AdditionContols\MealAddition.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="FormControls\MealControls\AdditionContols\RecipeAddition.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="FormControls\MealControls\ButtonControls\DietButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="FormControls\MealControls\ButtonControls\ProductButton.cs">
@@ -28,11 +31,29 @@
     <Compile Update="FormControls\MyPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="FormControls\MealControls\AdditionContols\RecipeAddition.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="FormControls\SearchPanel.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Forms\Authentification\Authorization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Authentification\Registration\ActivityLevelForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Authentification\Registration\FinalRegForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Authentification\Registration\GoalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Authentification\Registration\Registration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Authentification\Registration\UserDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\Authentification\WellcomeScrin.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\MainForm.cs">
       <SubType>Form</SubType>
@@ -52,7 +73,13 @@
     <Compile Update="Forms\MainPanelForms\RecipeForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\MainPanelForms\UserWeightForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\MealForms\AddFroms\ExtraFoodAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\MealForms\AddFroms\MealAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\MealForms\AddFroms\WeightAddForm.cs">
@@ -61,16 +88,16 @@
     <Compile Update="Forms\MealForms\CreationForms\DietCreationForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Forms\MealForms\CreationForms\ProductCreationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\MealForms\CreationForms\RecipeCreationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Forms\MealForms\DescriptionForms\DietDailyMealDescriptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\MealForms\DescriptionForms\DietDescriptionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\MealForms\AddFroms\MealAddForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\MainPanelForms\UserWeightForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\MealForms\DescriptionForms\ExtraFoodDescriptionForm.cs">
@@ -82,30 +109,5 @@
     <Compile Update="Forms\MealForms\DescriptionForms\RecipeDescriptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\MealForms\CreationForms\ProductCreationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\MealForms\CreationForms\RecipeCreationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\Authentification\Registration\ActivityLevelForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\Authentification\Authorization.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\Authentification\Registration\GoalForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\Authentification\Registration\Registration.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\Authentification\Registration\UserDataForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\Authentification\WellcomeScrin.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
-  <ItemGroup />
 </Project>

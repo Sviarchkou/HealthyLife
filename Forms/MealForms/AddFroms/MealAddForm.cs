@@ -35,6 +35,8 @@ namespace HealthyLife_Pt2.Forms
         List<RecipeAddition> recipeButtons = new List<RecipeAddition>();
         List<MyPanel> myPanels = new List<MyPanel>();
 
+        private SearchPanelFilterButtonList searchPanelFilterButtonList = new SearchPanelFilterButtonList(new Recipe());
+
         public Recipe? recipe { get; private set; }
 
         User user;
@@ -51,6 +53,29 @@ namespace HealthyLife_Pt2.Forms
             {
                 updateList();
             };
+            searchPanel1.FilterClick += delegate (object? sender, EventArgs e)
+            {
+                List<Button> buttons = searchPanelFilterButtonList.recipeFilterButtons;
+                searchPanel1.flowLayoutPanel.Size = new Size(300, buttons.Count * buttons[0].Height);
+                for (int i = 0; i < buttons.Count; i++)
+                {
+                    searchPanel1.flowLayoutPanel.Controls.Add(buttons[i]);
+                    buttons[i].Click += delegate (object? sender, EventArgs e)
+                    {
+                        if (sender == null)
+                            return;
+                        int index = searchPanelFilterButtonList.recipeFilterButtons.IndexOf((Button)sender);
+                        if (index < 0) return;
+                        recipes.Sort(searchPanelFilterButtonList.recipeComparisons[index]);
+                        searchPanel1.SearhText = "";
+                        updateList();
+                        searchPanel1.flowLayoutPanel.Height = 0;
+                        searchPanel1.Height = 60;
+                    };
+                }
+
+            };
+
 
         }
         private async void fillForm()
@@ -79,6 +104,7 @@ namespace HealthyLife_Pt2.Forms
                 else
                     recipes = temp;
             }
+            filteredRecipes = recipes;
 
             for (int i = 0; i < recipes.Count; i++)
             {
@@ -204,9 +230,14 @@ namespace HealthyLife_Pt2.Forms
             await CacheWorker.writeData(cachePath, json);
         }
 
-        private void createButton_Load(object sender, EventArgs e)
+        private void button_MouseEnter(object sender, EventArgs e)
         {
+            ((MyPanel)sender).PanelColor = Color.LightGray;
+        }
 
+        private void button_MouseLeave(object sender, EventArgs e)
+        {
+            ((MyPanel)sender).PanelColor = Color.Gainsboro;
         }
     }
 }

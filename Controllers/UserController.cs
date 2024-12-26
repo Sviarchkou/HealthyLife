@@ -220,7 +220,6 @@ namespace HealthyLife_Pt2.Controllers
             userWeight.weight = user.weight;
             userWeight.user = user;
             userWeight.updated_at = DateTime.Now.Date;
-            userWeight.goal = user.weight;
 
             UserWeightController userWeightController = new UserWeightController();
 
@@ -358,24 +357,15 @@ namespace HealthyLife_Pt2.Controllers
         public async Task updateUserRecipes(User user)
         {
             await deleteUserRecipes(user);
-            await insertUserRecipes(user);
+            if (user.recipes.Count > 0)
+                await insertUserRecipes(user);
         }
 
         public async Task updateUserSelectedDiets(User user)
         {
             await deleteUserSelectedDiets(user);
-            await insertUserSelectedDiets(user);
+            if (user.diets.Count > 0)
+                await insertUserSelectedDiets(user);
         }
-        /*
-        public async Task<List<Meal>> selectALLUserDailyMeals(User user)
-        {
-            DBConnector db = new DBConnector();
-            db.Open();
-
-            DataTable mealsTable = await db.select($"SELECT * FROM user_daily_meal WHERE user_id = '{user.id}'");
-
-
-        }
-        */
     }
 }

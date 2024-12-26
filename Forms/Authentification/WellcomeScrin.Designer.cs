@@ -33,14 +33,14 @@
             button1 = new Button();
             SuspendLayout();
             // 
-            // labelText
+            // label1
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Sitka Small", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
             label1.ForeColor = Color.White;
             label1.Location = new Point(136, 112);
-            label1.Name = "labelText";
+            label1.Name = "label1";
             label1.Size = new Size(535, 69);
             label1.TabIndex = 0;
             label1.Text = "Добро пожаловать!";
@@ -65,7 +65,7 @@
             button1.Name = "button1";
             button1.Size = new Size(184, 43);
             button1.TabIndex = 2;
-            button1.Text = "Регистарация";
+            button1.Text = "Регистрация";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
@@ -73,7 +73,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = HealthyLife_Pt2.Properties.Resources.Backgound;
+            BackgroundImage = Properties.Resources.Backgound;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(802, 453);
             Controls.Add(button1);

@@ -48,7 +48,7 @@
             password.Size = new Size(260, 32);
             password.TabIndex = 6;
             password.TabStop = false;
-            password.Text = "Пороль";
+            password.Text = "Пароль";
             password.Click += password_Click;
             // 
             // login
@@ -90,7 +90,7 @@
             passwordReplication.Size = new Size(260, 32);
             passwordReplication.TabIndex = 7;
             passwordReplication.TabStop = false;
-            passwordReplication.Text = "Повтор пороля";
+            passwordReplication.Text = "Повтор пароля";
             passwordReplication.Click += passwordReplicaioin_Click;
             // 
             // register

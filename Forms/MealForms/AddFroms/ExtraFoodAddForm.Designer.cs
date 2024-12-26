@@ -36,6 +36,7 @@
             // 
             // searchPanel1
             // 
+            searchPanel1.AutoSize = true;
             searchPanel1.BackColor = Color.Transparent;
             searchPanel1.Location = new Point(25, 25);
             searchPanel1.Name = "searchPanel1";
@@ -55,6 +56,8 @@
             createButton.Size = new Size(187, 58);
             createButton.TabIndex = 19;
             createButton.Click += createButton_Click;
+            createButton.MouseEnter += button_MouseEnter;
+            createButton.MouseLeave += button_MouseLeave;
             // 
             // infoButton
             // 
@@ -67,6 +70,8 @@
             infoButton.Size = new Size(157, 77);
             infoButton.TabIndex = 21;
             infoButton.Click += infoButton_Click;
+            infoButton.MouseEnter += button_MouseEnter;
+            infoButton.MouseLeave += button_MouseLeave;
             // 
             // panel1
             // 
@@ -94,6 +99,7 @@
             Name = "ExtraFoodAddForm";
             StartPosition = FormStartPosition.CenterScreen;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

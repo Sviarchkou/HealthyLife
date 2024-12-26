@@ -178,7 +178,6 @@
             Controls.Add(label1);
             Name = "ActivityLevelForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "ActivityLevelForm";
             ResumeLayout(false);
             PerformLayout();
         }

@@ -122,6 +122,7 @@ namespace HealthyLife_Pt2.Forms.MealForms.DescriptionForms
                     await recipeController.deleteRecipe(recipe);
                     this.DialogResult = DialogResult.Yes;
                     MessageBox.Show("Рецепт удалён");
+                    user.recipes.Remove(this.recipe);
                     this.Close();
                 }
                 catch (Exception)

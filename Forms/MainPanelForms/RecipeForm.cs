@@ -13,11 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Text.Json;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using HealthyLife_Pt2.Forms.MealForms.DescriptionForms;
-using static System.ComponentModel.Design.ObjectSelectorEditor;
 
 namespace HealthyLife_Pt2.Forms.MainPanelForms
 {
@@ -35,6 +31,8 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
         int stepY = 360;
 
 
+        private SearchPanelFilterButtonList searchPanelFilterButtonList = new SearchPanelFilterButtonList(new Recipe());
+
         public RecipeForm(User user)
         {
             InitializeComponent();
@@ -47,6 +45,29 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
             searchPanel1.SearchTextChanged += delegate (object? sender, EventArgs e)
             {
                 updateList();
+            };
+            searchPanel1.FilterClick += delegate (object? sender, EventArgs e)
+            {
+                List<Button> buttons = searchPanelFilterButtonList.recipeFilterButtons;
+                searchPanel1.flowLayoutPanel.Size = new Size(300, buttons.Count * buttons[0].Height);
+                for (int i = 0; i < buttons.Count; i++)
+                {
+                    //buttons[i].Location = new Point(0, i * (buttons[i].Height+5));                    
+                    searchPanel1.flowLayoutPanel.Controls.Add(buttons[i]);
+                    buttons[i].Click += delegate (object? sender, EventArgs e)
+                    {
+                        if (sender == null) 
+                            return;
+                        int index = searchPanelFilterButtonList.recipeFilterButtons.IndexOf((Button)sender);
+                        if (index < 0) return;
+                        recipes.Sort(searchPanelFilterButtonList.recipeComparisons[index]);
+                        searchPanel1.SearhText = "";
+                        updateList();
+                        searchPanel1.flowLayoutPanel.Height = 0;
+                        searchPanel1.Height = 60;
+                    };
+                }
+                
             };
 
         }
@@ -91,6 +112,7 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
             }
 
             recipeCreationButton.Enabled = true;
+            searchPanel1.BringToFront();
         }
 
         private void filterRecipes()
@@ -123,6 +145,7 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
                     createRecipeButton(filteredRecipes.ElementAt(i), new Point(startPoint.X + stepX, startPoint.Y + stepY * (i / 2)));
                 }
             }
+            searchPanel1.BringToFront();
         }
 
         private void createRecipeButton(Recipe recipe, Point point)
@@ -168,7 +191,7 @@ namespace HealthyLife_Pt2.Forms.MainPanelForms
 
         private void button_MouseLeave(object sender, EventArgs e)
         {
-            ((MyPanel)sender).PanelColor = Color.DarkViolet;
+            ((MyPanel)sender).PanelColor = Color.Gainsboro;
         }
 
         private void recipeCreationButton_Click(object sender, EventArgs e)

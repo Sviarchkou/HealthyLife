@@ -340,9 +340,9 @@
             caloriesLabel.Font = new Font("Verdana", 10F);
             caloriesLabel.Location = new Point(491, 107);
             caloriesLabel.Name = "caloriesLabel";
-            caloriesLabel.Size = new Size(96, 20);
+            caloriesLabel.Size = new Size(85, 20);
             caloriesLabel.TabIndex = 158;
-            caloriesLabel.Text = "Каллории";
+            caloriesLabel.Text = "Калории";
             // 
             // category
             // 
@@ -381,9 +381,9 @@
             deleteButton.FlatAppearance.BorderSize = 0;
             deleteButton.FlatStyle = FlatStyle.Flat;
             deleteButton.Font = new Font("Verdana", 9F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            deleteButton.Location = new Point(314, 0);
+            deleteButton.Location = new Point(328, 9);
             deleteButton.Name = "deleteButton";
-            deleteButton.Size = new Size(149, 40);
+            deleteButton.Size = new Size(149, 28);
             deleteButton.TabIndex = 0;
             deleteButton.Text = "УДАЛИТЬ";
             deleteButton.UseVisualStyleBackColor = false;
@@ -405,7 +405,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            BackColor = Color.FloralWhite;
+            BackColor = Color.White;
             ClientSize = new Size(782, 503);
             Controls.Add(panel1);
             Controls.Add(approvedMark);

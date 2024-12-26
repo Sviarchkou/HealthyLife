@@ -19,6 +19,7 @@ namespace HealthyLife_Pt2.FormControls.MealControls.AdditionContols
         public int Count { get; set; }
         public bool onlyInfo { get; set; } = false;
 
+        public event Action? RemovedProduct;
         public Color PanelColor
         {
             get => productPanel.PanelColor;
@@ -61,12 +62,14 @@ namespace HealthyLife_Pt2.FormControls.MealControls.AdditionContols
         }
 
         public Product product { get; private set; }
+        private User user;
         private bool isDefaultWeight = true;
         
-        public ExtraFoodAddition(Product product)
+        public ExtraFoodAddition(Product product, User user)
         {
             InitializeComponent();
             this.product = product;
+            this.user = user;
             fillControl();
         }
 
@@ -119,7 +122,13 @@ namespace HealthyLife_Pt2.FormControls.MealControls.AdditionContols
         private void infoButton_Click(object sender, EventArgs e)
         {
             ProductDescriptoinForm productDescriptoinForm = new ProductDescriptoinForm(product);
-            productDescriptoinForm.ShowDialog();
+            if (!onlyInfo && user.role)
+                productDescriptoinForm.deleteButton.Visible = true;            
+            DialogResult dialogResult = productDescriptoinForm.ShowDialog();
+            if (dialogResult == DialogResult.Yes)
+            {
+                RemovedProduct?.Invoke();
+            }
         }
 
 

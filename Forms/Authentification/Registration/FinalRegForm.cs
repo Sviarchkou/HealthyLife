@@ -52,7 +52,6 @@ namespace HealthyLife_Pt2.Forms
                 UserWeight userWeight = new UserWeight();
                 userWeight.weight = user.weight;
                 userWeight.user = user;
-                userWeight.goal = user.weight;
 
                 UserWeightController userWeightController = new UserWeightController();
                 await userWeightController.insertTodayUserWeight(userWeight);
